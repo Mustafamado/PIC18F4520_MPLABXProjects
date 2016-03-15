@@ -33,12 +33,10 @@
 extern "C" {
 #endif
 
+#define _XTAL_FREQ 8000000
+
 /* PIC18F4520 Configuration Bit Settings */
 /* 'C' source line config statements */
-
-#include <xc.h>
-
-#define _XTAL_FREQ 8000000
 
 /* #pragma config statements should precede project file includes. */
 /* Use project enums instead of #define for ON and OFF. */
