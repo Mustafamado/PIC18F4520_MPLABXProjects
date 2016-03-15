@@ -17,6 +17,7 @@
 #include "pic18f4520_delay.h"
 
 int main(void) {
+    
     /* Initializes RC1 pin as output (LED1) */
     TRISCbits.RC1 = 0;
     
