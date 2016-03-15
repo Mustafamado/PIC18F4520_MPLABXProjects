@@ -9,9 +9,6 @@
  * @license  GNU GPL v3
  */
 
-/* Include core modules */
-#include <stdio.h>
-#include <stdlib.h>
 /* Include my libraries here */
 #include "pic18f4520_config.h"
 #include "pic18f4520_delay.h"
