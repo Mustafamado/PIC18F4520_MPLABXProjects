@@ -8,7 +8,7 @@ To be able to run my projects:
 1- Latest MPLAB X IDE program needs to be installed. (MPASM compiler is included to this installation.)
 http://www.microchip.com/mplab/mplab-x-ide
   
-2- XC8 Compiler v1.34 needs to installed. (C compiler for 8-bit PIC microcontrollers)
+2- XC8 Compiler v1.34 needs to be installed. (C compiler for 8-bit PIC microcontrollers)
 http://www.microchip.com/mplab/compilers
   
 The reason of using XC8 Compiler v1.34 instead of latest v1.36 is peripheral libraries (plibs) are not included to v1.36. You need to install "PIC18F Legacy Peripheral Libraries v2.0 - Windows" to use plibs. But microchip could not do it right and it causes errors. Safest way to use my projects is using XC8 Compiler v1.34 until microchip handles errors.
