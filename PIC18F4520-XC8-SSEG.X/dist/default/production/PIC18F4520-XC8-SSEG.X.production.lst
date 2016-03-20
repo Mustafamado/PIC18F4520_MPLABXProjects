@@ -1,0 +1,967 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.36 build -262312587 
+                                                                                               Sun Mar 20 17:06:11 2016
+
+Microchip Technology Omniscient Code Generator v1.36 (Free mode) build 201601150325
+     1                           	processor	18F4520
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1
+     8                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+     9                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    13                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    14                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    15  0000                     
+    16                           	psect	idataCOMRAM
+    17  007CFC                     __pidataCOMRAM:
+    18                           	opt stack 0
+    19                           
+    20                           ;initializer for _sseg_codes
+    21  007CFC  003F               	dw	63
+    22  007CFE  0006               	dw	6
+    23  007D00  005B               	dw	91
+    24  007D02  004F               	dw	79
+    25  007D04  0066               	dw	102
+    26  007D06  006D               	dw	109
+    27  007D08  007D               	dw	125
+    28  007D0A  0007               	dw	7
+    29  007D0C  007F               	dw	127
+    30  007D0E  006F               	dw	111
+    31  007D10  0077               	dw	119
+    32  007D12  007C               	dw	124
+    33  007D14  0039               	dw	57
+    34  007D16  005E               	dw	94
+    35  007D18  0079               	dw	121
+    36  007D1A  0071               	dw	113
+    37  0000                     _LATAbits	set	3977
+    38  0000                     _LATCbits	set	3979
+    39  0000                     _LATEbits	set	3981
+    40  0000                     _PORTBbits	set	3969
+    41  0000                     _TRISAbits	set	3986
+    42  0000                     _TRISBbits	set	3987
+    43  0000                     _TRISCbits	set	3988
+    44  0000                     _TRISEbits	set	3990
+    45                           
+    46                           ; #config settings
+    47  0000                     
+    48                           	psect	cinit
+    49  007D1C                     __pcinit:
+    50                           	opt stack 0
+    51  007D1C                     start_initialization:
+    52                           	opt stack 0
+    53  007D1C                     __initialization:
+    54                           	opt stack 0
+    55                           
+    56                           ; Initialize objects allocated to COMRAM (32 bytes)
+    57                           ; load TBLPTR registers with __pidataCOMRAM
+    58  007D1C  0EFC               	movlw	low __pidataCOMRAM
+    59  007D1E  6EF6               	movwf	tblptrl,c
+    60  007D20  0E7C               	movlw	high __pidataCOMRAM
+    61  007D22  6EF7               	movwf	tblptrh,c
+    62  007D24  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+    63  007D26  6EF8               	movwf	tblptru,c
+    64  007D28  EE00  F001         	lfsr	0,__pdataCOMRAM
+    65  007D2C  EE10 F020          	lfsr	1,32
+    66  007D30                     copy_data0:
+    67  007D30  0009               	tblrd		*+
+    68  007D32  CFF5 FFEE          	movff	tablat,postinc0
+    69  007D36  50E5               	movf	postdec1,w,c
+    70  007D38  50E1               	movf	fsr1l,w,c
+    71  007D3A  E1FA               	bnz	copy_data0
+    72  007D3C                     end_of_initialization:
+    73                           	opt stack 0
+    74  007D3C                     __end_of__initialization:
+    75                           	opt stack 0
+    76  007D3C  0100               	movlb	0
+    77  007D3E  EFD0  F03E         	goto	_main	;jump to C main() function
+    78                           tblptru	equ	0xFF8
+    79                           tblptrh	equ	0xFF7
+    80                           tblptrl	equ	0xFF6
+    81                           tablat	equ	0xFF5
+    82                           postinc0	equ	0xFEE
+    83                           postdec1	equ	0xFE5
+    84                           fsr1l	equ	0xFE1
+    85                           
+    86                           	psect	dataCOMRAM
+    87  000001                     __pdataCOMRAM:
+    88                           	opt stack 0
+    89  000001                     _sseg_codes:
+    90                           	opt stack 0
+    91  000001                     	ds	32
+    92                           tblptru	equ	0xFF8
+    93                           tblptrh	equ	0xFF7
+    94                           tblptrl	equ	0xFF6
+    95                           tablat	equ	0xFF5
+    96                           postinc0	equ	0xFEE
+    97                           postdec1	equ	0xFE5
+    98                           fsr1l	equ	0xFE1
+    99                           
+   100                           	psect	cstackCOMRAM
+   101  000021                     __pcstackCOMRAM:
+   102                           	opt stack 0
+   103  000021                     Delayms@ms:
+   104                           	opt stack 0
+   105  000021                     SSEG_Print@sseg:
+   106                           	opt stack 0
+   107                           
+   108                           ; 2 bytes @ 0x0
+   109  000021                     	ds	2
+   110  000023                     ??_Delayms:
+   111  000023                     SSEG_Print@n:
+   112                           	opt stack 0
+   113                           
+   114                           ; 2 bytes @ 0x2
+   115  000023                     	ds	1
+   116  000024                     Delayms@i:
+   117                           	opt stack 0
+   118                           
+   119                           ; 2 bytes @ 0x3
+   120  000024                     	ds	1
+   121  000025                     ??_SSEG_Print:
+   122                           
+   123                           ; 1 bytes @ 0x4
+   124  000025                     	ds	4
+   125  000029                     main@counter:
+   126                           	opt stack 0
+   127                           
+   128                           ; 2 bytes @ 0x8
+   129  000029                     	ds	2
+   130                           tblptru	equ	0xFF8
+   131                           tblptrh	equ	0xFF7
+   132                           tblptrl	equ	0xFF6
+   133                           tablat	equ	0xFF5
+   134                           postinc0	equ	0xFEE
+   135                           postdec1	equ	0xFE5
+   136                           fsr1l	equ	0xFE1
+   137                           
+   138 ;;
+   139 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   140 ;;
+   141 ;; *************** function _main *****************
+   142 ;; Defined at:
+   143 ;;		line 29 in file "main.c"
+   144 ;; Parameters:    Size  Location     Type
+   145 ;;		None
+   146 ;; Auto vars:     Size  Location     Type
+   147 ;;  counter         2    8[COMRAM] unsigned int 
+   148 ;; Return value:  Size  Location     Type
+   149 ;;                  2   24[None  ] int 
+   150 ;; Registers used:
+   151 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   152 ;; Tracked objects:
+   153 ;;		On entry : 0/0
+   154 ;;		On exit  : 0/0
+   155 ;;		Unchanged: 0/0
+   156 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   157 ;;      Params:         0       0       0       0       0       0       0
+   158 ;;      Locals:         2       0       0       0       0       0       0
+   159 ;;      Temps:          0       0       0       0       0       0       0
+   160 ;;      Totals:         2       0       0       0       0       0       0
+   161 ;;Total ram usage:        2 bytes
+   162 ;; Hardware stack levels required when called:    1
+   163 ;; This function calls:
+   164 ;;		_Delayms
+   165 ;;		_SSEG_Init
+   166 ;;		_SSEG_Print
+   167 ;; This function is called by:
+   168 ;;		Startup code after reset
+   169 ;; This function uses a non-reentrant model
+   170 ;;
+   171                           
+   172                           	psect	text0
+   173  007DA0                     __ptext0:
+   174                           	opt stack 0
+   175  007DA0                     _main:
+   176                           	opt stack 30
+   177                           
+   178                           ;main.c: 30: unsigned int counter = 0;
+   179                           
+   180                           ;incstack = 0
+   181  007DA0  0E00               	movlw	0
+   182  007DA2  6E2A               	movwf	main@counter+1,c
+   183  007DA4  0E00               	movlw	0
+   184  007DA6  6E29               	movwf	main@counter,c
+   185                           
+   186                           ;main.c: 31: TRISBbits.RB0 = 1;
+   187  007DA8  8093               	bsf	3987,0,c	;volatile
+   188                           
+   189                           ;main.c: 32: TRISBbits.RB1 = 1;
+   190  007DAA  8293               	bsf	3987,1,c	;volatile
+   191                           
+   192                           ;main.c: 33: SSEG_Init();
+   193  007DAC  ECA1  F03E         	call	_SSEG_Init	;wreg free
+   194  007DB0                     l766:
+   195                           
+   196                           ;main.c: 37: if (PORTBbits.RB0 == 0) {
+   197  007DB0  A081               	btfss	3969,0,c	;volatile
+   198  007DB2  D007               	goto	l772
+   199  007DB4  D015               	goto	l778
+   200  007DB6                     l770:
+   201  007DB6  0E00               	movlw	0
+   202  007DB8  6E22               	movwf	Delayms@ms+1,c
+   203  007DBA  0E32               	movlw	50
+   204  007DBC  6E21               	movwf	Delayms@ms,c
+   205  007DBE  ECB6  F03E         	call	_Delayms	;wreg free
+   206  007DC2                     l772:
+   207  007DC2  A081               	btfss	3969,0,c	;volatile
+   208  007DC4  D7F8               	goto	l770
+   209                           
+   210                           ;main.c: 39: counter--;
+   211  007DC6  0629               	decf	main@counter,f,c
+   212  007DC8  A0D8               	btfss	status,0,c
+   213  007DCA  062A               	decf	main@counter+1,f,c
+   214                           
+   215                           ;main.c: 40: SSEG_Print(1,counter%16);
+   216  007DCC  0E00               	movlw	0
+   217  007DCE  6E22               	movwf	SSEG_Print@sseg+1,c
+   218  007DD0  0E01               	movlw	1
+   219  007DD2  6E21               	movwf	SSEG_Print@sseg,c
+   220  007DD4  0E0F               	movlw	15
+   221  007DD6  1429               	andwf	main@counter,w,c
+   222  007DD8  6E23               	movwf	SSEG_Print@n,c
+   223  007DDA  6A24               	clrf	SSEG_Print@n+1,c
+   224  007DDC  EC08  F03F         	call	_SSEG_Print	;wreg free
+   225  007DE0                     l778:
+   226                           
+   227                           ;main.c: 41: }
+   228                           ;main.c: 42: if (PORTBbits.RB1 == 0) {
+   229  007DE0  A281               	btfss	3969,1,c	;volatile
+   230  007DE2  D007               	goto	l784
+   231  007DE4  D7E5               	goto	l766
+   232  007DE6                     l782:
+   233  007DE6  0E00               	movlw	0
+   234  007DE8  6E22               	movwf	Delayms@ms+1,c
+   235  007DEA  0E32               	movlw	50
+   236  007DEC  6E21               	movwf	Delayms@ms,c
+   237  007DEE  ECB6  F03E         	call	_Delayms	;wreg free
+   238  007DF2                     l784:
+   239  007DF2  A281               	btfss	3969,1,c	;volatile
+   240  007DF4  D7F8               	goto	l782
+   241                           
+   242                           ;main.c: 44: counter++;
+   243  007DF6  4A29               	infsnz	main@counter,f,c
+   244  007DF8  2A2A               	incf	main@counter+1,f,c
+   245                           
+   246                           ;main.c: 45: SSEG_Print(1,counter%16);
+   247  007DFA  0E00               	movlw	0
+   248  007DFC  6E22               	movwf	SSEG_Print@sseg+1,c
+   249  007DFE  0E01               	movlw	1
+   250  007E00  6E21               	movwf	SSEG_Print@sseg,c
+   251  007E02  0E0F               	movlw	15
+   252  007E04  1429               	andwf	main@counter,w,c
+   253  007E06  6E23               	movwf	SSEG_Print@n,c
+   254  007E08  6A24               	clrf	SSEG_Print@n+1,c
+   255  007E0A  EC08  F03F         	call	_SSEG_Print	;wreg free
+   256  007E0E  D7D0               	goto	l766
+   257  007E10                     __end_of_main:
+   258                           	opt stack 0
+   259                           tblptru	equ	0xFF8
+   260                           tblptrh	equ	0xFF7
+   261                           tblptrl	equ	0xFF6
+   262                           tablat	equ	0xFF5
+   263                           postinc0	equ	0xFEE
+   264                           postdec1	equ	0xFE5
+   265                           fsr1l	equ	0xFE1
+   266                           status	equ	0xFD8
+   267                           
+   268 ;; *************** function _SSEG_Print *****************
+   269 ;; Defined at:
+   270 ;;		line 53 in file "../Libraries/pic18f4520_sseg.c"
+   271 ;; Parameters:    Size  Location     Type
+   272 ;;  sseg            2    0[COMRAM] int 
+   273 ;;  n               2    2[COMRAM] int 
+   274 ;; Auto vars:     Size  Location     Type
+   275 ;;		None
+   276 ;; Return value:  Size  Location     Type
+   277 ;;                  1    wreg      void 
+   278 ;; Registers used:
+   279 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+   280 ;; Tracked objects:
+   281 ;;		On entry : 0/0
+   282 ;;		On exit  : 0/0
+   283 ;;		Unchanged: 0/0
+   284 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   285 ;;      Params:         4       0       0       0       0       0       0
+   286 ;;      Locals:         0       0       0       0       0       0       0
+   287 ;;      Temps:          4       0       0       0       0       0       0
+   288 ;;      Totals:         8       0       0       0       0       0       0
+   289 ;;Total ram usage:        8 bytes
+   290 ;; Hardware stack levels used:    1
+   291 ;; This function calls:
+   292 ;;		Nothing
+   293 ;; This function is called by:
+   294 ;;		_main
+   295 ;; This function uses a non-reentrant model
+   296 ;;
+   297                           
+   298                           	psect	text1
+   299  007E10                     __ptext1:
+   300                           	opt stack 0
+   301  007E10                     _SSEG_Print:
+   302                           	opt stack 30
+   303                           
+   304                           ;pic18f4520_sseg.c: 55: LATCbits.LATC0 = (sseg == 1) ? 1 : 0;
+   305                           
+   306                           ;incstack = 0
+   307  007E10  0421               	decf	SSEG_Print@sseg,w,c
+   308  007E12  1022               	iorwf	SSEG_Print@sseg+1,w,c
+   309  007E14  A4D8               	btfss	status,2,c
+   310  007E16  D003               	goto	u160
+   311  007E18  6A25               	clrf	??_SSEG_Print& (0+255),c
+   312  007E1A  2A25               	incf	??_SSEG_Print& (0+255),f,c
+   313  007E1C  D001               	goto	u178
+   314  007E1E                     u160:
+   315  007E1E  6A25               	clrf	??_SSEG_Print& (0+255),c
+   316  007E20                     u178:
+   317  007E20  508B               	movf	3979,w,c	;volatile
+   318  007E22  1825               	xorwf	??_SSEG_Print,w,c
+   319  007E24  0BFE               	andlw	-2
+   320  007E26  1825               	xorwf	??_SSEG_Print,w,c
+   321  007E28  6E8B               	movwf	3979,c	;volatile
+   322                           
+   323                           ;pic18f4520_sseg.c: 56: LATCbits.LATC5 = (sseg == 2) ? 1 : 0;
+   324  007E2A  0E02               	movlw	2
+   325  007E2C  1821               	xorwf	SSEG_Print@sseg,w,c
+   326  007E2E  1022               	iorwf	SSEG_Print@sseg+1,w,c
+   327  007E30  A4D8               	btfss	status,2,c
+   328  007E32  D003               	goto	u180
+   329  007E34  6A25               	clrf	??_SSEG_Print& (0+255),c
+   330  007E36  2A25               	incf	??_SSEG_Print& (0+255),f,c
+   331  007E38  D001               	goto	u198
+   332  007E3A                     u180:
+   333  007E3A  6A25               	clrf	??_SSEG_Print& (0+255),c
+   334  007E3C                     u198:
+   335  007E3C  3A25               	swapf	??_SSEG_Print,f,c
+   336  007E3E  4625               	rlncf	??_SSEG_Print,f,c
+   337  007E40  508B               	movf	3979,w,c	;volatile
+   338  007E42  1825               	xorwf	??_SSEG_Print,w,c
+   339  007E44  0BDF               	andlw	-33
+   340  007E46  1825               	xorwf	??_SSEG_Print,w,c
+   341  007E48  6E8B               	movwf	3979,c	;volatile
+   342                           
+   343                           ;pic18f4520_sseg.c: 57: LATEbits.LATE2 = ((sseg_codes[n] & (0x01 << 0)) >> 0);
+   344  007E4A  90D8               	bcf	status,0,c
+   345  007E4C  3423               	rlcf	SSEG_Print@n,w,c
+   346  007E4E  6ED9               	movwf	fsr2l,c
+   347  007E50  3424               	rlcf	SSEG_Print@n+1,w,c
+   348  007E52  6EDA               	movwf	fsr2h,c
+   349  007E54  0E01               	movlw	low _sseg_codes
+   350  007E56  26D9               	addwf	fsr2l,f,c
+   351  007E58  0E00               	movlw	high _sseg_codes
+   352  007E5A  22DA               	addwfc	fsr2h,f,c
+   353  007E5C  50DF               	movf	indf2,w,c
+   354  007E5E  6E25               	movwf	??_SSEG_Print& (0+255),c
+   355  007E60  0E01               	movlw	1
+   356  007E62  1625               	andwf	??_SSEG_Print,f,c
+   357  007E64  4625               	rlncf	??_SSEG_Print,f,c
+   358  007E66  4625               	rlncf	??_SSEG_Print,f,c
+   359  007E68  508D               	movf	3981,w,c	;volatile
+   360  007E6A  1825               	xorwf	??_SSEG_Print,w,c
+   361  007E6C  0BFB               	andlw	-5
+   362  007E6E  1825               	xorwf	??_SSEG_Print,w,c
+   363  007E70  6E8D               	movwf	3981,c	;volatile
+   364                           
+   365                           ;pic18f4520_sseg.c: 58: LATEbits.LATE1 = ((sseg_codes[n] & (0x01 << 1)) >> 1);
+   366  007E72  90D8               	bcf	status,0,c
+   367  007E74  3423               	rlcf	SSEG_Print@n,w,c
+   368  007E76  6ED9               	movwf	fsr2l,c
+   369  007E78  3424               	rlcf	SSEG_Print@n+1,w,c
+   370  007E7A  6EDA               	movwf	fsr2h,c
+   371  007E7C  0E01               	movlw	low _sseg_codes
+   372  007E7E  26D9               	addwf	fsr2l,f,c
+   373  007E80  0E00               	movlw	high _sseg_codes
+   374  007E82  22DA               	addwfc	fsr2h,f,c
+   375  007E84  CFDE F025          	movff	postinc2,??_SSEG_Print
+   376  007E88  CFDD F026          	movff	postdec2,??_SSEG_Print+1
+   377  007E8C  3426               	rlcf	??_SSEG_Print+1,w,c
+   378  007E8E  3026               	rrcf	??_SSEG_Print+1,w,c
+   379  007E90  6E28               	movwf	(??_SSEG_Print+3)& (0+255),c
+   380  007E92  3025               	rrcf	??_SSEG_Print,w,c
+   381  007E94  6E27               	movwf	(??_SSEG_Print+2)& (0+255),c
+   382  007E96  0E01               	movlw	1
+   383  007E98  1627               	andwf	??_SSEG_Print+2,f,c
+   384  007E9A  4627               	rlncf	??_SSEG_Print+2,f,c
+   385  007E9C  508D               	movf	3981,w,c	;volatile
+   386  007E9E  1827               	xorwf	??_SSEG_Print+2,w,c
+   387  007EA0  0BFD               	andlw	-3
+   388  007EA2  1827               	xorwf	??_SSEG_Print+2,w,c
+   389  007EA4  6E8D               	movwf	3981,c	;volatile
+   390                           
+   391                           ;pic18f4520_sseg.c: 59: LATAbits.LATA2 = ((sseg_codes[n] & (0x01 << 2)) >> 2);
+   392  007EA6  90D8               	bcf	status,0,c
+   393  007EA8  3423               	rlcf	SSEG_Print@n,w,c
+   394  007EAA  6ED9               	movwf	fsr2l,c
+   395  007EAC  3424               	rlcf	SSEG_Print@n+1,w,c
+   396  007EAE  6EDA               	movwf	fsr2h,c
+   397  007EB0  0E01               	movlw	low _sseg_codes
+   398  007EB2  26D9               	addwf	fsr2l,f,c
+   399  007EB4  0E00               	movlw	high _sseg_codes
+   400  007EB6  22DA               	addwfc	fsr2h,f,c
+   401  007EB8  CFDE F025          	movff	postinc2,??_SSEG_Print
+   402  007EBC  CFDD F026          	movff	postdec2,??_SSEG_Print+1
+   403  007EC0  3426               	rlcf	??_SSEG_Print+1,w,c
+   404  007EC2  3226               	rrcf	??_SSEG_Print+1,f,c
+   405  007EC4  3225               	rrcf	??_SSEG_Print,f,c
+   406  007EC6  3426               	rlcf	??_SSEG_Print+1,w,c
+   407  007EC8  3226               	rrcf	??_SSEG_Print+1,f,c
+   408  007ECA  3225               	rrcf	??_SSEG_Print,f,c
+   409  007ECC  0E01               	movlw	1
+   410  007ECE  1625               	andwf	??_SSEG_Print,f,c
+   411  007ED0  4625               	rlncf	??_SSEG_Print,f,c
+   412  007ED2  4625               	rlncf	??_SSEG_Print,f,c
+   413  007ED4  5089               	movf	3977,w,c	;volatile
+   414  007ED6  1825               	xorwf	??_SSEG_Print,w,c
+   415  007ED8  0BFB               	andlw	-5
+   416  007EDA  1825               	xorwf	??_SSEG_Print,w,c
+   417  007EDC  6E89               	movwf	3977,c	;volatile
+   418                           
+   419                           ;pic18f4520_sseg.c: 60: LATAbits.LATA3 = ((sseg_codes[n] & (0x01 << 3)) >> 3);
+   420  007EDE  90D8               	bcf	status,0,c
+   421  007EE0  3423               	rlcf	SSEG_Print@n,w,c
+   422  007EE2  6ED9               	movwf	fsr2l,c
+   423  007EE4  3424               	rlcf	SSEG_Print@n+1,w,c
+   424  007EE6  6EDA               	movwf	fsr2h,c
+   425  007EE8  0E01               	movlw	low _sseg_codes
+   426  007EEA  26D9               	addwf	fsr2l,f,c
+   427  007EEC  0E00               	movlw	high _sseg_codes
+   428  007EEE  22DA               	addwfc	fsr2h,f,c
+   429  007EF0  CFDE F025          	movff	postinc2,??_SSEG_Print
+   430  007EF4  CFDD F026          	movff	postdec2,??_SSEG_Print+1
+   431  007EF8  3426               	rlcf	??_SSEG_Print+1,w,c
+   432  007EFA  3226               	rrcf	??_SSEG_Print+1,f,c
+   433  007EFC  3225               	rrcf	??_SSEG_Print,f,c
+   434  007EFE  3426               	rlcf	??_SSEG_Print+1,w,c
+   435  007F00  3226               	rrcf	??_SSEG_Print+1,f,c
+   436  007F02  3225               	rrcf	??_SSEG_Print,f,c
+   437  007F04  3426               	rlcf	??_SSEG_Print+1,w,c
+   438  007F06  3226               	rrcf	??_SSEG_Print+1,f,c
+   439  007F08  3225               	rrcf	??_SSEG_Print,f,c
+   440  007F0A  0E01               	movlw	1
+   441  007F0C  1625               	andwf	??_SSEG_Print,f,c
+   442  007F0E  4625               	rlncf	??_SSEG_Print,f,c
+   443  007F10  4625               	rlncf	??_SSEG_Print,f,c
+   444  007F12  4625               	rlncf	??_SSEG_Print,f,c
+   445  007F14  5089               	movf	3977,w,c	;volatile
+   446  007F16  1825               	xorwf	??_SSEG_Print,w,c
+   447  007F18  0BF7               	andlw	-9
+   448  007F1A  1825               	xorwf	??_SSEG_Print,w,c
+   449  007F1C  6E89               	movwf	3977,c	;volatile
+   450                           
+   451                           ;pic18f4520_sseg.c: 61: LATAbits.LATA4 = ((sseg_codes[n] & (0x01 << 4)) >> 4);
+   452  007F1E  90D8               	bcf	status,0,c
+   453  007F20  3423               	rlcf	SSEG_Print@n,w,c
+   454  007F22  6ED9               	movwf	fsr2l,c
+   455  007F24  3424               	rlcf	SSEG_Print@n+1,w,c
+   456  007F26  6EDA               	movwf	fsr2h,c
+   457  007F28  0E01               	movlw	low _sseg_codes
+   458  007F2A  26D9               	addwf	fsr2l,f,c
+   459  007F2C  0E00               	movlw	high _sseg_codes
+   460  007F2E  22DA               	addwfc	fsr2h,f,c
+   461  007F30  CFDE F025          	movff	postinc2,??_SSEG_Print
+   462  007F34  CFDD F026          	movff	postdec2,??_SSEG_Print+1
+   463  007F38  0E04               	movlw	4
+   464  007F3A  6E27               	movwf	(??_SSEG_Print+2)& (0+255),c
+   465  007F3C                     u205:
+   466  007F3C  3426               	rlcf	??_SSEG_Print+1,w,c
+   467  007F3E  3226               	rrcf	??_SSEG_Print+1,f,c
+   468  007F40  3225               	rrcf	??_SSEG_Print,f,c
+   469  007F42  2E27               	decfsz	(??_SSEG_Print+2)& (0+255),f,c
+   470  007F44  D7FB               	goto	u205
+   471  007F46  0E01               	movlw	1
+   472  007F48  1625               	andwf	??_SSEG_Print,f,c
+   473  007F4A  3A25               	swapf	??_SSEG_Print,f,c
+   474  007F4C  5089               	movf	3977,w,c	;volatile
+   475  007F4E  1825               	xorwf	??_SSEG_Print,w,c
+   476  007F50  0BEF               	andlw	-17
+   477  007F52  1825               	xorwf	??_SSEG_Print,w,c
+   478  007F54  6E89               	movwf	3977,c	;volatile
+   479                           
+   480                           ;pic18f4520_sseg.c: 62: LATEbits.LATE0 = ((sseg_codes[n] & (0x01 << 5)) >> 5);
+   481  007F56  90D8               	bcf	status,0,c
+   482  007F58  3423               	rlcf	SSEG_Print@n,w,c
+   483  007F5A  6ED9               	movwf	fsr2l,c
+   484  007F5C  3424               	rlcf	SSEG_Print@n+1,w,c
+   485  007F5E  6EDA               	movwf	fsr2h,c
+   486  007F60  0E01               	movlw	low _sseg_codes
+   487  007F62  26D9               	addwf	fsr2l,f,c
+   488  007F64  0E00               	movlw	high _sseg_codes
+   489  007F66  22DA               	addwfc	fsr2h,f,c
+   490  007F68  CFDE F025          	movff	postinc2,??_SSEG_Print
+   491  007F6C  CFDD F026          	movff	postdec2,??_SSEG_Print+1
+   492  007F70  0E05               	movlw	5
+   493  007F72  6E27               	movwf	(??_SSEG_Print+2)& (0+255),c
+   494  007F74                     u215:
+   495  007F74  3426               	rlcf	??_SSEG_Print+1,w,c
+   496  007F76  3226               	rrcf	??_SSEG_Print+1,f,c
+   497  007F78  3225               	rrcf	??_SSEG_Print,f,c
+   498  007F7A  2E27               	decfsz	(??_SSEG_Print+2)& (0+255),f,c
+   499  007F7C  D7FB               	goto	u215
+   500  007F7E  0E01               	movlw	1
+   501  007F80  1625               	andwf	??_SSEG_Print,f,c
+   502  007F82  508D               	movf	3981,w,c	;volatile
+   503  007F84  1825               	xorwf	??_SSEG_Print,w,c
+   504  007F86  0BFE               	andlw	-2
+   505  007F88  1825               	xorwf	??_SSEG_Print,w,c
+   506  007F8A  6E8D               	movwf	3981,c	;volatile
+   507                           
+   508                           ;pic18f4520_sseg.c: 63: LATAbits.LATA5 = ((sseg_codes[n] & (0x01 << 6)) >> 6);
+   509  007F8C  90D8               	bcf	status,0,c
+   510  007F8E  3423               	rlcf	SSEG_Print@n,w,c
+   511  007F90  6ED9               	movwf	fsr2l,c
+   512  007F92  3424               	rlcf	SSEG_Print@n+1,w,c
+   513  007F94  6EDA               	movwf	fsr2h,c
+   514  007F96  0E01               	movlw	low _sseg_codes
+   515  007F98  26D9               	addwf	fsr2l,f,c
+   516  007F9A  0E00               	movlw	high _sseg_codes
+   517  007F9C  22DA               	addwfc	fsr2h,f,c
+   518  007F9E  CFDE F025          	movff	postinc2,??_SSEG_Print
+   519  007FA2  CFDD F026          	movff	postdec2,??_SSEG_Print+1
+   520  007FA6  0E06               	movlw	6
+   521  007FA8  6E27               	movwf	(??_SSEG_Print+2)& (0+255),c
+   522  007FAA                     u225:
+   523  007FAA  3426               	rlcf	??_SSEG_Print+1,w,c
+   524  007FAC  3226               	rrcf	??_SSEG_Print+1,f,c
+   525  007FAE  3225               	rrcf	??_SSEG_Print,f,c
+   526  007FB0  2E27               	decfsz	(??_SSEG_Print+2)& (0+255),f,c
+   527  007FB2  D7FB               	goto	u225
+   528  007FB4  0E01               	movlw	1
+   529  007FB6  1625               	andwf	??_SSEG_Print,f,c
+   530  007FB8  3A25               	swapf	??_SSEG_Print,f,c
+   531  007FBA  4625               	rlncf	??_SSEG_Print,f,c
+   532  007FBC  5089               	movf	3977,w,c	;volatile
+   533  007FBE  1825               	xorwf	??_SSEG_Print,w,c
+   534  007FC0  0BDF               	andlw	-33
+   535  007FC2  1825               	xorwf	??_SSEG_Print,w,c
+   536  007FC4  6E89               	movwf	3977,c	;volatile
+   537                           
+   538                           ;pic18f4520_sseg.c: 64: LATAbits.LATA1 = ((sseg_codes[n] & (0x01 << 7)) >> 7);
+   539  007FC6  90D8               	bcf	status,0,c
+   540  007FC8  3423               	rlcf	SSEG_Print@n,w,c
+   541  007FCA  6ED9               	movwf	fsr2l,c
+   542  007FCC  3424               	rlcf	SSEG_Print@n+1,w,c
+   543  007FCE  6EDA               	movwf	fsr2h,c
+   544  007FD0  0E01               	movlw	low _sseg_codes
+   545  007FD2  26D9               	addwf	fsr2l,f,c
+   546  007FD4  0E00               	movlw	high _sseg_codes
+   547  007FD6  22DA               	addwfc	fsr2h,f,c
+   548  007FD8  CFDE F025          	movff	postinc2,??_SSEG_Print
+   549  007FDC  CFDD F026          	movff	postdec2,??_SSEG_Print+1
+   550  007FE0  0E07               	movlw	7
+   551  007FE2  6E27               	movwf	(??_SSEG_Print+2)& (0+255),c
+   552  007FE4                     u235:
+   553  007FE4  3426               	rlcf	??_SSEG_Print+1,w,c
+   554  007FE6  3226               	rrcf	??_SSEG_Print+1,f,c
+   555  007FE8  3225               	rrcf	??_SSEG_Print,f,c
+   556  007FEA  2E27               	decfsz	(??_SSEG_Print+2)& (0+255),f,c
+   557  007FEC  D7FB               	goto	u235
+   558  007FEE  0E01               	movlw	1
+   559  007FF0  1625               	andwf	??_SSEG_Print,f,c
+   560  007FF2  4625               	rlncf	??_SSEG_Print,f,c
+   561  007FF4  5089               	movf	3977,w,c	;volatile
+   562  007FF6  1825               	xorwf	??_SSEG_Print,w,c
+   563  007FF8  0BFD               	andlw	-3
+   564  007FFA  1825               	xorwf	??_SSEG_Print,w,c
+   565  007FFC  6E89               	movwf	3977,c	;volatile
+   566  007FFE  0012               	return		;funcret
+   567  008000                     __end_of_SSEG_Print:
+   568                           	opt stack 0
+   569                           tblptru	equ	0xFF8
+   570                           tblptrh	equ	0xFF7
+   571                           tblptrl	equ	0xFF6
+   572                           tablat	equ	0xFF5
+   573                           postinc0	equ	0xFEE
+   574                           postdec1	equ	0xFE5
+   575                           fsr1l	equ	0xFE1
+   576                           indf2	equ	0xFDF
+   577                           postinc2	equ	0xFDE
+   578                           postdec2	equ	0xFDD
+   579                           fsr2h	equ	0xFDA
+   580                           fsr2l	equ	0xFD9
+   581                           status	equ	0xFD8
+   582                           
+   583 ;; *************** function _SSEG_Init *****************
+   584 ;; Defined at:
+   585 ;;		line 28 in file "../Libraries/pic18f4520_sseg.c"
+   586 ;; Parameters:    Size  Location     Type
+   587 ;;		None
+   588 ;; Auto vars:     Size  Location     Type
+   589 ;;		None
+   590 ;; Return value:  Size  Location     Type
+   591 ;;                  1    wreg      void 
+   592 ;; Registers used:
+   593 ;;		None
+   594 ;; Tracked objects:
+   595 ;;		On entry : 0/0
+   596 ;;		On exit  : 0/0
+   597 ;;		Unchanged: 0/0
+   598 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   599 ;;      Params:         0       0       0       0       0       0       0
+   600 ;;      Locals:         0       0       0       0       0       0       0
+   601 ;;      Temps:          0       0       0       0       0       0       0
+   602 ;;      Totals:         0       0       0       0       0       0       0
+   603 ;;Total ram usage:        0 bytes
+   604 ;; Hardware stack levels used:    1
+   605 ;; This function calls:
+   606 ;;		Nothing
+   607 ;; This function is called by:
+   608 ;;		_main
+   609 ;; This function uses a non-reentrant model
+   610 ;;
+   611                           
+   612                           	psect	text2
+   613  007D42                     __ptext2:
+   614                           	opt stack 0
+   615  007D42                     _SSEG_Init:
+   616                           	opt stack 30
+   617                           
+   618                           ;pic18f4520_sseg.c: 30: TRISCbits.RC0 = 0;
+   619                           
+   620                           ;incstack = 0
+   621  007D42  9094               	bcf	3988,0,c	;volatile
+   622                           
+   623                           ;pic18f4520_sseg.c: 31: TRISCbits.RC5 = 0;
+   624  007D44  9A94               	bcf	3988,5,c	;volatile
+   625                           
+   626                           ;pic18f4520_sseg.c: 32: TRISEbits.RE2 = 0;
+   627  007D46  9496               	bcf	3990,2,c	;volatile
+   628                           
+   629                           ;pic18f4520_sseg.c: 33: TRISEbits.RE1 = 0;
+   630  007D48  9296               	bcf	3990,1,c	;volatile
+   631                           
+   632                           ;pic18f4520_sseg.c: 34: TRISAbits.RA2 = 0;
+   633  007D4A  9492               	bcf	3986,2,c	;volatile
+   634                           
+   635                           ;pic18f4520_sseg.c: 35: TRISAbits.RA3 = 0;
+   636  007D4C  9692               	bcf	3986,3,c	;volatile
+   637                           
+   638                           ;pic18f4520_sseg.c: 36: TRISAbits.RA4 = 0;
+   639  007D4E  9892               	bcf	3986,4,c	;volatile
+   640                           
+   641                           ;pic18f4520_sseg.c: 37: TRISEbits.RE0 = 0;
+   642  007D50  9096               	bcf	3990,0,c	;volatile
+   643                           
+   644                           ;pic18f4520_sseg.c: 38: TRISAbits.RA5 = 0;
+   645  007D52  9A92               	bcf	3986,5,c	;volatile
+   646                           
+   647                           ;pic18f4520_sseg.c: 39: TRISAbits.RA1 = 0;
+   648  007D54  9292               	bcf	3986,1,c	;volatile
+   649                           
+   650                           ;pic18f4520_sseg.c: 41: LATCbits.LATC0 = 0;
+   651  007D56  908B               	bcf	3979,0,c	;volatile
+   652                           
+   653                           ;pic18f4520_sseg.c: 42: LATCbits.LATC5 = 0;
+   654  007D58  9A8B               	bcf	3979,5,c	;volatile
+   655                           
+   656                           ;pic18f4520_sseg.c: 43: LATEbits.LATE2 = 0;
+   657  007D5A  948D               	bcf	3981,2,c	;volatile
+   658                           
+   659                           ;pic18f4520_sseg.c: 44: LATEbits.LATE1 = 0;
+   660  007D5C  928D               	bcf	3981,1,c	;volatile
+   661                           
+   662                           ;pic18f4520_sseg.c: 45: LATAbits.LATA2 = 0;
+   663  007D5E  9489               	bcf	3977,2,c	;volatile
+   664                           
+   665                           ;pic18f4520_sseg.c: 46: LATAbits.LATA3 = 0;
+   666  007D60  9689               	bcf	3977,3,c	;volatile
+   667                           
+   668                           ;pic18f4520_sseg.c: 47: LATAbits.LATA4 = 0;
+   669  007D62  9889               	bcf	3977,4,c	;volatile
+   670                           
+   671                           ;pic18f4520_sseg.c: 48: LATEbits.LATE0 = 0;
+   672  007D64  908D               	bcf	3981,0,c	;volatile
+   673                           
+   674                           ;pic18f4520_sseg.c: 49: LATAbits.LATA5 = 0;
+   675  007D66  9A89               	bcf	3977,5,c	;volatile
+   676                           
+   677                           ;pic18f4520_sseg.c: 50: LATAbits.LATA1 = 0;
+   678  007D68  9289               	bcf	3977,1,c	;volatile
+   679  007D6A  0012               	return		;funcret
+   680  007D6C                     __end_of_SSEG_Init:
+   681                           	opt stack 0
+   682                           tblptru	equ	0xFF8
+   683                           tblptrh	equ	0xFF7
+   684                           tblptrl	equ	0xFF6
+   685                           tablat	equ	0xFF5
+   686                           postinc0	equ	0xFEE
+   687                           postdec1	equ	0xFE5
+   688                           fsr1l	equ	0xFE1
+   689                           indf2	equ	0xFDF
+   690                           postinc2	equ	0xFDE
+   691                           postdec2	equ	0xFDD
+   692                           fsr2h	equ	0xFDA
+   693                           fsr2l	equ	0xFD9
+   694                           status	equ	0xFD8
+   695                           
+   696 ;; *************** function _Delayms *****************
+   697 ;; Defined at:
+   698 ;;		line 66 in file "../Libraries\pic18f4520_delay.h"
+   699 ;; Parameters:    Size  Location     Type
+   700 ;;  ms              2    0[COMRAM] int 
+   701 ;; Auto vars:     Size  Location     Type
+   702 ;;  i               2    3[COMRAM] int 
+   703 ;; Return value:  Size  Location     Type
+   704 ;;                  1    wreg      void 
+   705 ;; Registers used:
+   706 ;;		wreg, status,2, status,0
+   707 ;; Tracked objects:
+   708 ;;		On entry : 0/0
+   709 ;;		On exit  : 0/0
+   710 ;;		Unchanged: 0/0
+   711 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   712 ;;      Params:         2       0       0       0       0       0       0
+   713 ;;      Locals:         2       0       0       0       0       0       0
+   714 ;;      Temps:          1       0       0       0       0       0       0
+   715 ;;      Totals:         5       0       0       0       0       0       0
+   716 ;;Total ram usage:        5 bytes
+   717 ;; Hardware stack levels used:    1
+   718 ;; This function calls:
+   719 ;;		Nothing
+   720 ;; This function is called by:
+   721 ;;		_main
+   722 ;; This function uses a non-reentrant model
+   723 ;;
+   724                           
+   725                           	psect	text3
+   726  007D6C                     __ptext3:
+   727                           	opt stack 0
+   728  007D6C                     _Delayms:
+   729                           	opt stack 30
+   730                           
+   731                           ;Libraries\pic18f4520_delay.h: 68: for(int i=0; i<ms ; i++) _delay((unsigned long)((1)*(
+      +                          32000000/4000.0)));
+   732                           
+   733                           ;incstack = 0
+   734  007D6C  0E00               	movlw	0
+   735  007D6E  6E25               	movwf	Delayms@i+1,c
+   736  007D70  0E00               	movlw	0
+   737  007D72  6E24               	movwf	Delayms@i,c
+   738  007D74  D00A               	goto	l13
+   739  007D76                     l736:
+   740  007D76  0E0B               	movlw	11
+   741  007D78  6E23               	movwf	??_Delayms& (0+255),c
+   742  007D7A  0E62               	movlw	98
+   743  007D7C                     u287:
+   744  007D7C  2EE8               	decfsz	wreg,f,c
+   745  007D7E  D7FE               	goto	u287
+   746  007D80  2E23               	decfsz	??_Delayms& (0+255),f,c
+   747  007D82  D7FC               	goto	u287
+   748  007D84  D000               	nop2	
+   749  007D86  4A24               	infsnz	Delayms@i,f,c
+   750  007D88  2A25               	incf	Delayms@i+1,f,c
+   751  007D8A                     l13:
+   752  007D8A  5021               	movf	Delayms@ms,w,c
+   753  007D8C  5C24               	subwf	Delayms@i,w,c
+   754  007D8E  5025               	movf	Delayms@i+1,w,c
+   755  007D90  0A80               	xorlw	128
+   756  007D92  6E23               	movwf	??_Delayms& (0+255),c
+   757  007D94  5022               	movf	Delayms@ms+1,w,c
+   758  007D96  0A80               	xorlw	128
+   759  007D98  5823               	subwfb	??_Delayms& (0+255),w,c
+   760  007D9A  B0D8               	btfsc	status,0,c
+   761  007D9C  0012               	return	
+   762  007D9E  D7EB               	goto	l736
+   763  007DA0                     __end_of_Delayms:
+   764                           	opt stack 0
+   765  0000                     tblptru	equ	0xFF8
+   766                           tblptrh	equ	0xFF7
+   767                           tblptrl	equ	0xFF6
+   768                           tablat	equ	0xFF5
+   769                           postinc0	equ	0xFEE
+   770                           wreg	equ	0xFE8
+   771                           postdec1	equ	0xFE5
+   772                           fsr1l	equ	0xFE1
+   773                           indf2	equ	0xFDF
+   774                           postinc2	equ	0xFDE
+   775                           postdec2	equ	0xFDD
+   776                           fsr2h	equ	0xFDA
+   777                           fsr2l	equ	0xFD9
+   778                           status	equ	0xFD8
+   779                           tblptru	equ	0xFF8
+   780                           tblptrh	equ	0xFF7
+   781                           tblptrl	equ	0xFF6
+   782                           tablat	equ	0xFF5
+   783                           postinc0	equ	0xFEE
+   784                           wreg	equ	0xFE8
+   785                           postdec1	equ	0xFE5
+   786                           fsr1l	equ	0xFE1
+   787                           indf2	equ	0xFDF
+   788                           postinc2	equ	0xFDE
+   789                           postdec2	equ	0xFDD
+   790                           fsr2h	equ	0xFDA
+   791                           fsr2l	equ	0xFD9
+   792                           status	equ	0xFD8
+   793                           
+   794                           	psect	rparam
+   795  0000                     tblptru	equ	0xFF8
+   796                           tblptrh	equ	0xFF7
+   797                           tblptrl	equ	0xFF6
+   798                           tablat	equ	0xFF5
+   799                           postinc0	equ	0xFEE
+   800                           wreg	equ	0xFE8
+   801                           postdec1	equ	0xFE5
+   802                           fsr1l	equ	0xFE1
+   803                           indf2	equ	0xFDF
+   804                           postinc2	equ	0xFDE
+   805                           postdec2	equ	0xFDD
+   806                           fsr2h	equ	0xFDA
+   807                           fsr2l	equ	0xFD9
+   808                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        32
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM          127     10      42
+    BANK0           128      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    _main->_SSEG_Print
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0     697
+                                              8 COMRAM     2     2      0
+                            _Delayms
+                          _SSEG_Init
+                         _SSEG_Print
+ ---------------------------------------------------------------------------------
+ (1) _SSEG_Print                                           8     4      4     476
+                                              0 COMRAM     8     4      4
+ ---------------------------------------------------------------------------------
+ (1) _SSEG_Init                                            0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _Delayms                                              5     3      2     174
+                                              0 COMRAM     5     3      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _Delayms
+   _SSEG_Init
+   _SSEG_Print
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             5FF      0       0      17        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK5           100      0       0      16        0.0%
+BANK5              100      0       0      14        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            80      0       0       4        0.0%
+BANK0               80      0       0       5        0.0%
+BITCOMRAM           7F      0       0       0        0.0%
+COMRAM              7F      A      2A       1       33.1%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      2A      15        0.0%
+DATA                 0      0      2A       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.36 build -262312587 
+Symbol Table                                                                                   Sun Mar 20 17:06:11 2016
+
+         SSEG_Print@sseg 0021                       l13 7D8A              __CFG_BORV$2 000000  
+           __CFG_CP0$OFF 000000             __CFG_CP1$OFF 000000             __CFG_CP2$OFF 000000  
+           __CFG_CP3$OFF 000000                      l736 7D76                      l770 7DB6  
+                    l772 7DC2                      l782 7DE6                      l766 7DB0  
+                    l784 7DF2                      l778 7DE0             __CFG_CPB$OFF 000000  
+                    u205 7F3C                      u215 7F74                      u160 7E1E  
+                    u225 7FAA                      u235 7FE4                      u180 7E3A  
+                    u178 7E20             __CFG_CPD$OFF 000000                      u198 7E3C  
+                    u287 7D7C                      wreg 000FE8             __CFG_LVP$OFF 000000  
+           __CFG_WDT$OFF 000000              main@counter 0029                     _main 7DA0  
+                   fsr2h 000FDA                     fsr1l 000FE1                     indf2 000FDF  
+                   fsr2l 000FD9            __CFG_BOREN$ON 000000                     start 0000  
+          __CFG_IESO$OFF 000000          __end_of_Delayms 7DA0            __CFG_MCLRE$ON 000000  
+           ___param_bank 000010                    ?_main 0021            __CFG_PWRT$OFF 000000  
+          __CFG_WRT0$OFF 000000            __CFG_WRT1$OFF 000000            __CFG_WRT2$OFF 000000  
+          __CFG_WRT3$OFF 000000           __CFG_EBTR0$OFF 000000           __CFG_FCMEN$OFF 000000  
+         __CFG_EBTR1$OFF 000000           __CFG_EBTR2$OFF 000000           __CFG_EBTR3$OFF 000000  
+          __CFG_WRTB$OFF 000000            __CFG_WRTC$OFF 000000            __CFG_WRTD$OFF 000000  
+         __CFG_EBTRB$OFF 000000       __size_of_SSEG_Init 002A                    tablat 000FF5  
+            ?_SSEG_Print 0021                    status 000FD8          __initialization 7D1C  
+           __end_of_main 7E10           __CFG_OSC$HSPLL 000000                   ??_main 0029  
+          __activetblptr 000000                ??_Delayms 0023           __CFG_XINST$OFF 000000  
+         __CFG_STVREN$ON 000000        __end_of_SSEG_Init 7D6C      __size_of_SSEG_Print 01F0  
+           __pdataCOMRAM 0001                   tblptrh 000FF7                   tblptrl 000FF6  
+                 tblptru 000FF8               __accesstop 0080  __end_of__initialization 7D3C  
+        __CFG_PBADEN$OFF 000000            ___rparam_used 000001           __pcstackCOMRAM 0021  
+           ??_SSEG_Print 0025                  _Delayms 7D6C                  __Hparam 0000  
+                __Lparam 0000                  __pcinit 7D1C                  __ramtop 0600  
+                __ptext0 7DA0                  __ptext1 7E10                  __ptext2 7D42  
+                __ptext3 7D6C       __end_of_SSEG_Print 8000     end_of_initialization 7D3C  
+              Delayms@ms 0021                  postdec1 000FE5                  postdec2 000FDD  
+                postinc0 000FEE                  postinc2 000FDE                _PORTBbits 000F81  
+              _SSEG_Init 7D42               _sseg_codes 0001                _TRISAbits 000F92  
+              _TRISBbits 000F93                _TRISCbits 000F94                _TRISEbits 000F96  
+            SSEG_Print@n 0023            __pidataCOMRAM 7CFC               ?_SSEG_Init 0021  
+    start_initialization 7D1C         __CFG_LPT1OSC$OFF 000000                 ?_Delayms 0021  
+      __CFG_CCP2MX$PORTC 000000              ??_SSEG_Init 0021                 _LATAbits 000F89  
+               _LATCbits 000F8B                 _LATEbits 000F8D                 Delayms@i 0024  
+       __CFG_WDTPS$32768 000000                copy_data0 7D30         __size_of_Delayms 0034  
+               __Hrparam 0000                 __Lrparam 0000            __size_of_main 0070  
+             _SSEG_Print 7E10  

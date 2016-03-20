@@ -74,7 +74,7 @@
 	cblock 0x000	;Beginning of Access RAM
 	CounterA	;address 0x000		   
 	CounterB	;address 0x001
-	CounterC	;adresss 0x002
+	CounterC	;address 0x002
 	endc
 
 ; Macro definitions

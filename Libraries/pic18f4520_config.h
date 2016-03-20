@@ -33,7 +33,7 @@
 extern "C" {
 #endif
 
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 32000000
 
 /* PIC18F4520 Configuration Bit Settings */
 /* 'C' source line config statements */

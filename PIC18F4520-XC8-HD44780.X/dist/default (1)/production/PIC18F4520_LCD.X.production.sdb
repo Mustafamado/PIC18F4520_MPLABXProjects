@@ -1,0 +1,240 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4520 ]
+[d frameptr 4065 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"10 C:\BUR4KNS\Google Drive\Workspace\MPLABX Workspace\PIC18F4520_LCD.X\delay.h
+[v _Delayms Delayms `(v  1 e 1 0 ]
+"106 C:\BUR4KNS\Google Drive\Workspace\MPLABX Workspace\PIC18F4520_LCD.X\hd44780.c
+[v _HD44780_Delay HD44780_Delay `(v  1 e 1 0 ]
+"111
+[v _HD44780_Init HD44780_Init `(v  1 e 1 0 ]
+"166
+[v _HD44780_Clear HD44780_Clear `(v  1 e 1 0 ]
+"171
+[v _HD44780_Puts HD44780_Puts `(v  1 e 1 0 ]
+"192
+[v _HD44780_DisplayOn HD44780_DisplayOn `(v  1 e 1 0 ]
+"202
+[v _HD44780_BlinkOn HD44780_BlinkOn `(v  1 e 1 0 ]
+"212
+[v _HD44780_CursorOn HD44780_CursorOn `(v  1 e 1 0 ]
+"230
+[v _HD44780_CreateChar HD44780_CreateChar `(v  1 e 1 0 ]
+"241
+[v _HD44780_PutCustom HD44780_PutCustom `(v  1 e 1 0 ]
+"246
+[v _HD44780_CursorSet HD44780_CursorSet `(v  1 e 1 0 ]
+"263
+[v _HD44780_Cmd HD44780_Cmd `(v  1 s 1 HD44780_Cmd ]
+"273
+[v _HD44780_Data HD44780_Data `(v  1 s 1 HD44780_Data ]
+"283
+[v _HD44780_Cmd4bit HD44780_Cmd4bit `(v  1 s 1 HD44780_Cmd4bit ]
+"292
+[v _HD44780_InitPins HD44780_InitPins `(v  1 s 1 HD44780_InitPins ]
+"22 C:\BUR4KNS\Google Drive\Workspace\MPLABX Workspace\PIC18F4520_LCD.X\main.c
+[v _main main `(i  1 e 2 0 ]
+[s S117 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"313 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18f4520.h
+[s S126 . 1 `uc 1 INT0 1 0 :1:0 
+`uc 1 INT1 1 0 :1:1 
+`uc 1 INT2 1 0 :1:2 
+`uc 1 CCP2 1 0 :1:3 
+`uc 1 KBI0 1 0 :1:4 
+`uc 1 KBI1 1 0 :1:5 
+`uc 1 KBI2 1 0 :1:6 
+`uc 1 KBI3 1 0 :1:7 
+]
+[s S135 . 1 `uc 1 AN12 1 0 :1:0 
+`uc 1 AN10 1 0 :1:1 
+`uc 1 AN8 1 0 :1:2 
+`uc 1 AN9 1 0 :1:3 
+`uc 1 AN11 1 0 :1:4 
+`uc 1 PGM 1 0 :1:5 
+`uc 1 PGC 1 0 :1:6 
+`uc 1 PGD 1 0 :1:7 
+]
+[s S144 . 1 `uc 1 FLT0 1 0 :1:0 
+]
+[s S146 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CCP2_PA2 1 0 :1:3 
+]
+[u S149 . 1 `S117 1 . 1 0 `S126 1 . 1 0 `S135 1 . 1 0 `S144 1 . 1 0 `S146 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES149  1 e 1 @3969 ]
+[s S188 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"1830
+[u S206 . 1 `S188 1 . 1 0 `S117 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES206  1 e 1 @3987 ]
+[s S77 . 7 `uc 1 DisplayControl 1 0 `uc 1 DisplayFunction 1 1 `uc 1 DisplayMode 1 2 `uc 1 Rows 1 3 `uc 1 Cols 1 4 `uc 1 currentX 1 5 `uc 1 currentY 1 6 ]
+"41 C:\BUR4KNS\Google Drive\Workspace\MPLABX Workspace\PIC18F4520_LCD.X\hd44780.c
+[v _HD44780_Opts HD44780_Opts `S77  1 s 7 HD44780_Opts ]
+"11 C:\BUR4KNS\Google Drive\Workspace\MPLABX Workspace\PIC18F4520_LCD.X\main.c
+[v _customChar customChar `[8]uc  1 e 8 0 ]
+"22
+[v _main main `(i  1 e 2 0 ]
+{
+"58
+} 0
+"171 C:\BUR4KNS\Google Drive\Workspace\MPLABX Workspace\PIC18F4520_LCD.X\hd44780.c
+[v _HD44780_Puts HD44780_Puts `(v  1 e 1 0 ]
+{
+[v HD44780_Puts@x x `uc  1 a 1 wreg ]
+[v HD44780_Puts@x x `uc  1 a 1 wreg ]
+[v HD44780_Puts@y y `uc  1 p 1 14 ]
+[v HD44780_Puts@str str `*.32uc  1 p 2 15 ]
+[v HD44780_Puts@x x `uc  1 a 1 17 ]
+"190
+} 0
+"241
+[v _HD44780_PutCustom HD44780_PutCustom `(v  1 e 1 0 ]
+{
+[v HD44780_PutCustom@x x `uc  1 a 1 wreg ]
+[v HD44780_PutCustom@x x `uc  1 a 1 wreg ]
+[v HD44780_PutCustom@y y `uc  1 p 1 14 ]
+[v HD44780_PutCustom@location location `uc  1 p 1 15 ]
+[v HD44780_PutCustom@x x `uc  1 a 1 16 ]
+"244
+} 0
+"246
+[v _HD44780_CursorSet HD44780_CursorSet `(v  1 e 1 0 ]
+{
+[v HD44780_CursorSet@col col `uc  1 a 1 wreg ]
+"247
+[v HD44780_CursorSet@row_offsets row_offsets `[4]uc  1 a 4 9 ]
+"246
+[v HD44780_CursorSet@col col `uc  1 a 1 wreg ]
+[v HD44780_CursorSet@row row `uc  1 p 1 8 ]
+[v HD44780_CursorSet@F4227 F4227 `[4]uc  1 s 4 F4227 ]
+[v HD44780_CursorSet@col col `uc  1 a 1 13 ]
+"260
+} 0
+"111
+[v _HD44780_Init HD44780_Init `(v  1 e 1 0 ]
+{
+[v HD44780_Init@cols cols `uc  1 a 1 wreg ]
+[v HD44780_Init@cols cols `uc  1 a 1 wreg ]
+[v HD44780_Init@rows rows `uc  1 p 1 8 ]
+"114
+[v HD44780_Init@cols cols `uc  1 a 1 9 ]
+"164
+} 0
+"292
+[v _HD44780_InitPins HD44780_InitPins `(v  1 s 1 HD44780_InitPins ]
+{
+"308
+} 0
+"192
+[v _HD44780_DisplayOn HD44780_DisplayOn `(v  1 e 1 0 ]
+{
+"195
+} 0
+"166
+[v _HD44780_Clear HD44780_Clear `(v  1 e 1 0 ]
+{
+"169
+} 0
+"212
+[v _HD44780_CursorOn HD44780_CursorOn `(v  1 e 1 0 ]
+{
+"215
+} 0
+"230
+[v _HD44780_CreateChar HD44780_CreateChar `(v  1 e 1 0 ]
+{
+[v HD44780_CreateChar@location location `uc  1 a 1 wreg ]
+"231
+[v HD44780_CreateChar@i i `uc  1 a 1 11 ]
+"230
+[v HD44780_CreateChar@location location `uc  1 a 1 wreg ]
+[v HD44780_CreateChar@data data `*.39uc  1 p 2 8 ]
+"233
+[v HD44780_CreateChar@location location `uc  1 a 1 10 ]
+"239
+} 0
+"273
+[v _HD44780_Data HD44780_Data `(v  1 s 1 HD44780_Data ]
+{
+[v HD44780_Data@data data `uc  1 a 1 wreg ]
+[v HD44780_Data@data data `uc  1 a 1 wreg ]
+"275
+[v HD44780_Data@data data `uc  1 a 1 7 ]
+"281
+} 0
+"202
+[v _HD44780_BlinkOn HD44780_BlinkOn `(v  1 e 1 0 ]
+{
+"205
+} 0
+"263
+[v _HD44780_Cmd HD44780_Cmd `(v  1 s 1 HD44780_Cmd ]
+{
+[v HD44780_Cmd@cmd cmd `uc  1 a 1 wreg ]
+[v HD44780_Cmd@cmd cmd `uc  1 a 1 wreg ]
+"265
+[v HD44780_Cmd@cmd cmd `uc  1 a 1 7 ]
+"271
+} 0
+"283
+[v _HD44780_Cmd4bit HD44780_Cmd4bit `(v  1 s 1 HD44780_Cmd4bit ]
+{
+[v HD44780_Cmd4bit@cmd cmd `uc  1 a 1 wreg ]
+[v HD44780_Cmd4bit@cmd cmd `uc  1 a 1 wreg ]
+"285
+[v HD44780_Cmd4bit@cmd cmd `uc  1 a 1 6 ]
+"290
+} 0
+"106
+[v _HD44780_Delay HD44780_Delay `(v  1 e 1 0 ]
+{
+"108
+[v HD44780_Delay@i i `i  1 a 2 3 ]
+"106
+[v HD44780_Delay@us us `i  1 p 2 0 ]
+"109
+} 0
+"10 C:\BUR4KNS\Google Drive\Workspace\MPLABX Workspace\PIC18F4520_LCD.X\delay.h
+[v _Delayms Delayms `(v  1 e 1 0 ]
+{
+"12
+[v Delayms@i i `i  1 a 2 3 ]
+"10
+[v Delayms@ms ms `i  1 p 2 0 ]
+"13
+} 0

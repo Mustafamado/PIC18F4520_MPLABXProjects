@@ -17,7 +17,7 @@
  * ----------------------------------------------------------------------
  */
 
-#include "hd44780.h"
+#include "pic18f4520_hd44780.h"
 
 /* Private HD44780 structure */
 typedef struct {

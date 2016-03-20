@@ -17,7 +17,7 @@
  * ----------------------------------------------------------------------
  */
 
-#include "sseg.h"
+#include "pic18f4520_sseg.h"
 
 /* Private variables */
 /* sseg_codes from 0 to 9 and from A to F there are 16 values */

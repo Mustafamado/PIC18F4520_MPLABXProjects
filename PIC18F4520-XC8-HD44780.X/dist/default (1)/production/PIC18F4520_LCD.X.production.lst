@@ -1,0 +1,2168 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.36 build -262312587 
+                                                                                               Fri Mar 11 14:40:01 2016
+
+Microchip Technology Omniscient Code Generator v1.36 (Free mode) build 201601150325
+     1                           	processor	18F4520
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1
+     6                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1
+     7                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     8                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1
+     9                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1
+    10                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+    11                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    19                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    20                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    21                           	psect	text10,global,reloc=2,class=CODE,delta=1
+    22                           	psect	text11,global,reloc=2,class=CODE,delta=1
+    23                           	psect	text12,global,reloc=2,class=CODE,delta=1
+    24                           	psect	text13,global,reloc=2,class=CODE,delta=1
+    25                           	psect	text14,global,reloc=2,class=CODE,delta=1
+    26                           	psect	text15,global,reloc=2,class=CODE,delta=1
+    27                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    28                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    29  0000                     
+    30                           	psect	idataCOMRAM
+    31  0009DE                     __pidataCOMRAM:
+    32                           	opt stack 0
+    33                           
+    34                           ;initializer for HD44780_CursorSet@F4227
+    35  0009DE  00                 	db	0
+    36  0009DF  40                 	db	64
+    37  0009E0  14                 	db	20
+    38  0009E1  54                 	db	84
+    39                           
+    40                           ;initializer for _customChar
+    41  0009E2  1F                 	db	31
+    42  0009E3  11                 	db	17
+    43  0009E4  11                 	db	17
+    44  0009E5  11                 	db	17
+    45  0009E6  11                 	db	17
+    46  0009E7  11                 	db	17
+    47  0009E8  11                 	db	17
+    48  0009E9  1F                 	db	31
+    49  0000                     _PORTBbits	set	3969
+    50  0000                     _TRISBbits	set	3987
+    51                           
+    52                           	psect	smallconst
+    53  000600                     __psmallconst:
+    54                           	opt stack 0
+    55  000600  00                 	db	0
+    56  000601                     STR_2:
+    57  000601  31                 	db	49	;'1'
+    58  000602  36                 	db	54	;'6'
+    59  000603  78                 	db	120	;'x'
+    60  000604  32                 	db	50	;'2'
+    61  000605  20                 	db	32
+    62  000606  48                 	db	72	;'H'
+    63  000607  44                 	db	68	;'D'
+    64  000608  34                 	db	52	;'4'
+    65  000609  34                 	db	52	;'4'
+    66  00060A  37                 	db	55	;'7'
+    67  00060B  38                 	db	56	;'8'
+    68  00060C  30                 	db	48	;'0'
+    69  00060D  20                 	db	32
+    70  00060E  4C                 	db	76	;'L'
+    71  00060F  43                 	db	67	;'C'
+    72  000610  44                 	db	68	;'D'
+    73  000611  00                 	db	0
+    74  000612                     STR_1:
+    75  000612  50                 	db	80	;'P'
+    76  000613  49                 	db	73	;'I'
+    77  000614  43                 	db	67	;'C'
+    78  000615  31                 	db	49	;'1'
+    79  000616  38                 	db	56	;'8'
+    80  000617  46                 	db	70	;'F'
+    81  000618  34                 	db	52	;'4'
+    82  000619  35                 	db	53	;'5'
+    83  00061A  32                 	db	50	;'2'
+    84  00061B  30                 	db	48	;'0'
+    85  00061C  00                 	db	0
+    86  00061D                     STR_3:
+    87  00061D  43                 	db	67	;'C'
+    88  00061E  4C                 	db	76	;'L'
+    89  00061F  45                 	db	69	;'E'
+    90  000620  41                 	db	65	;'A'
+    91  000621  52                 	db	82	;'R'
+    92  000622  45                 	db	69	;'E'
+    93  000623  44                 	db	68	;'D'
+    94  000624  21                 	db	33
+    95  000625  00                 	db	0
+    96                           
+    97                           ; #config settings
+    98  000626  00                 	db	0	; dummy byte at the end
+    99  0000                     
+   100                           	psect	cinit
+   101  0008A6                     __pcinit:
+   102                           	opt stack 0
+   103  0008A6                     start_initialization:
+   104                           	opt stack 0
+   105  0008A6                     __initialization:
+   106                           	opt stack 0
+   107                           
+   108                           ; Clear objects allocated to COMRAM (7 bytes)
+   109  0008A6  EE00  F01F         	lfsr	0,__pbssCOMRAM
+   110  0008AA  0E07               	movlw	7
+   111  0008AC                     clear_0:
+   112  0008AC  6AEE               	clrf	postinc0,c
+   113  0008AE  06E8               	decf	wreg,f,c
+   114  0008B0  E1FD               	bnz	clear_0
+   115                           
+   116                           ; Initialize objects allocated to COMRAM (12 bytes)
+   117                           ; load TBLPTR registers with __pidataCOMRAM
+   118  0008B2  0EDE               	movlw	low __pidataCOMRAM
+   119  0008B4  6EF6               	movwf	tblptrl,c
+   120  0008B6  0E09               	movlw	high __pidataCOMRAM
+   121  0008B8  6EF7               	movwf	tblptrh,c
+   122  0008BA  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+   123  0008BC  6EF8               	movwf	tblptru,c
+   124  0008BE  EE00  F013         	lfsr	0,__pdataCOMRAM
+   125  0008C2  EE10 F00C          	lfsr	1,12
+   126  0008C6                     copy_data0:
+   127  0008C6  0009               	tblrd		*+
+   128  0008C8  CFF5 FFEE          	movff	tablat,postinc0
+   129  0008CC  50E5               	movf	postdec1,w,c
+   130  0008CE  50E1               	movf	fsr1l,w,c
+   131  0008D0  E1FA               	bnz	copy_data0
+   132  0008D2                     end_of_initialization:
+   133                           	opt stack 0
+   134  0008D2                     __end_of__initialization:
+   135                           	opt stack 0
+   136  0008D2  0E00               	movlw	low (__Lsmallconst shr (0+16))
+   137  0008D4  6EF8               	movwf	tblptru,c
+   138  0008D6  0E06               	movlw	high __Lsmallconst
+   139  0008D8  6EF7               	movwf	tblptrh,c
+   140  0008DA  0100               	movlb	0
+   141  0008DC  EFF1  F003         	goto	_main	;jump to C main() function
+   142                           tblptru	equ	0xFF8
+   143                           tblptrh	equ	0xFF7
+   144                           tblptrl	equ	0xFF6
+   145                           tablat	equ	0xFF5
+   146                           postinc0	equ	0xFEE
+   147                           wreg	equ	0xFE8
+   148                           postdec1	equ	0xFE5
+   149                           fsr1l	equ	0xFE1
+   150                           
+   151                           	psect	bssCOMRAM
+   152  00001F                     __pbssCOMRAM:
+   153                           	opt stack 0
+   154  00001F                     _HD44780_Opts:
+   155                           	opt stack 0
+   156  00001F                     	ds	7
+   157                           tblptru	equ	0xFF8
+   158                           tblptrh	equ	0xFF7
+   159                           tblptrl	equ	0xFF6
+   160                           tablat	equ	0xFF5
+   161                           postinc0	equ	0xFEE
+   162                           wreg	equ	0xFE8
+   163                           postdec1	equ	0xFE5
+   164                           fsr1l	equ	0xFE1
+   165                           
+   166                           	psect	dataCOMRAM
+   167  000013                     __pdataCOMRAM:
+   168                           	opt stack 0
+   169  000013                     HD44780_CursorSet@F4227:
+   170                           	opt stack 0
+   171  000013                     	ds	4
+   172  000017                     _customChar:
+   173                           	opt stack 0
+   174  000017                     	ds	8
+   175                           tblptru	equ	0xFF8
+   176                           tblptrh	equ	0xFF7
+   177                           tblptrl	equ	0xFF6
+   178                           tablat	equ	0xFF5
+   179                           postinc0	equ	0xFEE
+   180                           wreg	equ	0xFE8
+   181                           postdec1	equ	0xFE5
+   182                           fsr1l	equ	0xFE1
+   183                           
+   184                           	psect	cstackCOMRAM
+   185  000001                     __pcstackCOMRAM:
+   186                           	opt stack 0
+   187  000001                     Delayms@ms:
+   188                           	opt stack 0
+   189  000001                     HD44780_Delay@us:
+   190                           	opt stack 0
+   191                           
+   192                           ; 2 bytes @ 0x0
+   193  000001                     	ds	2
+   194  000003                     ??_Delayms:
+   195  000003                     ??_HD44780_Delay:
+   196                           
+   197                           ; 1 bytes @ 0x2
+   198  000003                     	ds	1
+   199  000004                     Delayms@i:
+   200                           	opt stack 0
+   201  000004                     HD44780_Delay@i:
+   202                           	opt stack 0
+   203                           
+   204                           ; 2 bytes @ 0x3
+   205  000004                     	ds	2
+   206  000006                     ??_HD44780_Cmd4bit:
+   207                           
+   208                           ; 1 bytes @ 0x5
+   209  000006                     	ds	1
+   210  000007                     HD44780_Cmd4bit@cmd:
+   211                           	opt stack 0
+   212                           
+   213                           ; 1 bytes @ 0x6
+   214  000007                     	ds	1
+   215  000008                     HD44780_Cmd@cmd:
+   216                           	opt stack 0
+   217  000008                     HD44780_Data@data:
+   218                           	opt stack 0
+   219                           
+   220                           ; 1 bytes @ 0x7
+   221  000008                     	ds	1
+   222  000009                     HD44780_Init@rows:
+   223                           	opt stack 0
+   224  000009                     HD44780_CursorSet@row:
+   225                           	opt stack 0
+   226  000009                     HD44780_CreateChar@data:
+   227                           	opt stack 0
+   228                           
+   229                           ; 2 bytes @ 0x8
+   230  000009                     	ds	1
+   231  00000A                     HD44780_Init@cols:
+   232                           	opt stack 0
+   233  00000A                     HD44780_CursorSet@row_offsets:
+   234                           	opt stack 0
+   235                           
+   236                           ; 4 bytes @ 0x9
+   237  00000A                     	ds	1
+   238  00000B                     HD44780_CreateChar@location:
+   239                           	opt stack 0
+   240                           
+   241                           ; 1 bytes @ 0xA
+   242  00000B                     	ds	1
+   243  00000C                     HD44780_CreateChar@i:
+   244                           	opt stack 0
+   245                           
+   246                           ; 1 bytes @ 0xB
+   247  00000C                     	ds	2
+   248  00000E                     HD44780_CursorSet@col:
+   249                           	opt stack 0
+   250                           
+   251                           ; 1 bytes @ 0xD
+   252  00000E                     	ds	1
+   253  00000F                     HD44780_Puts@y:
+   254                           	opt stack 0
+   255  00000F                     HD44780_PutCustom@y:
+   256                           	opt stack 0
+   257                           
+   258                           ; 1 bytes @ 0xE
+   259  00000F                     	ds	1
+   260  000010                     HD44780_PutCustom@location:
+   261                           	opt stack 0
+   262  000010                     HD44780_Puts@str:
+   263                           	opt stack 0
+   264                           
+   265                           ; 2 bytes @ 0xF
+   266  000010                     	ds	1
+   267  000011                     HD44780_PutCustom@x:
+   268                           	opt stack 0
+   269                           
+   270                           ; 1 bytes @ 0x10
+   271  000011                     	ds	1
+   272  000012                     HD44780_Puts@x:
+   273                           	opt stack 0
+   274                           
+   275                           ; 1 bytes @ 0x11
+   276  000012                     	ds	1
+   277  000013                     tblptru	equ	0xFF8
+   278                           tblptrh	equ	0xFF7
+   279                           tblptrl	equ	0xFF6
+   280                           tablat	equ	0xFF5
+   281                           postinc0	equ	0xFEE
+   282                           wreg	equ	0xFE8
+   283                           postdec1	equ	0xFE5
+   284                           fsr1l	equ	0xFE1
+   285                           
+   286                           ; 1 bytes @ 0x12
+   287 ;;
+   288 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   289 ;;
+   290 ;; *************** function _main *****************
+   291 ;; Defined at:
+   292 ;;		line 22 in file "main.c"
+   293 ;; Parameters:    Size  Location     Type
+   294 ;;		None
+   295 ;; Auto vars:     Size  Location     Type
+   296 ;;		None
+   297 ;; Return value:  Size  Location     Type
+   298 ;;                  2   32[None  ] int 
+   299 ;; Registers used:
+   300 ;;		wreg, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+   301 ;; Tracked objects:
+   302 ;;		On entry : 0/0
+   303 ;;		On exit  : 0/0
+   304 ;;		Unchanged: 0/0
+   305 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   306 ;;      Params:         0       0       0       0       0       0       0
+   307 ;;      Locals:         0       0       0       0       0       0       0
+   308 ;;      Temps:          0       0       0       0       0       0       0
+   309 ;;      Totals:         0       0       0       0       0       0       0
+   310 ;;Total ram usage:        0 bytes
+   311 ;; Hardware stack levels required when called:    5
+   312 ;; This function calls:
+   313 ;;		_Delayms
+   314 ;;		_HD44780_BlinkOn
+   315 ;;		_HD44780_Clear
+   316 ;;		_HD44780_CreateChar
+   317 ;;		_HD44780_CursorOn
+   318 ;;		_HD44780_Init
+   319 ;;		_HD44780_PutCustom
+   320 ;;		_HD44780_Puts
+   321 ;; This function is called by:
+   322 ;;		Startup code after reset
+   323 ;; This function uses a non-reentrant model
+   324 ;;
+   325                           
+   326                           	psect	text0
+   327  0007E2                     __ptext0:
+   328                           	opt stack 0
+   329  0007E2                     _main:
+   330                           	opt stack 26
+   331                           
+   332                           ;main.c: 25: HD44780_Init(16, 2);
+   333                           
+   334                           ;incstack = 0
+   335  0007E2  0E02               	movlw	2
+   336  0007E4  6E09               	movwf	HD44780_Init@rows,c
+   337  0007E6  0E10               	movlw	16
+   338  0007E8  EC14  F003         	call	_HD44780_Init
+   339                           
+   340                           ;main.c: 28: HD44780_CreateChar(0, customChar);
+   341  0007EC  0E17               	movlw	low _customChar
+   342  0007EE  6E09               	movwf	HD44780_CreateChar@data,c
+   343  0007F0  0E00               	movlw	high _customChar
+   344  0007F2  6E0A               	movwf	HD44780_CreateChar@data+1,c
+   345  0007F4  0E00               	movlw	0
+   346  0007F6  EC70  F004         	call	_HD44780_CreateChar
+   347                           
+   348                           ;main.c: 31: HD44780_Puts(3, 0, "PIC18F4520");
+   349  0007FA  0E00               	movlw	0
+   350  0007FC  6E0F               	movwf	HD44780_Puts@y,c
+   351  0007FE  0E12               	movlw	low STR_1
+   352  000800  6E10               	movwf	HD44780_Puts@str,c
+   353  000802  0E06               	movlw	high STR_1
+   354  000804  6E11               	movwf	HD44780_Puts@str+1,c
+   355  000806  0E03               	movlw	3
+   356  000808  EC66  F003         	call	_HD44780_Puts
+   357                           
+   358                           ;main.c: 32: HD44780_Puts(0, 1, "16x2 HD44780 LCD");
+   359  00080C  0E01               	movlw	1
+   360  00080E  6E0F               	movwf	HD44780_Puts@y,c
+   361  000810  0E01               	movlw	low STR_2
+   362  000812  6E10               	movwf	HD44780_Puts@str,c
+   363  000814  0E06               	movlw	high STR_2
+   364  000816  6E11               	movwf	HD44780_Puts@str+1,c
+   365  000818  0E00               	movlw	0
+   366  00081A  EC66  F003         	call	_HD44780_Puts
+   367                           
+   368                           ;main.c: 35: Delayms(3000);
+   369  00081E  0E0B               	movlw	11
+   370  000820  6E02               	movwf	Delayms@ms+1,c
+   371  000822  0EB8               	movlw	184
+   372  000824  6E01               	movwf	Delayms@ms,c
+   373  000826  EC8C  F004         	call	_Delayms	;wreg free
+   374                           
+   375                           ;main.c: 38: HD44780_Clear();
+   376  00082A  ECE5  F004         	call	_HD44780_Clear	;wreg free
+   377                           
+   378                           ;main.c: 41: HD44780_CursorOn();
+   379  00082E  ECFB  F004         	call	_HD44780_CursorOn	;wreg free
+   380                           
+   381                           ;main.c: 44: HD44780_Puts(0, 1, "CLEARED!");
+   382  000832  0E01               	movlw	1
+   383  000834  6E0F               	movwf	HD44780_Puts@y,c
+   384  000836  0E1D               	movlw	low STR_3
+   385  000838  6E10               	movwf	HD44780_Puts@str,c
+   386  00083A  0E06               	movlw	high STR_3
+   387  00083C  6E11               	movwf	HD44780_Puts@str+1,c
+   388  00083E  0E00               	movlw	0
+   389  000840  EC66  F003         	call	_HD44780_Puts
+   390                           
+   391                           ;main.c: 47: Delayms(1000);
+   392  000844  0E03               	movlw	3
+   393  000846  6E02               	movwf	Delayms@ms+1,c
+   394  000848  0EE8               	movlw	232
+   395  00084A  6E01               	movwf	Delayms@ms,c
+   396  00084C  EC8C  F004         	call	_Delayms	;wreg free
+   397                           
+   398                           ;main.c: 50: HD44780_BlinkOn();
+   399  000850  EC01  F005         	call	_HD44780_BlinkOn	;wreg free
+   400                           
+   401                           ;main.c: 53: HD44780_PutCustom(1, 2, 0);
+   402  000854  0E02               	movlw	2
+   403  000856  6E0F               	movwf	HD44780_PutCustom@y,c
+   404  000858  0E00               	movlw	0
+   405  00085A  6E10               	movwf	HD44780_PutCustom@location,c
+   406  00085C  0E01               	movlw	1
+   407  00085E  ECDB  F004         	call	_HD44780_PutCustom
+   408  000862                     l33:
+   409  000862  D7FF               	goto	l33
+   410  000864                     __end_of_main:
+   411                           	opt stack 0
+   412                           tblptru	equ	0xFF8
+   413                           tblptrh	equ	0xFF7
+   414                           tblptrl	equ	0xFF6
+   415                           tablat	equ	0xFF5
+   416                           postinc0	equ	0xFEE
+   417                           wreg	equ	0xFE8
+   418                           postdec1	equ	0xFE5
+   419                           fsr1l	equ	0xFE1
+   420                           
+   421 ;; *************** function _HD44780_Puts *****************
+   422 ;; Defined at:
+   423 ;;		line 171 in file "hd44780.c"
+   424 ;; Parameters:    Size  Location     Type
+   425 ;;  x               1    wreg     unsigned char 
+   426 ;;  y               1   14[COMRAM] unsigned char 
+   427 ;;  str             2   15[COMRAM] PTR unsigned char 
+   428 ;;		 -> STR_3(9), STR_2(17), STR_1(11), 
+   429 ;; Auto vars:     Size  Location     Type
+   430 ;;  x               1   17[COMRAM] unsigned char 
+   431 ;; Return value:  Size  Location     Type
+   432 ;;                  1    wreg      void 
+   433 ;; Registers used:
+   434 ;;		wreg, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+   435 ;; Tracked objects:
+   436 ;;		On entry : 0/0
+   437 ;;		On exit  : 0/0
+   438 ;;		Unchanged: 0/0
+   439 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   440 ;;      Params:         3       0       0       0       0       0       0
+   441 ;;      Locals:         1       0       0       0       0       0       0
+   442 ;;      Temps:          0       0       0       0       0       0       0
+   443 ;;      Totals:         4       0       0       0       0       0       0
+   444 ;;Total ram usage:        4 bytes
+   445 ;; Hardware stack levels used:    1
+   446 ;; Hardware stack levels required when called:    4
+   447 ;; This function calls:
+   448 ;;		_HD44780_CursorSet
+   449 ;;		_HD44780_Data
+   450 ;; This function is called by:
+   451 ;;		_main
+   452 ;; This function uses a non-reentrant model
+   453 ;;
+   454                           
+   455                           	psect	text1
+   456  0006CC                     __ptext1:
+   457                           	opt stack 0
+   458  0006CC                     _HD44780_Puts:
+   459                           	opt stack 26
+   460                           
+   461                           ;incstack = 0
+   462                           ;HD44780_Puts@x stored from wreg
+   463  0006CC  6E12               	movwf	HD44780_Puts@x,c
+   464                           
+   465                           ;hd44780.c: 172: HD44780_CursorSet(x, y);
+   466  0006CE  C00F  F009         	movff	HD44780_Puts@y,HD44780_CursorSet@row
+   467  0006D2  5012               	movf	HD44780_Puts@x,w,c
+   468  0006D4  EC32  F004         	call	_HD44780_CursorSet
+   469                           
+   470                           ;hd44780.c: 173: while (*str) {
+   471  0006D8  D036               	goto	l1112
+   472  0006DA                     l1088:
+   473                           
+   474                           ;hd44780.c: 174: if (HD44780_Opts.currentX >= HD44780_Opts.Cols) {
+   475  0006DA  5023               	movf	_HD44780_Opts+4,w,c
+   476  0006DC  5C24               	subwf	_HD44780_Opts+5,w,c
+   477  0006DE  A0D8               	btfss	status,0,c
+   478  0006E0  D008               	goto	l1096
+   479                           
+   480                           ;hd44780.c: 175: HD44780_Opts.currentX = 0;
+   481  0006E2  0E00               	movlw	0
+   482  0006E4  6E24               	movwf	_HD44780_Opts+5,c
+   483                           
+   484                           ;hd44780.c: 176: HD44780_Opts.currentY++;
+   485  0006E6  2A25               	incf	_HD44780_Opts+6,f,c
+   486                           
+   487                           ;hd44780.c: 177: HD44780_CursorSet(HD44780_Opts.currentX, HD44780_Opts.currentY);
+   488  0006E8  C025  F009         	movff	_HD44780_Opts+6,HD44780_CursorSet@row
+   489  0006EC  5024               	movf	_HD44780_Opts+5,w,c
+   490  0006EE  EC32  F004         	call	_HD44780_CursorSet
+   491  0006F2                     l1096:
+   492                           
+   493                           ;hd44780.c: 178: }
+   494                           ;hd44780.c: 179: if (*str == '\n') {
+   495  0006F2  C010  FFF6         	movff	HD44780_Puts@str,tblptrl
+   496  0006F6  C011  FFF7         	movff	HD44780_Puts@str+1,tblptrh
+   497  0006FA                     	if	0	;tblptru may be non-zero
+   498  0006FA                     	endif
+   499  0006FA                     	if	0	;tblptru may be non-zero
+   500  0006FA                     	endif
+   501  0006FA  0008               	tblrd		*
+   502  0006FC  50F5               	movf	tablat,w,c
+   503  0006FE  0A0A               	xorlw	10
+   504  000700  A4D8               	btfss	status,2,c
+   505  000702  D007               	goto	l1102
+   506                           
+   507                           ;hd44780.c: 180: HD44780_Opts.currentY++;
+   508  000704  2A25               	incf	_HD44780_Opts+6,f,c
+   509                           
+   510                           ;hd44780.c: 181: HD44780_CursorSet(HD44780_Opts.currentX, HD44780_Opts.currentY);
+   511  000706  C025  F009         	movff	_HD44780_Opts+6,HD44780_CursorSet@row
+   512  00070A  5024               	movf	_HD44780_Opts+5,w,c
+   513  00070C  EC32  F004         	call	_HD44780_CursorSet
+   514                           
+   515                           ;hd44780.c: 182: } else if (*str == '\r') {
+   516  000710  D018               	goto	l1110
+   517  000712                     l1102:
+   518  000712  C010  FFF6         	movff	HD44780_Puts@str,tblptrl
+   519  000716  C011  FFF7         	movff	HD44780_Puts@str+1,tblptrh
+   520  00071A                     	if	0	;tblptru may be non-zero
+   521  00071A                     	endif
+   522  00071A                     	if	0	;tblptru may be non-zero
+   523  00071A                     	endif
+   524  00071A  0008               	tblrd		*
+   525  00071C  50F5               	movf	tablat,w,c
+   526  00071E  0A0D               	xorlw	13
+   527  000720  A4D8               	btfss	status,2,c
+   528  000722  D006               	goto	l1106
+   529                           
+   530                           ;hd44780.c: 183: HD44780_CursorSet(0, HD44780_Opts.currentY);
+   531  000724  C025  F009         	movff	_HD44780_Opts+6,HD44780_CursorSet@row
+   532  000728  0E00               	movlw	0
+   533  00072A  EC32  F004         	call	_HD44780_CursorSet
+   534                           
+   535                           ;hd44780.c: 184: } else {
+   536  00072E  D009               	goto	l1110
+   537  000730                     l1106:
+   538                           
+   539                           ;hd44780.c: 185: HD44780_Data(*str);
+   540  000730  C010  FFF6         	movff	HD44780_Puts@str,tblptrl
+   541  000734  C011  FFF7         	movff	HD44780_Puts@str+1,tblptrh
+   542  000738                     	if	0	;tblptru may be non-zero
+   543  000738                     	endif
+   544  000738                     	if	0	;tblptru may be non-zero
+   545  000738                     	endif
+   546  000738  0008               	tblrd		*
+   547  00073A  50F5               	movf	tablat,w,c
+   548  00073C  ECC5  F004         	call	_HD44780_Data
+   549                           
+   550                           ;hd44780.c: 186: HD44780_Opts.currentX++;
+   551  000740  2A24               	incf	_HD44780_Opts+5,f,c
+   552  000742                     l1110:
+   553                           
+   554                           ;hd44780.c: 187: }
+   555                           ;hd44780.c: 188: str++;
+   556  000742  4A10               	infsnz	HD44780_Puts@str,f,c
+   557  000744  2A11               	incf	HD44780_Puts@str+1,f,c
+   558  000746                     l1112:
+   559  000746  C010  FFF6         	movff	HD44780_Puts@str,tblptrl
+   560  00074A  C011  FFF7         	movff	HD44780_Puts@str+1,tblptrh
+   561  00074E                     	if	0	;tblptru may be non-zero
+   562  00074E                     	endif
+   563  00074E                     	if	0	;tblptru may be non-zero
+   564  00074E                     	endif
+   565  00074E  0008               	tblrd		*
+   566  000750  50F5               	movf	tablat,w,c
+   567  000752  0900               	iorlw	0
+   568  000754  B4D8               	btfsc	status,2,c
+   569  000756  0012               	return	
+   570  000758  D7C0               	goto	l1088
+   571  00075A                     __end_of_HD44780_Puts:
+   572                           	opt stack 0
+   573                           tblptru	equ	0xFF8
+   574                           tblptrh	equ	0xFF7
+   575                           tblptrl	equ	0xFF6
+   576                           tablat	equ	0xFF5
+   577                           postinc0	equ	0xFEE
+   578                           wreg	equ	0xFE8
+   579                           postdec1	equ	0xFE5
+   580                           fsr1l	equ	0xFE1
+   581                           status	equ	0xFD8
+   582                           
+   583 ;; *************** function _HD44780_PutCustom *****************
+   584 ;; Defined at:
+   585 ;;		line 241 in file "hd44780.c"
+   586 ;; Parameters:    Size  Location     Type
+   587 ;;  x               1    wreg     unsigned char 
+   588 ;;  y               1   14[COMRAM] unsigned char 
+   589 ;;  location        1   15[COMRAM] unsigned char 
+   590 ;; Auto vars:     Size  Location     Type
+   591 ;;  x               1   16[COMRAM] unsigned char 
+   592 ;; Return value:  Size  Location     Type
+   593 ;;                  1    wreg      void 
+   594 ;; Registers used:
+   595 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   596 ;; Tracked objects:
+   597 ;;		On entry : 0/0
+   598 ;;		On exit  : 0/0
+   599 ;;		Unchanged: 0/0
+   600 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   601 ;;      Params:         2       0       0       0       0       0       0
+   602 ;;      Locals:         1       0       0       0       0       0       0
+   603 ;;      Temps:          0       0       0       0       0       0       0
+   604 ;;      Totals:         3       0       0       0       0       0       0
+   605 ;;Total ram usage:        3 bytes
+   606 ;; Hardware stack levels used:    1
+   607 ;; Hardware stack levels required when called:    4
+   608 ;; This function calls:
+   609 ;;		_HD44780_CursorSet
+   610 ;;		_HD44780_Data
+   611 ;; This function is called by:
+   612 ;;		_main
+   613 ;; This function uses a non-reentrant model
+   614 ;;
+   615                           
+   616                           	psect	text2
+   617  0009B6                     __ptext2:
+   618                           	opt stack 0
+   619  0009B6                     _HD44780_PutCustom:
+   620                           	opt stack 26
+   621                           
+   622                           ;incstack = 0
+   623                           ;HD44780_PutCustom@x stored from wreg
+   624  0009B6  6E11               	movwf	HD44780_PutCustom@x,c
+   625                           
+   626                           ;hd44780.c: 242: HD44780_CursorSet(x, y);
+   627  0009B8  C00F  F009         	movff	HD44780_PutCustom@y,HD44780_CursorSet@row
+   628  0009BC  5011               	movf	HD44780_PutCustom@x,w,c
+   629  0009BE  EC32  F004         	call	_HD44780_CursorSet
+   630                           
+   631                           ;hd44780.c: 243: HD44780_Data(location);
+   632  0009C2  5010               	movf	HD44780_PutCustom@location,w,c
+   633  0009C4  ECC5  F004         	call	_HD44780_Data
+   634  0009C8  0012               	return		;funcret
+   635  0009CA                     __end_of_HD44780_PutCustom:
+   636                           	opt stack 0
+   637                           tblptru	equ	0xFF8
+   638                           tblptrh	equ	0xFF7
+   639                           tblptrl	equ	0xFF6
+   640                           tablat	equ	0xFF5
+   641                           postinc0	equ	0xFEE
+   642                           wreg	equ	0xFE8
+   643                           postdec1	equ	0xFE5
+   644                           fsr1l	equ	0xFE1
+   645                           status	equ	0xFD8
+   646                           
+   647 ;; *************** function _HD44780_CursorSet *****************
+   648 ;; Defined at:
+   649 ;;		line 246 in file "hd44780.c"
+   650 ;; Parameters:    Size  Location     Type
+   651 ;;  col             1    wreg     unsigned char 
+   652 ;;  row             1    8[COMRAM] unsigned char 
+   653 ;; Auto vars:     Size  Location     Type
+   654 ;;  col             1   13[COMRAM] unsigned char 
+   655 ;;  row_offsets     4    9[COMRAM] unsigned char [4]
+   656 ;; Return value:  Size  Location     Type
+   657 ;;                  1    wreg      void 
+   658 ;; Registers used:
+   659 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   660 ;; Tracked objects:
+   661 ;;		On entry : 0/0
+   662 ;;		On exit  : 0/0
+   663 ;;		Unchanged: 0/0
+   664 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   665 ;;      Params:         1       0       0       0       0       0       0
+   666 ;;      Locals:         5       0       0       0       0       0       0
+   667 ;;      Temps:          0       0       0       0       0       0       0
+   668 ;;      Totals:         6       0       0       0       0       0       0
+   669 ;;Total ram usage:        6 bytes
+   670 ;; Hardware stack levels used:    1
+   671 ;; Hardware stack levels required when called:    3
+   672 ;; This function calls:
+   673 ;;		_HD44780_Cmd
+   674 ;; This function is called by:
+   675 ;;		_HD44780_Puts
+   676 ;;		_HD44780_PutCustom
+   677 ;;		_putch
+   678 ;; This function uses a non-reentrant model
+   679 ;;
+   680                           
+   681                           	psect	text3
+   682  000864                     __ptext3:
+   683                           	opt stack 0
+   684  000864                     _HD44780_CursorSet:
+   685                           	opt stack 26
+   686                           
+   687                           ;incstack = 0
+   688                           ;HD44780_CursorSet@col stored from wreg
+   689  000864  6E0E               	movwf	HD44780_CursorSet@col,c
+   690                           
+   691                           ;hd44780.c: 247: char row_offsets[] = {0x00, 0x40, 0x14, 0x54};
+   692  000866  C013  F00A         	movff	HD44780_CursorSet@F4227,HD44780_CursorSet@row_offsets
+   693  00086A  C014  F00B         	movff	HD44780_CursorSet@F4227+1,HD44780_CursorSet@row_offsets+1
+   694  00086E  C015  F00C         	movff	HD44780_CursorSet@F4227+2,HD44780_CursorSet@row_offsets+2
+   695  000872  C016  F00D         	movff	HD44780_CursorSet@F4227+3,HD44780_CursorSet@row_offsets+3
+   696                           
+   697                           ;hd44780.c: 250: if (row >= HD44780_Opts.Rows) {
+   698  000876  5022               	movf	_HD44780_Opts+3,w,c
+   699  000878  5C09               	subwf	HD44780_CursorSet@row,w,c
+   700  00087A  A0D8               	btfss	status,0,c
+   701  00087C  D002               	goto	l1002
+   702                           
+   703                           ;hd44780.c: 251: row = 0;
+   704  00087E  0E00               	movlw	0
+   705  000880  6E09               	movwf	HD44780_CursorSet@row,c
+   706  000882                     l1002:
+   707                           
+   708                           ;hd44780.c: 252: }
+   709                           ;hd44780.c: 255: HD44780_Opts.currentX = col;
+   710  000882  C00E  F024         	movff	HD44780_CursorSet@col,_HD44780_Opts+5
+   711                           
+   712                           ;hd44780.c: 256: HD44780_Opts.currentY = row;
+   713  000886  C009  F025         	movff	HD44780_CursorSet@row,_HD44780_Opts+6
+   714                           
+   715                           ;hd44780.c: 259: HD44780_Cmd(0x80 | (col + row_offsets[row]));
+   716  00088A  5009               	movf	HD44780_CursorSet@row,w,c
+   717  00088C  0D01               	mullw	1
+   718  00088E  0E0A               	movlw	low HD44780_CursorSet@row_offsets
+   719  000890  24F3               	addwf	prodl,w,c
+   720  000892  6ED9               	movwf	fsr2l,c
+   721  000894  0E00               	movlw	high HD44780_CursorSet@row_offsets
+   722  000896  20F4               	addwfc	prodh,w,c
+   723  000898  6EDA               	movwf	fsr2h,c
+   724  00089A  50DF               	movf	indf2,w,c
+   725  00089C  240E               	addwf	HD44780_CursorSet@col,w,c
+   726  00089E  0980               	iorlw	128
+   727  0008A0  ECD0  F004         	call	_HD44780_Cmd
+   728  0008A4  0012               	return		;funcret
+   729  0008A6                     __end_of_HD44780_CursorSet:
+   730                           	opt stack 0
+   731                           tblptru	equ	0xFF8
+   732                           tblptrh	equ	0xFF7
+   733                           tblptrl	equ	0xFF6
+   734                           tablat	equ	0xFF5
+   735                           prodh	equ	0xFF4
+   736                           prodl	equ	0xFF3
+   737                           postinc0	equ	0xFEE
+   738                           wreg	equ	0xFE8
+   739                           postdec1	equ	0xFE5
+   740                           fsr1l	equ	0xFE1
+   741                           indf2	equ	0xFDF
+   742                           fsr2h	equ	0xFDA
+   743                           fsr2l	equ	0xFD9
+   744                           status	equ	0xFD8
+   745                           
+   746 ;; *************** function _HD44780_Init *****************
+   747 ;; Defined at:
+   748 ;;		line 111 in file "hd44780.c"
+   749 ;; Parameters:    Size  Location     Type
+   750 ;;  cols            1    wreg     unsigned char 
+   751 ;;  rows            1    8[COMRAM] unsigned char 
+   752 ;; Auto vars:     Size  Location     Type
+   753 ;;  cols            1    9[COMRAM] unsigned char 
+   754 ;; Return value:  Size  Location     Type
+   755 ;;                  1    wreg      void 
+   756 ;; Registers used:
+   757 ;;		wreg, status,2, status,0, cstack
+   758 ;; Tracked objects:
+   759 ;;		On entry : 0/0
+   760 ;;		On exit  : 0/0
+   761 ;;		Unchanged: 0/0
+   762 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   763 ;;      Params:         1       0       0       0       0       0       0
+   764 ;;      Locals:         1       0       0       0       0       0       0
+   765 ;;      Temps:          0       0       0       0       0       0       0
+   766 ;;      Totals:         2       0       0       0       0       0       0
+   767 ;;Total ram usage:        2 bytes
+   768 ;; Hardware stack levels used:    1
+   769 ;; Hardware stack levels required when called:    4
+   770 ;; This function calls:
+   771 ;;		_HD44780_Clear
+   772 ;;		_HD44780_Cmd
+   773 ;;		_HD44780_Cmd4bit
+   774 ;;		_HD44780_Delay
+   775 ;;		_HD44780_DisplayOn
+   776 ;;		_HD44780_InitPins
+   777 ;; This function is called by:
+   778 ;;		_main
+   779 ;; This function uses a non-reentrant model
+   780 ;;
+   781                           
+   782                           	psect	text4
+   783  000628                     __ptext4:
+   784                           	opt stack 0
+   785  000628                     _HD44780_Init:
+   786                           	opt stack 26
+   787                           
+   788                           ;incstack = 0
+   789                           ;HD44780_Init@cols stored from wreg
+   790  000628  6E0A               	movwf	HD44780_Init@cols,c
+   791                           
+   792                           ;hd44780.c: 114: HD44780_InitPins();
+   793  00062A  ECB8  F004         	call	_HD44780_InitPins	;wreg free
+   794                           
+   795                           ;hd44780.c: 117: HD44780_Delay(45000);
+   796  00062E  0EAF               	movlw	175
+   797  000630  6E02               	movwf	HD44780_Delay@us+1,c
+   798  000632  0EC8               	movlw	200
+   799  000634  6E01               	movwf	HD44780_Delay@us,c
+   800  000636  ECA5  F004         	call	_HD44780_Delay	;wreg free
+   801                           
+   802                           ;hd44780.c: 120: HD44780_Opts.Rows = rows;
+   803  00063A  C009  F022         	movff	HD44780_Init@rows,_HD44780_Opts+3
+   804                           
+   805                           ;hd44780.c: 121: HD44780_Opts.Cols = cols;
+   806  00063E  C00A  F023         	movff	HD44780_Init@cols,_HD44780_Opts+4
+   807                           
+   808                           ;hd44780.c: 124: HD44780_Opts.currentX = 0;
+   809  000642  0E00               	movlw	0
+   810  000644  6E24               	movwf	_HD44780_Opts+5,c
+   811                           
+   812                           ;hd44780.c: 125: HD44780_Opts.currentY = 0;
+   813  000646  0E00               	movlw	0
+   814  000648  6E25               	movwf	_HD44780_Opts+6,c
+   815                           
+   816                           ;hd44780.c: 127: HD44780_Opts.DisplayFunction = 0x00 | 0x00 | 0x00;
+   817  00064A  0E00               	movlw	0
+   818  00064C  6E20               	movwf	_HD44780_Opts+1,c
+   819                           
+   820                           ;hd44780.c: 128: if (rows > 1) {
+   821  00064E  0E01               	movlw	1
+   822  000650  6409               	cpfsgt	HD44780_Init@rows,c
+   823  000652  D001               	goto	l1040
+   824                           
+   825                           ;hd44780.c: 129: HD44780_Opts.DisplayFunction |= 0x08;
+   826  000654  8620               	bsf	_HD44780_Opts+1,3,c
+   827  000656                     l1040:
+   828                           
+   829                           ;hd44780.c: 130: }
+   830                           ;hd44780.c: 133: HD44780_Cmd4bit(0x03);
+   831  000656  0E03               	movlw	3
+   832  000658  ECAD  F003         	call	_HD44780_Cmd4bit
+   833                           
+   834                           ;hd44780.c: 134: HD44780_Delay(4500);
+   835  00065C  0E11               	movlw	17
+   836  00065E  6E02               	movwf	HD44780_Delay@us+1,c
+   837  000660  0E94               	movlw	148
+   838  000662  6E01               	movwf	HD44780_Delay@us,c
+   839  000664  ECA5  F004         	call	_HD44780_Delay	;wreg free
+   840                           
+   841                           ;hd44780.c: 137: HD44780_Cmd4bit(0x03);
+   842  000668  0E03               	movlw	3
+   843  00066A  ECAD  F003         	call	_HD44780_Cmd4bit
+   844                           
+   845                           ;hd44780.c: 138: HD44780_Delay(4500);
+   846  00066E  0E11               	movlw	17
+   847  000670  6E02               	movwf	HD44780_Delay@us+1,c
+   848  000672  0E94               	movlw	148
+   849  000674  6E01               	movwf	HD44780_Delay@us,c
+   850  000676  ECA5  F004         	call	_HD44780_Delay	;wreg free
+   851                           
+   852                           ;hd44780.c: 141: HD44780_Cmd4bit(0x03);
+   853  00067A  0E03               	movlw	3
+   854  00067C  ECAD  F003         	call	_HD44780_Cmd4bit
+   855                           
+   856                           ;hd44780.c: 142: HD44780_Delay(4500);
+   857  000680  0E11               	movlw	17
+   858  000682  6E02               	movwf	HD44780_Delay@us+1,c
+   859  000684  0E94               	movlw	148
+   860  000686  6E01               	movwf	HD44780_Delay@us,c
+   861  000688  ECA5  F004         	call	_HD44780_Delay	;wreg free
+   862                           
+   863                           ;hd44780.c: 145: HD44780_Cmd4bit(0x02);
+   864  00068C  0E02               	movlw	2
+   865  00068E  ECAD  F003         	call	_HD44780_Cmd4bit
+   866                           
+   867                           ;hd44780.c: 146: HD44780_Delay(100);
+   868  000692  0E00               	movlw	0
+   869  000694  6E02               	movwf	HD44780_Delay@us+1,c
+   870  000696  0E64               	movlw	100
+   871  000698  6E01               	movwf	HD44780_Delay@us,c
+   872  00069A  ECA5  F004         	call	_HD44780_Delay	;wreg free
+   873                           
+   874                           ;hd44780.c: 149: HD44780_Cmd(0x20 | HD44780_Opts.DisplayFunction);
+   875  00069E  5020               	movf	_HD44780_Opts+1,w,c
+   876  0006A0  0920               	iorlw	32
+   877  0006A2  ECD0  F004         	call	_HD44780_Cmd
+   878                           
+   879                           ;hd44780.c: 152: HD44780_Opts.DisplayControl = 0x04;
+   880  0006A6  0E04               	movlw	4
+   881  0006A8  6E1F               	movwf	_HD44780_Opts,c
+   882                           
+   883                           ;hd44780.c: 153: HD44780_DisplayOn();
+   884  0006AA  ECF5  F004         	call	_HD44780_DisplayOn	;wreg free
+   885                           
+   886                           ;hd44780.c: 156: HD44780_Clear();
+   887  0006AE  ECE5  F004         	call	_HD44780_Clear	;wreg free
+   888                           
+   889                           ;hd44780.c: 159: HD44780_Opts.DisplayMode = 0x02 | 0x00;
+   890  0006B2  0E02               	movlw	2
+   891  0006B4  6E21               	movwf	_HD44780_Opts+2,c
+   892                           
+   893                           ;hd44780.c: 160: HD44780_Cmd(0x04 | HD44780_Opts.DisplayMode);
+   894  0006B6  5021               	movf	_HD44780_Opts+2,w,c
+   895  0006B8  0904               	iorlw	4
+   896  0006BA  ECD0  F004         	call	_HD44780_Cmd
+   897                           
+   898                           ;hd44780.c: 163: HD44780_Delay(4500);
+   899  0006BE  0E11               	movlw	17
+   900  0006C0  6E02               	movwf	HD44780_Delay@us+1,c
+   901  0006C2  0E94               	movlw	148
+   902  0006C4  6E01               	movwf	HD44780_Delay@us,c
+   903  0006C6  ECA5  F004         	call	_HD44780_Delay	;wreg free
+   904  0006CA  0012               	return		;funcret
+   905  0006CC                     __end_of_HD44780_Init:
+   906                           	opt stack 0
+   907                           tblptru	equ	0xFF8
+   908                           tblptrh	equ	0xFF7
+   909                           tblptrl	equ	0xFF6
+   910                           tablat	equ	0xFF5
+   911                           prodh	equ	0xFF4
+   912                           prodl	equ	0xFF3
+   913                           postinc0	equ	0xFEE
+   914                           wreg	equ	0xFE8
+   915                           postdec1	equ	0xFE5
+   916                           fsr1l	equ	0xFE1
+   917                           indf2	equ	0xFDF
+   918                           fsr2h	equ	0xFDA
+   919                           fsr2l	equ	0xFD9
+   920                           status	equ	0xFD8
+   921                           
+   922 ;; *************** function _HD44780_InitPins *****************
+   923 ;; Defined at:
+   924 ;;		line 292 in file "hd44780.c"
+   925 ;; Parameters:    Size  Location     Type
+   926 ;;		None
+   927 ;; Auto vars:     Size  Location     Type
+   928 ;;		None
+   929 ;; Return value:  Size  Location     Type
+   930 ;;                  1    wreg      void 
+   931 ;; Registers used:
+   932 ;;		None
+   933 ;; Tracked objects:
+   934 ;;		On entry : 0/0
+   935 ;;		On exit  : 0/0
+   936 ;;		Unchanged: 0/0
+   937 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   938 ;;      Params:         0       0       0       0       0       0       0
+   939 ;;      Locals:         0       0       0       0       0       0       0
+   940 ;;      Temps:          0       0       0       0       0       0       0
+   941 ;;      Totals:         0       0       0       0       0       0       0
+   942 ;;Total ram usage:        0 bytes
+   943 ;; Hardware stack levels used:    1
+   944 ;; This function calls:
+   945 ;;		Nothing
+   946 ;; This function is called by:
+   947 ;;		_HD44780_Init
+   948 ;; This function uses a non-reentrant model
+   949 ;;
+   950                           
+   951                           	psect	text5
+   952  000970                     __ptext5:
+   953                           	opt stack 0
+   954  000970                     _HD44780_InitPins:
+   955                           	opt stack 29
+   956                           
+   957                           ;hd44780.c: 294: TRISBbits.RB2 = 0;
+   958                           
+   959                           ;incstack = 0
+   960  000970  9493               	bcf	3987,2,c	;volatile
+   961                           
+   962                           ;hd44780.c: 295: TRISBbits.RB3 = 0;
+   963  000972  9693               	bcf	3987,3,c	;volatile
+   964                           
+   965                           ;hd44780.c: 296: TRISBbits.RB4 = 0;
+   966  000974  9893               	bcf	3987,4,c	;volatile
+   967                           
+   968                           ;hd44780.c: 297: TRISBbits.RB5 = 0;
+   969  000976  9A93               	bcf	3987,5,c	;volatile
+   970                           
+   971                           ;hd44780.c: 298: TRISBbits.RB6 = 0;
+   972  000978  9C93               	bcf	3987,6,c	;volatile
+   973                           
+   974                           ;hd44780.c: 299: TRISBbits.RB7 = 0;
+   975  00097A  9E93               	bcf	3987,7,c	;volatile
+   976                           
+   977                           ;hd44780.c: 302: PORTBbits.RB2 = 0;
+   978  00097C  9481               	bcf	3969,2,c	;volatile
+   979                           
+   980                           ;hd44780.c: 303: PORTBbits.RB3 = 0;
+   981  00097E  9681               	bcf	3969,3,c	;volatile
+   982                           
+   983                           ;hd44780.c: 304: PORTBbits.RB4 = 0;
+   984  000980  9881               	bcf	3969,4,c	;volatile
+   985                           
+   986                           ;hd44780.c: 305: PORTBbits.RB5 = 0;
+   987  000982  9A81               	bcf	3969,5,c	;volatile
+   988                           
+   989                           ;hd44780.c: 306: PORTBbits.RB6 = 0;
+   990  000984  9C81               	bcf	3969,6,c	;volatile
+   991                           
+   992                           ;hd44780.c: 307: PORTBbits.RB7 = 0;
+   993  000986  9E81               	bcf	3969,7,c	;volatile
+   994  000988  0012               	return		;funcret
+   995  00098A                     __end_of_HD44780_InitPins:
+   996                           	opt stack 0
+   997                           tblptru	equ	0xFF8
+   998                           tblptrh	equ	0xFF7
+   999                           tblptrl	equ	0xFF6
+  1000                           tablat	equ	0xFF5
+  1001                           prodh	equ	0xFF4
+  1002                           prodl	equ	0xFF3
+  1003                           postinc0	equ	0xFEE
+  1004                           wreg	equ	0xFE8
+  1005                           postdec1	equ	0xFE5
+  1006                           fsr1l	equ	0xFE1
+  1007                           indf2	equ	0xFDF
+  1008                           fsr2h	equ	0xFDA
+  1009                           fsr2l	equ	0xFD9
+  1010                           status	equ	0xFD8
+  1011                           
+  1012 ;; *************** function _HD44780_DisplayOn *****************
+  1013 ;; Defined at:
+  1014 ;;		line 192 in file "hd44780.c"
+  1015 ;; Parameters:    Size  Location     Type
+  1016 ;;		None
+  1017 ;; Auto vars:     Size  Location     Type
+  1018 ;;		None
+  1019 ;; Return value:  Size  Location     Type
+  1020 ;;                  1    wreg      void 
+  1021 ;; Registers used:
+  1022 ;;		wreg, status,2, status,0, cstack
+  1023 ;; Tracked objects:
+  1024 ;;		On entry : 0/0
+  1025 ;;		On exit  : 0/0
+  1026 ;;		Unchanged: 0/0
+  1027 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1028 ;;      Params:         0       0       0       0       0       0       0
+  1029 ;;      Locals:         0       0       0       0       0       0       0
+  1030 ;;      Temps:          0       0       0       0       0       0       0
+  1031 ;;      Totals:         0       0       0       0       0       0       0
+  1032 ;;Total ram usage:        0 bytes
+  1033 ;; Hardware stack levels used:    1
+  1034 ;; Hardware stack levels required when called:    3
+  1035 ;; This function calls:
+  1036 ;;		_HD44780_Cmd
+  1037 ;; This function is called by:
+  1038 ;;		_HD44780_Init
+  1039 ;; This function uses a non-reentrant model
+  1040 ;;
+  1041                           
+  1042                           	psect	text6
+  1043  0009EA                     __ptext6:
+  1044                           	opt stack 0
+  1045  0009EA                     _HD44780_DisplayOn:
+  1046                           	opt stack 26
+  1047                           
+  1048                           ;hd44780.c: 193: HD44780_Opts.DisplayControl |= 0x04;
+  1049                           
+  1050                           ;incstack = 0
+  1051  0009EA  841F               	bsf	_HD44780_Opts,2,c
+  1052                           
+  1053                           ;hd44780.c: 194: HD44780_Cmd(0x08 | HD44780_Opts.DisplayControl);
+  1054  0009EC  501F               	movf	_HD44780_Opts,w,c
+  1055  0009EE  0908               	iorlw	8
+  1056  0009F0  ECD0  F004         	call	_HD44780_Cmd
+  1057  0009F4  0012               	return		;funcret
+  1058  0009F6                     __end_of_HD44780_DisplayOn:
+  1059                           	opt stack 0
+  1060                           tblptru	equ	0xFF8
+  1061                           tblptrh	equ	0xFF7
+  1062                           tblptrl	equ	0xFF6
+  1063                           tablat	equ	0xFF5
+  1064                           prodh	equ	0xFF4
+  1065                           prodl	equ	0xFF3
+  1066                           postinc0	equ	0xFEE
+  1067                           wreg	equ	0xFE8
+  1068                           postdec1	equ	0xFE5
+  1069                           fsr1l	equ	0xFE1
+  1070                           indf2	equ	0xFDF
+  1071                           fsr2h	equ	0xFDA
+  1072                           fsr2l	equ	0xFD9
+  1073                           status	equ	0xFD8
+  1074                           
+  1075 ;; *************** function _HD44780_Clear *****************
+  1076 ;; Defined at:
+  1077 ;;		line 166 in file "hd44780.c"
+  1078 ;; Parameters:    Size  Location     Type
+  1079 ;;		None
+  1080 ;; Auto vars:     Size  Location     Type
+  1081 ;;		None
+  1082 ;; Return value:  Size  Location     Type
+  1083 ;;                  1    wreg      void 
+  1084 ;; Registers used:
+  1085 ;;		wreg, status,2, status,0, cstack
+  1086 ;; Tracked objects:
+  1087 ;;		On entry : 0/0
+  1088 ;;		On exit  : 0/0
+  1089 ;;		Unchanged: 0/0
+  1090 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1091 ;;      Params:         0       0       0       0       0       0       0
+  1092 ;;      Locals:         0       0       0       0       0       0       0
+  1093 ;;      Temps:          0       0       0       0       0       0       0
+  1094 ;;      Totals:         0       0       0       0       0       0       0
+  1095 ;;Total ram usage:        0 bytes
+  1096 ;; Hardware stack levels used:    1
+  1097 ;; Hardware stack levels required when called:    3
+  1098 ;; This function calls:
+  1099 ;;		_HD44780_Cmd
+  1100 ;;		_HD44780_Delay
+  1101 ;; This function is called by:
+  1102 ;;		_main
+  1103 ;;		_HD44780_Init
+  1104 ;; This function uses a non-reentrant model
+  1105 ;;
+  1106                           
+  1107                           	psect	text7
+  1108  0009CA                     __ptext7:
+  1109                           	opt stack 0
+  1110  0009CA                     _HD44780_Clear:
+  1111                           	opt stack 26
+  1112                           
+  1113                           ;hd44780.c: 167: HD44780_Cmd(0x01);
+  1114                           
+  1115                           ;incstack = 0
+  1116  0009CA  0E01               	movlw	1
+  1117  0009CC  ECD0  F004         	call	_HD44780_Cmd
+  1118                           
+  1119                           ;hd44780.c: 168: HD44780_Delay(3000);
+  1120  0009D0  0E0B               	movlw	11
+  1121  0009D2  6E02               	movwf	HD44780_Delay@us+1,c
+  1122  0009D4  0EB8               	movlw	184
+  1123  0009D6  6E01               	movwf	HD44780_Delay@us,c
+  1124  0009D8  ECA5  F004         	call	_HD44780_Delay	;wreg free
+  1125  0009DC  0012               	return		;funcret
+  1126  0009DE                     __end_of_HD44780_Clear:
+  1127                           	opt stack 0
+  1128                           tblptru	equ	0xFF8
+  1129                           tblptrh	equ	0xFF7
+  1130                           tblptrl	equ	0xFF6
+  1131                           tablat	equ	0xFF5
+  1132                           prodh	equ	0xFF4
+  1133                           prodl	equ	0xFF3
+  1134                           postinc0	equ	0xFEE
+  1135                           wreg	equ	0xFE8
+  1136                           postdec1	equ	0xFE5
+  1137                           fsr1l	equ	0xFE1
+  1138                           indf2	equ	0xFDF
+  1139                           fsr2h	equ	0xFDA
+  1140                           fsr2l	equ	0xFD9
+  1141                           status	equ	0xFD8
+  1142                           
+  1143 ;; *************** function _HD44780_CursorOn *****************
+  1144 ;; Defined at:
+  1145 ;;		line 212 in file "hd44780.c"
+  1146 ;; Parameters:    Size  Location     Type
+  1147 ;;		None
+  1148 ;; Auto vars:     Size  Location     Type
+  1149 ;;		None
+  1150 ;; Return value:  Size  Location     Type
+  1151 ;;                  1    wreg      void 
+  1152 ;; Registers used:
+  1153 ;;		wreg, status,2, status,0, cstack
+  1154 ;; Tracked objects:
+  1155 ;;		On entry : 0/0
+  1156 ;;		On exit  : 0/0
+  1157 ;;		Unchanged: 0/0
+  1158 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1159 ;;      Params:         0       0       0       0       0       0       0
+  1160 ;;      Locals:         0       0       0       0       0       0       0
+  1161 ;;      Temps:          0       0       0       0       0       0       0
+  1162 ;;      Totals:         0       0       0       0       0       0       0
+  1163 ;;Total ram usage:        0 bytes
+  1164 ;; Hardware stack levels used:    1
+  1165 ;; Hardware stack levels required when called:    3
+  1166 ;; This function calls:
+  1167 ;;		_HD44780_Cmd
+  1168 ;; This function is called by:
+  1169 ;;		_main
+  1170 ;; This function uses a non-reentrant model
+  1171 ;;
+  1172                           
+  1173                           	psect	text8
+  1174  0009F6                     __ptext8:
+  1175                           	opt stack 0
+  1176  0009F6                     _HD44780_CursorOn:
+  1177                           	opt stack 27
+  1178                           
+  1179                           ;hd44780.c: 213: HD44780_Opts.DisplayControl |= 0x02;
+  1180                           
+  1181                           ;incstack = 0
+  1182  0009F6  821F               	bsf	_HD44780_Opts,1,c
+  1183                           
+  1184                           ;hd44780.c: 214: HD44780_Cmd(0x08 | HD44780_Opts.DisplayControl);
+  1185  0009F8  501F               	movf	_HD44780_Opts,w,c
+  1186  0009FA  0908               	iorlw	8
+  1187  0009FC  ECD0  F004         	call	_HD44780_Cmd
+  1188  000A00  0012               	return		;funcret
+  1189  000A02                     __end_of_HD44780_CursorOn:
+  1190                           	opt stack 0
+  1191                           tblptru	equ	0xFF8
+  1192                           tblptrh	equ	0xFF7
+  1193                           tblptrl	equ	0xFF6
+  1194                           tablat	equ	0xFF5
+  1195                           prodh	equ	0xFF4
+  1196                           prodl	equ	0xFF3
+  1197                           postinc0	equ	0xFEE
+  1198                           wreg	equ	0xFE8
+  1199                           postdec1	equ	0xFE5
+  1200                           fsr1l	equ	0xFE1
+  1201                           indf2	equ	0xFDF
+  1202                           fsr2h	equ	0xFDA
+  1203                           fsr2l	equ	0xFD9
+  1204                           status	equ	0xFD8
+  1205                           
+  1206 ;; *************** function _HD44780_CreateChar *****************
+  1207 ;; Defined at:
+  1208 ;;		line 230 in file "hd44780.c"
+  1209 ;; Parameters:    Size  Location     Type
+  1210 ;;  location        1    wreg     unsigned char 
+  1211 ;;  data            2    8[COMRAM] PTR unsigned char 
+  1212 ;;		 -> customChar(8), 
+  1213 ;; Auto vars:     Size  Location     Type
+  1214 ;;  location        1   10[COMRAM] unsigned char 
+  1215 ;;  i               1   11[COMRAM] unsigned char 
+  1216 ;; Return value:  Size  Location     Type
+  1217 ;;                  1    wreg      void 
+  1218 ;; Registers used:
+  1219 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+  1220 ;; Tracked objects:
+  1221 ;;		On entry : 0/0
+  1222 ;;		On exit  : 0/0
+  1223 ;;		Unchanged: 0/0
+  1224 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1225 ;;      Params:         2       0       0       0       0       0       0
+  1226 ;;      Locals:         2       0       0       0       0       0       0
+  1227 ;;      Temps:          0       0       0       0       0       0       0
+  1228 ;;      Totals:         4       0       0       0       0       0       0
+  1229 ;;Total ram usage:        4 bytes
+  1230 ;; Hardware stack levels used:    1
+  1231 ;; Hardware stack levels required when called:    3
+  1232 ;; This function calls:
+  1233 ;;		_HD44780_Cmd
+  1234 ;;		_HD44780_Data
+  1235 ;; This function is called by:
+  1236 ;;		_main
+  1237 ;; This function uses a non-reentrant model
+  1238 ;;
+  1239                           
+  1240                           	psect	text9
+  1241  0008E0                     __ptext9:
+  1242                           	opt stack 0
+  1243  0008E0                     _HD44780_CreateChar:
+  1244                           	opt stack 27
+  1245                           
+  1246                           ;incstack = 0
+  1247                           ;HD44780_CreateChar@location stored from wreg
+  1248  0008E0  6E0B               	movwf	HD44780_CreateChar@location,c
+  1249                           
+  1250                           ;hd44780.c: 231: char i;
+  1251                           ;hd44780.c: 233: location &= 0x07;
+  1252  0008E2  0E07               	movlw	7
+  1253  0008E4  160B               	andwf	HD44780_CreateChar@location,f,c
+  1254                           
+  1255                           ;hd44780.c: 234: HD44780_Cmd(0x40 | (location << 3));
+  1256  0008E6  380B               	swapf	HD44780_CreateChar@location,w,c
+  1257  0008E8  42E8               	rrncf	wreg,f,c
+  1258  0008EA  0BF8               	andlw	248
+  1259  0008EC  0940               	iorlw	64
+  1260  0008EE  ECD0  F004         	call	_HD44780_Cmd
+  1261                           
+  1262                           ;hd44780.c: 236: for (i = 0; i < 8; i++) {
+  1263  0008F2  0E00               	movlw	0
+  1264  0008F4  6E0C               	movwf	HD44780_CreateChar@i,c
+  1265  0008F6                     l1076:
+  1266  0008F6  0E07               	movlw	7
+  1267  0008F8  640C               	cpfsgt	HD44780_CreateChar@i,c
+  1268  0008FA  D001               	goto	l1080
+  1269  0008FC  0012               	return	
+  1270  0008FE                     l1080:
+  1271                           
+  1272                           ;hd44780.c: 237: HD44780_Data(data[i]);
+  1273  0008FE  500C               	movf	HD44780_CreateChar@i,w,c
+  1274  000900  0D01               	mullw	1
+  1275  000902  50F3               	movf	prodl,w,c
+  1276  000904  2409               	addwf	HD44780_CreateChar@data,w,c
+  1277  000906  6ED9               	movwf	fsr2l,c
+  1278  000908  50F4               	movf	prodh,w,c
+  1279  00090A  200A               	addwfc	HD44780_CreateChar@data+1,w,c
+  1280  00090C  6EDA               	movwf	fsr2h,c
+  1281  00090E  50DF               	movf	indf2,w,c
+  1282  000910  ECC5  F004         	call	_HD44780_Data
+  1283  000914  2A0C               	incf	HD44780_CreateChar@i,f,c
+  1284  000916  D7EF               	goto	l1076
+  1285  000918                     __end_of_HD44780_CreateChar:
+  1286                           	opt stack 0
+  1287                           tblptru	equ	0xFF8
+  1288                           tblptrh	equ	0xFF7
+  1289                           tblptrl	equ	0xFF6
+  1290                           tablat	equ	0xFF5
+  1291                           prodh	equ	0xFF4
+  1292                           prodl	equ	0xFF3
+  1293                           postinc0	equ	0xFEE
+  1294                           wreg	equ	0xFE8
+  1295                           postdec1	equ	0xFE5
+  1296                           fsr1l	equ	0xFE1
+  1297                           indf2	equ	0xFDF
+  1298                           fsr2h	equ	0xFDA
+  1299                           fsr2l	equ	0xFD9
+  1300                           status	equ	0xFD8
+  1301                           
+  1302 ;; *************** function _HD44780_Data *****************
+  1303 ;; Defined at:
+  1304 ;;		line 273 in file "hd44780.c"
+  1305 ;; Parameters:    Size  Location     Type
+  1306 ;;  data            1    wreg     unsigned char 
+  1307 ;; Auto vars:     Size  Location     Type
+  1308 ;;  data            1    7[COMRAM] unsigned char 
+  1309 ;; Return value:  Size  Location     Type
+  1310 ;;                  1    wreg      void 
+  1311 ;; Registers used:
+  1312 ;;		wreg, status,2, status,0, cstack
+  1313 ;; Tracked objects:
+  1314 ;;		On entry : 0/0
+  1315 ;;		On exit  : 0/0
+  1316 ;;		Unchanged: 0/0
+  1317 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1318 ;;      Params:         0       0       0       0       0       0       0
+  1319 ;;      Locals:         1       0       0       0       0       0       0
+  1320 ;;      Temps:          0       0       0       0       0       0       0
+  1321 ;;      Totals:         1       0       0       0       0       0       0
+  1322 ;;Total ram usage:        1 bytes
+  1323 ;; Hardware stack levels used:    1
+  1324 ;; Hardware stack levels required when called:    2
+  1325 ;; This function calls:
+  1326 ;;		_HD44780_Cmd4bit
+  1327 ;; This function is called by:
+  1328 ;;		_HD44780_Puts
+  1329 ;;		_HD44780_CreateChar
+  1330 ;;		_HD44780_PutCustom
+  1331 ;;		_putch
+  1332 ;; This function uses a non-reentrant model
+  1333 ;;
+  1334                           
+  1335                           	psect	text10
+  1336  00098A                     __ptext10:
+  1337                           	opt stack 0
+  1338  00098A                     _HD44780_Data:
+  1339                           	opt stack 27
+  1340                           
+  1341                           ;incstack = 0
+  1342                           ;HD44780_Data@data stored from wreg
+  1343  00098A  6E08               	movwf	HD44780_Data@data,c
+  1344                           
+  1345                           ;hd44780.c: 275: PORTBbits.RB2 = 1;
+  1346  00098C  8481               	bsf	3969,2,c	;volatile
+  1347                           
+  1348                           ;hd44780.c: 278: HD44780_Cmd4bit(data >> 4);
+  1349  00098E  3808               	swapf	HD44780_Data@data,w,c
+  1350  000990  0B0F               	andlw	15
+  1351  000992  ECAD  F003         	call	_HD44780_Cmd4bit
+  1352                           
+  1353                           ;hd44780.c: 280: HD44780_Cmd4bit(data & 0x0F);
+  1354  000996  5008               	movf	HD44780_Data@data,w,c
+  1355  000998  0B0F               	andlw	15
+  1356  00099A  ECAD  F003         	call	_HD44780_Cmd4bit
+  1357  00099E  0012               	return		;funcret
+  1358  0009A0                     __end_of_HD44780_Data:
+  1359                           	opt stack 0
+  1360                           tblptru	equ	0xFF8
+  1361                           tblptrh	equ	0xFF7
+  1362                           tblptrl	equ	0xFF6
+  1363                           tablat	equ	0xFF5
+  1364                           prodh	equ	0xFF4
+  1365                           prodl	equ	0xFF3
+  1366                           postinc0	equ	0xFEE
+  1367                           wreg	equ	0xFE8
+  1368                           postdec1	equ	0xFE5
+  1369                           fsr1l	equ	0xFE1
+  1370                           indf2	equ	0xFDF
+  1371                           fsr2h	equ	0xFDA
+  1372                           fsr2l	equ	0xFD9
+  1373                           status	equ	0xFD8
+  1374                           
+  1375 ;; *************** function _HD44780_BlinkOn *****************
+  1376 ;; Defined at:
+  1377 ;;		line 202 in file "hd44780.c"
+  1378 ;; Parameters:    Size  Location     Type
+  1379 ;;		None
+  1380 ;; Auto vars:     Size  Location     Type
+  1381 ;;		None
+  1382 ;; Return value:  Size  Location     Type
+  1383 ;;                  1    wreg      void 
+  1384 ;; Registers used:
+  1385 ;;		wreg, status,2, status,0, cstack
+  1386 ;; Tracked objects:
+  1387 ;;		On entry : 0/0
+  1388 ;;		On exit  : 0/0
+  1389 ;;		Unchanged: 0/0
+  1390 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1391 ;;      Params:         0       0       0       0       0       0       0
+  1392 ;;      Locals:         0       0       0       0       0       0       0
+  1393 ;;      Temps:          0       0       0       0       0       0       0
+  1394 ;;      Totals:         0       0       0       0       0       0       0
+  1395 ;;Total ram usage:        0 bytes
+  1396 ;; Hardware stack levels used:    1
+  1397 ;; Hardware stack levels required when called:    3
+  1398 ;; This function calls:
+  1399 ;;		_HD44780_Cmd
+  1400 ;; This function is called by:
+  1401 ;;		_main
+  1402 ;; This function uses a non-reentrant model
+  1403 ;;
+  1404                           
+  1405                           	psect	text11
+  1406  000A02                     __ptext11:
+  1407                           	opt stack 0
+  1408  000A02                     _HD44780_BlinkOn:
+  1409                           	opt stack 27
+  1410                           
+  1411                           ;hd44780.c: 203: HD44780_Opts.DisplayControl |= 0x01;
+  1412                           
+  1413                           ;incstack = 0
+  1414  000A02  801F               	bsf	_HD44780_Opts,0,c
+  1415                           
+  1416                           ;hd44780.c: 204: HD44780_Cmd(0x08 | HD44780_Opts.DisplayControl);
+  1417  000A04  501F               	movf	_HD44780_Opts,w,c
+  1418  000A06  0908               	iorlw	8
+  1419  000A08  ECD0  F004         	call	_HD44780_Cmd
+  1420  000A0C  0012               	return		;funcret
+  1421  000A0E                     __end_of_HD44780_BlinkOn:
+  1422                           	opt stack 0
+  1423                           tblptru	equ	0xFF8
+  1424                           tblptrh	equ	0xFF7
+  1425                           tblptrl	equ	0xFF6
+  1426                           tablat	equ	0xFF5
+  1427                           prodh	equ	0xFF4
+  1428                           prodl	equ	0xFF3
+  1429                           postinc0	equ	0xFEE
+  1430                           wreg	equ	0xFE8
+  1431                           postdec1	equ	0xFE5
+  1432                           fsr1l	equ	0xFE1
+  1433                           indf2	equ	0xFDF
+  1434                           fsr2h	equ	0xFDA
+  1435                           fsr2l	equ	0xFD9
+  1436                           status	equ	0xFD8
+  1437                           
+  1438 ;; *************** function _HD44780_Cmd *****************
+  1439 ;; Defined at:
+  1440 ;;		line 263 in file "hd44780.c"
+  1441 ;; Parameters:    Size  Location     Type
+  1442 ;;  cmd             1    wreg     unsigned char 
+  1443 ;; Auto vars:     Size  Location     Type
+  1444 ;;  cmd             1    7[COMRAM] unsigned char 
+  1445 ;; Return value:  Size  Location     Type
+  1446 ;;                  1    wreg      void 
+  1447 ;; Registers used:
+  1448 ;;		wreg, status,2, status,0, cstack
+  1449 ;; Tracked objects:
+  1450 ;;		On entry : 0/0
+  1451 ;;		On exit  : 0/0
+  1452 ;;		Unchanged: 0/0
+  1453 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1454 ;;      Params:         0       0       0       0       0       0       0
+  1455 ;;      Locals:         1       0       0       0       0       0       0
+  1456 ;;      Temps:          0       0       0       0       0       0       0
+  1457 ;;      Totals:         1       0       0       0       0       0       0
+  1458 ;;Total ram usage:        1 bytes
+  1459 ;; Hardware stack levels used:    1
+  1460 ;; Hardware stack levels required when called:    2
+  1461 ;; This function calls:
+  1462 ;;		_HD44780_Cmd4bit
+  1463 ;; This function is called by:
+  1464 ;;		_HD44780_Init
+  1465 ;;		_HD44780_Clear
+  1466 ;;		_HD44780_DisplayOn
+  1467 ;;		_HD44780_BlinkOn
+  1468 ;;		_HD44780_CursorOn
+  1469 ;;		_HD44780_CreateChar
+  1470 ;;		_HD44780_CursorSet
+  1471 ;;		_HD44780_DisplayOff
+  1472 ;;		_HD44780_BlinkOff
+  1473 ;;		_HD44780_CursorOff
+  1474 ;;		_HD44780_ScrollLeft
+  1475 ;;		_HD44780_ScrollRight
+  1476 ;; This function uses a non-reentrant model
+  1477 ;;
+  1478                           
+  1479                           	psect	text12
+  1480  0009A0                     __ptext12:
+  1481                           	opt stack 0
+  1482  0009A0                     _HD44780_Cmd:
+  1483                           	opt stack 26
+  1484                           
+  1485                           ;incstack = 0
+  1486                           ;HD44780_Cmd@cmd stored from wreg
+  1487  0009A0  6E08               	movwf	HD44780_Cmd@cmd,c
+  1488                           
+  1489                           ;hd44780.c: 265: PORTBbits.RB2 = 0;
+  1490  0009A2  9481               	bcf	3969,2,c	;volatile
+  1491                           
+  1492                           ;hd44780.c: 268: HD44780_Cmd4bit(cmd >> 4);
+  1493  0009A4  3808               	swapf	HD44780_Cmd@cmd,w,c
+  1494  0009A6  0B0F               	andlw	15
+  1495  0009A8  ECAD  F003         	call	_HD44780_Cmd4bit
+  1496                           
+  1497                           ;hd44780.c: 270: HD44780_Cmd4bit(cmd & 0x0F);
+  1498  0009AC  5008               	movf	HD44780_Cmd@cmd,w,c
+  1499  0009AE  0B0F               	andlw	15
+  1500  0009B0  ECAD  F003         	call	_HD44780_Cmd4bit
+  1501  0009B4  0012               	return		;funcret
+  1502  0009B6                     __end_of_HD44780_Cmd:
+  1503                           	opt stack 0
+  1504                           tblptru	equ	0xFF8
+  1505                           tblptrh	equ	0xFF7
+  1506                           tblptrl	equ	0xFF6
+  1507                           tablat	equ	0xFF5
+  1508                           prodh	equ	0xFF4
+  1509                           prodl	equ	0xFF3
+  1510                           postinc0	equ	0xFEE
+  1511                           wreg	equ	0xFE8
+  1512                           postdec1	equ	0xFE5
+  1513                           fsr1l	equ	0xFE1
+  1514                           indf2	equ	0xFDF
+  1515                           fsr2h	equ	0xFDA
+  1516                           fsr2l	equ	0xFD9
+  1517                           status	equ	0xFD8
+  1518                           
+  1519 ;; *************** function _HD44780_Cmd4bit *****************
+  1520 ;; Defined at:
+  1521 ;;		line 283 in file "hd44780.c"
+  1522 ;; Parameters:    Size  Location     Type
+  1523 ;;  cmd             1    wreg     unsigned char 
+  1524 ;; Auto vars:     Size  Location     Type
+  1525 ;;  cmd             1    6[COMRAM] unsigned char 
+  1526 ;; Return value:  Size  Location     Type
+  1527 ;;                  1    wreg      void 
+  1528 ;; Registers used:
+  1529 ;;		wreg, status,2, status,0, cstack
+  1530 ;; Tracked objects:
+  1531 ;;		On entry : 0/0
+  1532 ;;		On exit  : 0/0
+  1533 ;;		Unchanged: 0/0
+  1534 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1535 ;;      Params:         0       0       0       0       0       0       0
+  1536 ;;      Locals:         1       0       0       0       0       0       0
+  1537 ;;      Temps:          1       0       0       0       0       0       0
+  1538 ;;      Totals:         2       0       0       0       0       0       0
+  1539 ;;Total ram usage:        2 bytes
+  1540 ;; Hardware stack levels used:    1
+  1541 ;; Hardware stack levels required when called:    1
+  1542 ;; This function calls:
+  1543 ;;		_HD44780_Delay
+  1544 ;; This function is called by:
+  1545 ;;		_HD44780_Init
+  1546 ;;		_HD44780_Cmd
+  1547 ;;		_HD44780_Data
+  1548 ;; This function uses a non-reentrant model
+  1549 ;;
+  1550                           
+  1551                           	psect	text13
+  1552  00075A                     __ptext13:
+  1553                           	opt stack 0
+  1554  00075A                     _HD44780_Cmd4bit:
+  1555                           	opt stack 27
+  1556                           
+  1557                           ;incstack = 0
+  1558                           ;HD44780_Cmd4bit@cmd stored from wreg
+  1559  00075A  6E07               	movwf	HD44780_Cmd4bit@cmd,c
+  1560                           
+  1561                           ;hd44780.c: 285: PORTBbits.RB7 = (cmd & 0x08) ? 1 : 0;
+  1562  00075C  A607               	btfss	HD44780_Cmd4bit@cmd,3,c
+  1563  00075E  D003               	goto	u240
+  1564  000760  6A06               	clrf	??_HD44780_Cmd4bit& (0+255),c
+  1565  000762  2A06               	incf	??_HD44780_Cmd4bit& (0+255),f,c
+  1566  000764  D001               	goto	u258
+  1567  000766                     u240:
+  1568  000766  6A06               	clrf	??_HD44780_Cmd4bit& (0+255),c
+  1569  000768                     u258:
+  1570  000768  3206               	rrcf	??_HD44780_Cmd4bit,f,c
+  1571  00076A  3206               	rrcf	??_HD44780_Cmd4bit,f,c
+  1572  00076C  5081               	movf	3969,w,c	;volatile
+  1573  00076E  1806               	xorwf	??_HD44780_Cmd4bit,w,c
+  1574  000770  0B7F               	andlw	-129
+  1575  000772  1806               	xorwf	??_HD44780_Cmd4bit,w,c
+  1576  000774  6E81               	movwf	3969,c	;volatile
+  1577                           
+  1578                           ;hd44780.c: 286: PORTBbits.RB6 = (cmd & 0x04) ? 1 : 0;
+  1579  000776  A407               	btfss	HD44780_Cmd4bit@cmd,2,c
+  1580  000778  D003               	goto	u260
+  1581  00077A  6A06               	clrf	??_HD44780_Cmd4bit& (0+255),c
+  1582  00077C  2A06               	incf	??_HD44780_Cmd4bit& (0+255),f,c
+  1583  00077E  D001               	goto	u278
+  1584  000780                     u260:
+  1585  000780  6A06               	clrf	??_HD44780_Cmd4bit& (0+255),c
+  1586  000782                     u278:
+  1587  000782  3A06               	swapf	??_HD44780_Cmd4bit,f,c
+  1588  000784  4606               	rlncf	??_HD44780_Cmd4bit,f,c
+  1589  000786  4606               	rlncf	??_HD44780_Cmd4bit,f,c
+  1590  000788  5081               	movf	3969,w,c	;volatile
+  1591  00078A  1806               	xorwf	??_HD44780_Cmd4bit,w,c
+  1592  00078C  0BBF               	andlw	-65
+  1593  00078E  1806               	xorwf	??_HD44780_Cmd4bit,w,c
+  1594  000790  6E81               	movwf	3969,c	;volatile
+  1595                           
+  1596                           ;hd44780.c: 287: PORTBbits.RB5 = (cmd & 0x02) ? 1 : 0;
+  1597  000792  A207               	btfss	HD44780_Cmd4bit@cmd,1,c
+  1598  000794  D003               	goto	u280
+  1599  000796  6A06               	clrf	??_HD44780_Cmd4bit& (0+255),c
+  1600  000798  2A06               	incf	??_HD44780_Cmd4bit& (0+255),f,c
+  1601  00079A  D001               	goto	u298
+  1602  00079C                     u280:
+  1603  00079C  6A06               	clrf	??_HD44780_Cmd4bit& (0+255),c
+  1604  00079E                     u298:
+  1605  00079E  3A06               	swapf	??_HD44780_Cmd4bit,f,c
+  1606  0007A0  4606               	rlncf	??_HD44780_Cmd4bit,f,c
+  1607  0007A2  5081               	movf	3969,w,c	;volatile
+  1608  0007A4  1806               	xorwf	??_HD44780_Cmd4bit,w,c
+  1609  0007A6  0BDF               	andlw	-33
+  1610  0007A8  1806               	xorwf	??_HD44780_Cmd4bit,w,c
+  1611  0007AA  6E81               	movwf	3969,c	;volatile
+  1612                           
+  1613                           ;hd44780.c: 288: PORTBbits.RB4 = (cmd & 0x01) ? 1 : 0;
+  1614  0007AC  A007               	btfss	HD44780_Cmd4bit@cmd,0,c
+  1615  0007AE  D003               	goto	u300
+  1616  0007B0  6A06               	clrf	??_HD44780_Cmd4bit& (0+255),c
+  1617  0007B2  2A06               	incf	??_HD44780_Cmd4bit& (0+255),f,c
+  1618  0007B4  D001               	goto	u318
+  1619  0007B6                     u300:
+  1620  0007B6  6A06               	clrf	??_HD44780_Cmd4bit& (0+255),c
+  1621  0007B8                     u318:
+  1622  0007B8  3A06               	swapf	??_HD44780_Cmd4bit,f,c
+  1623  0007BA  5081               	movf	3969,w,c	;volatile
+  1624  0007BC  1806               	xorwf	??_HD44780_Cmd4bit,w,c
+  1625  0007BE  0BEF               	andlw	-17
+  1626  0007C0  1806               	xorwf	??_HD44780_Cmd4bit,w,c
+  1627  0007C2  6E81               	movwf	3969,c	;volatile
+  1628                           
+  1629                           ;hd44780.c: 289: PORTBbits.RB3 = 1; HD44780_Delay(20); PORTBbits.RB3 = 0; HD44780_Delay(
+      +                          20);
+  1630  0007C4  8681               	bsf	3969,3,c	;volatile
+  1631  0007C6  0E00               	movlw	0
+  1632  0007C8  6E02               	movwf	HD44780_Delay@us+1,c
+  1633  0007CA  0E14               	movlw	20
+  1634  0007CC  6E01               	movwf	HD44780_Delay@us,c
+  1635  0007CE  ECA5  F004         	call	_HD44780_Delay	;wreg free
+  1636  0007D2  9681               	bcf	3969,3,c	;volatile
+  1637  0007D4  0E00               	movlw	0
+  1638  0007D6  6E02               	movwf	HD44780_Delay@us+1,c
+  1639  0007D8  0E14               	movlw	20
+  1640  0007DA  6E01               	movwf	HD44780_Delay@us,c
+  1641  0007DC  ECA5  F004         	call	_HD44780_Delay	;wreg free
+  1642  0007E0  0012               	return		;funcret
+  1643  0007E2                     __end_of_HD44780_Cmd4bit:
+  1644                           	opt stack 0
+  1645                           tblptru	equ	0xFF8
+  1646                           tblptrh	equ	0xFF7
+  1647                           tblptrl	equ	0xFF6
+  1648                           tablat	equ	0xFF5
+  1649                           prodh	equ	0xFF4
+  1650                           prodl	equ	0xFF3
+  1651                           postinc0	equ	0xFEE
+  1652                           wreg	equ	0xFE8
+  1653                           postdec1	equ	0xFE5
+  1654                           fsr1l	equ	0xFE1
+  1655                           indf2	equ	0xFDF
+  1656                           fsr2h	equ	0xFDA
+  1657                           fsr2l	equ	0xFD9
+  1658                           status	equ	0xFD8
+  1659                           
+  1660 ;; *************** function _HD44780_Delay *****************
+  1661 ;; Defined at:
+  1662 ;;		line 106 in file "hd44780.c"
+  1663 ;; Parameters:    Size  Location     Type
+  1664 ;;  us              2    0[COMRAM] int 
+  1665 ;; Auto vars:     Size  Location     Type
+  1666 ;;  i               2    3[COMRAM] int 
+  1667 ;; Return value:  Size  Location     Type
+  1668 ;;                  1    wreg      void 
+  1669 ;; Registers used:
+  1670 ;;		wreg, status,2, status,0
+  1671 ;; Tracked objects:
+  1672 ;;		On entry : 0/0
+  1673 ;;		On exit  : 0/0
+  1674 ;;		Unchanged: 0/0
+  1675 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1676 ;;      Params:         2       0       0       0       0       0       0
+  1677 ;;      Locals:         2       0       0       0       0       0       0
+  1678 ;;      Temps:          1       0       0       0       0       0       0
+  1679 ;;      Totals:         5       0       0       0       0       0       0
+  1680 ;;Total ram usage:        5 bytes
+  1681 ;; Hardware stack levels used:    1
+  1682 ;; This function calls:
+  1683 ;;		Nothing
+  1684 ;; This function is called by:
+  1685 ;;		_HD44780_Init
+  1686 ;;		_HD44780_Clear
+  1687 ;;		_HD44780_Cmd4bit
+  1688 ;; This function uses a non-reentrant model
+  1689 ;;
+  1690                           
+  1691                           	psect	text14
+  1692  00094A                     __ptext14:
+  1693                           	opt stack 0
+  1694  00094A                     _HD44780_Delay:
+  1695                           	opt stack 27
+  1696                           
+  1697                           ;hd44780.c: 108: for(int i=0; i<us ; i++) _delay((unsigned long)((1)*(8000000/4000000.0)
+      +                          ));
+  1698                           
+  1699                           ;incstack = 0
+  1700  00094A  0E00               	movlw	0
+  1701  00094C  6E05               	movwf	HD44780_Delay@i+1,c
+  1702  00094E  0E00               	movlw	0
+  1703  000950  6E04               	movwf	HD44780_Delay@i,c
+  1704  000952  D003               	goto	l978
+  1705  000954                     l70:
+  1706  000954  D000               	nop2		;2 cycle nop
+  1707  000956  4A04               	infsnz	HD44780_Delay@i,f,c
+  1708  000958  2A05               	incf	HD44780_Delay@i+1,f,c
+  1709  00095A                     l978:
+  1710  00095A  5001               	movf	HD44780_Delay@us,w,c
+  1711  00095C  5C04               	subwf	HD44780_Delay@i,w,c
+  1712  00095E  5005               	movf	HD44780_Delay@i+1,w,c
+  1713  000960  0A80               	xorlw	128
+  1714  000962  6E03               	movwf	??_HD44780_Delay& (0+255),c
+  1715  000964  5002               	movf	HD44780_Delay@us+1,w,c
+  1716  000966  0A80               	xorlw	128
+  1717  000968  5803               	subwfb	??_HD44780_Delay& (0+255),w,c
+  1718  00096A  B0D8               	btfsc	status,0,c
+  1719  00096C  0012               	return	
+  1720  00096E  D7F2               	goto	l70
+  1721  000970                     __end_of_HD44780_Delay:
+  1722                           	opt stack 0
+  1723                           tblptru	equ	0xFF8
+  1724                           tblptrh	equ	0xFF7
+  1725                           tblptrl	equ	0xFF6
+  1726                           tablat	equ	0xFF5
+  1727                           prodh	equ	0xFF4
+  1728                           prodl	equ	0xFF3
+  1729                           postinc0	equ	0xFEE
+  1730                           wreg	equ	0xFE8
+  1731                           postdec1	equ	0xFE5
+  1732                           fsr1l	equ	0xFE1
+  1733                           indf2	equ	0xFDF
+  1734                           fsr2h	equ	0xFDA
+  1735                           fsr2l	equ	0xFD9
+  1736                           status	equ	0xFD8
+  1737                           
+  1738 ;; *************** function _Delayms *****************
+  1739 ;; Defined at:
+  1740 ;;		line 10 in file "delay.h"
+  1741 ;; Parameters:    Size  Location     Type
+  1742 ;;  ms              2    0[COMRAM] int 
+  1743 ;; Auto vars:     Size  Location     Type
+  1744 ;;  i               2    3[COMRAM] int 
+  1745 ;; Return value:  Size  Location     Type
+  1746 ;;                  1    wreg      void 
+  1747 ;; Registers used:
+  1748 ;;		wreg, status,2, status,0
+  1749 ;; Tracked objects:
+  1750 ;;		On entry : 0/0
+  1751 ;;		On exit  : 0/0
+  1752 ;;		Unchanged: 0/0
+  1753 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1754 ;;      Params:         2       0       0       0       0       0       0
+  1755 ;;      Locals:         2       0       0       0       0       0       0
+  1756 ;;      Temps:          1       0       0       0       0       0       0
+  1757 ;;      Totals:         5       0       0       0       0       0       0
+  1758 ;;Total ram usage:        5 bytes
+  1759 ;; Hardware stack levels used:    1
+  1760 ;; This function calls:
+  1761 ;;		Nothing
+  1762 ;; This function is called by:
+  1763 ;;		_main
+  1764 ;; This function uses a non-reentrant model
+  1765 ;;
+  1766                           
+  1767                           	psect	text15
+  1768  000918                     __ptext15:
+  1769                           	opt stack 0
+  1770  000918                     _Delayms:
+  1771                           	opt stack 30
+  1772                           
+  1773                           ;delay.h: 12: for(int i=0; i<ms ; i++) _delay((unsigned long)((1)*(8000000/4000.0)));
+  1774                           
+  1775                           ;incstack = 0
+  1776  000918  0E00               	movlw	0
+  1777  00091A  6E05               	movwf	Delayms@i+1,c
+  1778  00091C  0E00               	movlw	0
+  1779  00091E  6E04               	movwf	Delayms@i,c
+  1780  000920  D009               	goto	l19
+  1781  000922                     l1018:
+  1782  000922  0E03               	movlw	3
+  1783  000924  6E03               	movwf	??_Delayms& (0+255),c
+  1784  000926  0E98               	movlw	152
+  1785  000928                     u447:
+  1786  000928  2EE8               	decfsz	wreg,f,c
+  1787  00092A  D7FE               	goto	u447
+  1788  00092C  2E03               	decfsz	??_Delayms& (0+255),f,c
+  1789  00092E  D7FC               	goto	u447
+  1790  000930  4A04               	infsnz	Delayms@i,f,c
+  1791  000932  2A05               	incf	Delayms@i+1,f,c
+  1792  000934                     l19:
+  1793  000934  5001               	movf	Delayms@ms,w,c
+  1794  000936  5C04               	subwf	Delayms@i,w,c
+  1795  000938  5005               	movf	Delayms@i+1,w,c
+  1796  00093A  0A80               	xorlw	128
+  1797  00093C  6E03               	movwf	??_Delayms& (0+255),c
+  1798  00093E  5002               	movf	Delayms@ms+1,w,c
+  1799  000940  0A80               	xorlw	128
+  1800  000942  5803               	subwfb	??_Delayms& (0+255),w,c
+  1801  000944  B0D8               	btfsc	status,0,c
+  1802  000946  0012               	return	
+  1803  000948  D7EC               	goto	l1018
+  1804  00094A                     __end_of_Delayms:
+  1805                           	opt stack 0
+  1806                           tblptru	equ	0xFF8
+  1807                           tblptrh	equ	0xFF7
+  1808                           tblptrl	equ	0xFF6
+  1809                           tablat	equ	0xFF5
+  1810                           prodh	equ	0xFF4
+  1811                           prodl	equ	0xFF3
+  1812                           postinc0	equ	0xFEE
+  1813                           wreg	equ	0xFE8
+  1814                           postdec1	equ	0xFE5
+  1815                           fsr1l	equ	0xFE1
+  1816                           indf2	equ	0xFDF
+  1817                           fsr2h	equ	0xFDA
+  1818                           fsr2l	equ	0xFD9
+  1819                           status	equ	0xFD8
+  1820                           tblptru	equ	0xFF8
+  1821                           tblptrh	equ	0xFF7
+  1822                           tblptrl	equ	0xFF6
+  1823                           tablat	equ	0xFF5
+  1824                           prodh	equ	0xFF4
+  1825                           prodl	equ	0xFF3
+  1826                           postinc0	equ	0xFEE
+  1827                           wreg	equ	0xFE8
+  1828                           postdec1	equ	0xFE5
+  1829                           fsr1l	equ	0xFE1
+  1830                           indf2	equ	0xFDF
+  1831                           fsr2h	equ	0xFDA
+  1832                           fsr2l	equ	0xFD9
+  1833                           status	equ	0xFD8
+  1834                           
+  1835                           	psect	rparam
+  1836  0000                     tblptru	equ	0xFF8
+  1837                           tblptrh	equ	0xFF7
+  1838                           tblptrl	equ	0xFF6
+  1839                           tablat	equ	0xFF5
+  1840                           prodh	equ	0xFF4
+  1841                           prodl	equ	0xFF3
+  1842                           postinc0	equ	0xFEE
+  1843                           wreg	equ	0xFE8
+  1844                           postdec1	equ	0xFE5
+  1845                           fsr1l	equ	0xFE1
+  1846                           indf2	equ	0xFDF
+  1847                           fsr2h	equ	0xFDA
+  1848                           fsr2l	equ	0xFD9
+  1849                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     37
+    Constant    0
+    Data        12
+    BSS         7
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM          127     18      37
+    BANK0           128      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    HD44780_CreateChar@data	PTR unsigned char  size(2) Largest target is 8
+		 -> customChar(COMRAM[8]), 
+
+    HD44780_Puts@str	PTR unsigned char  size(2) Largest target is 17
+		 -> STR_3(CODE[9]), STR_2(CODE[17]), STR_1(CODE[11]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_HD44780_Puts
+    _HD44780_Puts->_HD44780_CursorSet
+    _HD44780_PutCustom->_HD44780_CursorSet
+    _HD44780_CursorSet->_HD44780_Cmd
+    _HD44780_Init->_HD44780_Cmd
+    _HD44780_DisplayOn->_HD44780_Cmd
+    _HD44780_Clear->_HD44780_Cmd
+    _HD44780_CursorOn->_HD44780_Cmd
+    _HD44780_CreateChar->_HD44780_Cmd
+    _HD44780_CreateChar->_HD44780_Data
+    _HD44780_Data->_HD44780_Cmd4bit
+    _HD44780_BlinkOn->_HD44780_Cmd
+    _HD44780_Cmd->_HD44780_Cmd4bit
+    _HD44780_Cmd4bit->_HD44780_Delay
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0   14110
+                            _Delayms
+                    _HD44780_BlinkOn
+                      _HD44780_Clear
+                 _HD44780_CreateChar
+                   _HD44780_CursorOn
+                       _HD44780_Init
+                  _HD44780_PutCustom
+                       _HD44780_Puts
+ ---------------------------------------------------------------------------------
+ (1) _HD44780_Puts                                         4     1      3    2672
+                                             14 COMRAM     4     1      3
+                  _HD44780_CursorSet
+                       _HD44780_Data
+ ---------------------------------------------------------------------------------
+ (1) _HD44780_PutCustom                                    3     1      2    2349
+                                             14 COMRAM     3     1      2
+                  _HD44780_CursorSet
+                       _HD44780_Data
+ ---------------------------------------------------------------------------------
+ (2) _HD44780_CursorSet                                    6     5      1    1401
+                                              8 COMRAM     6     5      1
+                        _HD44780_Cmd
+ ---------------------------------------------------------------------------------
+ (1) _HD44780_Init                                         2     1      1    4346
+                                              8 COMRAM     2     1      1
+                      _HD44780_Clear
+                        _HD44780_Cmd
+                    _HD44780_Cmd4bit
+                      _HD44780_Delay
+                  _HD44780_DisplayOn
+                   _HD44780_InitPins
+ ---------------------------------------------------------------------------------
+ (2) _HD44780_InitPins                                     0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _HD44780_DisplayOn                                    0     0      0     754
+                        _HD44780_Cmd
+ ---------------------------------------------------------------------------------
+ (2) _HD44780_Clear                                        0     0      0    1376
+                        _HD44780_Cmd
+                      _HD44780_Delay
+ ---------------------------------------------------------------------------------
+ (1) _HD44780_CursorOn                                     0     0      0     754
+                        _HD44780_Cmd
+ ---------------------------------------------------------------------------------
+ (1) _HD44780_CreateChar                                   4     2      2    1685
+                                              8 COMRAM     4     2      2
+                        _HD44780_Cmd
+                       _HD44780_Data
+ ---------------------------------------------------------------------------------
+ (2) _HD44780_Data                                         1     1      0     754
+                                              7 COMRAM     1     1      0
+                    _HD44780_Cmd4bit
+ ---------------------------------------------------------------------------------
+ (1) _HD44780_BlinkOn                                      0     0      0     754
+                        _HD44780_Cmd
+ ---------------------------------------------------------------------------------
+ (3) _HD44780_Cmd                                          1     1      0     754
+                                              7 COMRAM     1     1      0
+                    _HD44780_Cmd4bit
+ ---------------------------------------------------------------------------------
+ (3) _HD44780_Cmd4bit                                      2     2      0     710
+                                              5 COMRAM     2     2      0
+                      _HD44780_Delay
+ ---------------------------------------------------------------------------------
+ (4) _HD44780_Delay                                        5     3      2     622
+                                              0 COMRAM     5     3      2
+ ---------------------------------------------------------------------------------
+ (1) _Delayms                                              5     3      2     174
+                                              0 COMRAM     5     3      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 4
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _Delayms
+   _HD44780_BlinkOn
+     _HD44780_Cmd
+       _HD44780_Cmd4bit
+         _HD44780_Delay
+   _HD44780_Clear
+     _HD44780_Cmd
+       _HD44780_Cmd4bit
+         _HD44780_Delay
+     _HD44780_Delay
+   _HD44780_CreateChar
+     _HD44780_Cmd
+       _HD44780_Cmd4bit
+         _HD44780_Delay
+     _HD44780_Data
+       _HD44780_Cmd4bit
+         _HD44780_Delay
+   _HD44780_CursorOn
+     _HD44780_Cmd
+       _HD44780_Cmd4bit
+         _HD44780_Delay
+   _HD44780_Init
+     _HD44780_Clear
+       _HD44780_Cmd
+         _HD44780_Cmd4bit
+           _HD44780_Delay
+       _HD44780_Delay
+     _HD44780_Cmd
+       _HD44780_Cmd4bit
+         _HD44780_Delay
+     _HD44780_Cmd4bit
+       _HD44780_Delay
+     _HD44780_Delay
+     _HD44780_DisplayOn
+       _HD44780_Cmd
+         _HD44780_Cmd4bit
+           _HD44780_Delay
+     _HD44780_InitPins
+   _HD44780_PutCustom
+     _HD44780_CursorSet
+       _HD44780_Cmd
+         _HD44780_Cmd4bit
+           _HD44780_Delay
+     _HD44780_Data
+       _HD44780_Cmd4bit
+         _HD44780_Delay
+   _HD44780_Puts
+     _HD44780_CursorSet
+       _HD44780_Cmd
+         _HD44780_Cmd4bit
+           _HD44780_Delay
+     _HD44780_Data
+       _HD44780_Cmd4bit
+         _HD44780_Delay
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             5FF      0       0      17        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK5           100      0       0      16        0.0%
+BANK5              100      0       0      14        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            80      0       0       4        0.0%
+BANK0               80      0       0       5        0.0%
+BITCOMRAM           7F      0       0       0        0.0%
+COMRAM              7F     12      25       1       29.1%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      25      15        0.0%
+DATA                 0      0      25       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.36 build -262312587 
+Symbol Table                                                                                   Fri Mar 11 14:40:01 2016
+
+               HD44780_Puts@x 0012                 HD44780_Puts@y 000F               HD44780_Puts@str 0010  
+                          l33 0862                            l19 0934                            l70 0954  
+                 __CFG_BORV$2 000000            HD44780_PutCustom@x 0011            HD44780_PutCustom@y 000F  
+                __CFG_CP0$OFF 000000                  __CFG_CP1$OFF 000000                  __CFG_CP2$OFF 000000  
+                __CFG_CP3$OFF 000000                   __CFG_OSC$HS 000000                           l978 095A  
+                __CFG_CPB$OFF 000000                           u300 07B6                           u240 0766  
+                         u260 0780                           u318 07B8                           u280 079C  
+                         u258 0768                  __CFG_CPD$OFF 000000                           u278 0782  
+                         u447 0928                           u298 079E                           prod 000FF3  
+                         wreg 000FE8    __size_of_HD44780_PutCustom 0014                  __CFG_LVP$OFF 000000  
+    __size_of_HD44780_Cmd4bit 0088                  __CFG_WDT$OFF 000000                          l1002 0882  
+                        l1110 0742                          l1102 0712                          l1040 0656  
+                        l1112 0746                          l1018 0922                          l1106 0730  
+                        l1080 08FE                          l1076 08F6                          l1096 06F2  
+                        l1088 06DA                          STR_1 0612                          STR_2 0601  
+                        STR_3 061D      __size_of_HD44780_BlinkOn 000C               ??_HD44780_Delay 0003  
+             ??_HD44780_Clear 0009                          _main 07E2                          fsr1l 000FE1  
+                        indf2 000FDF                          fsr2l 000FD9                 __CFG_BOREN$ON 000000  
+                        prodh 000FF4                          prodl 000FF3                          start 0000  
+               __CFG_IESO$OFF 000000               __end_of_Delayms 094A                 __CFG_MCLRE$ON 000000  
+                ___param_bank 000010                         ?_main 0001                 __CFG_PWRT$OFF 000000  
+               __CFG_WRT0$OFF 000000                 __CFG_WRT1$OFF 000000                 __CFG_WRT2$OFF 000000  
+               __CFG_WRT3$OFF 000000                __CFG_EBTR0$OFF 000000                __CFG_FCMEN$OFF 000000  
+              __CFG_EBTR1$OFF 000000                __CFG_EBTR2$OFF 000000                __CFG_EBTR3$OFF 000000  
+               __CFG_WRTB$OFF 000000                 __CFG_WRTC$OFF 000000                 __CFG_WRTD$OFF 000000  
+              __CFG_EBTRB$OFF 000000                         tablat 000FF5                         status 000FD8  
+             __initialization 08A6      __end_of_HD44780_InitPins 098A      __end_of_HD44780_CursorOn 0A02  
+                __end_of_main 0864                        ??_main 0013                 __activetblptr 000001  
+                   ??_Delayms 0003             ??_HD44780_Cmd4bit 0006                __CFG_XINST$OFF 000000  
+           ??_HD44780_BlinkOn 0009                __CFG_STVREN$ON 000000                        clear_0 08AC  
+                __pdataCOMRAM 0013                  __mediumconst 0000                        tblptrh 000FF7  
+                      tblptrl 000FF6                        tblptru 000FF8                    __accesstop 0080  
+     __end_of__initialization 08D2               __CFG_PBADEN$OFF 000000                 ___rparam_used 000001  
+  __end_of_HD44780_CreateChar 0918                 ??_HD44780_Cmd 0008                __pcstackCOMRAM 0001  
+         __end_of_HD44780_Cmd 09B6                       _Delayms 0918         __end_of_HD44780_Delay 0970  
+       __end_of_HD44780_Clear 09DE                       __Hparam 0000                       __Lparam 0000  
+           ?_HD44780_InitPins 0001             ?_HD44780_CursorOn 0001                  __psmallconst 0600  
+          ??_HD44780_InitPins 0001                       __pcinit 08A6            ??_HD44780_CursorOn 0009  
+                     __ramtop 0600                    _customChar 0017                       __ptext0 07E2  
+                     __ptext1 06CC                       __ptext2 09B6                       __ptext3 0864  
+                     __ptext4 0628                       __ptext5 0970                       __ptext6 09EA  
+                     __ptext7 09CA                       __ptext8 09F6                       __ptext9 08E0  
+             _HD44780_Cmd4bit 075A               _HD44780_BlinkOn 0A02          end_of_initialization 08D2  
+                   Delayms@ms 0001                 ?_HD44780_Data 0001                 ?_HD44780_Init 0009  
+               ?_HD44780_Puts 000F                   _HD44780_Cmd 09A0                       postdec1 000FE5  
+                     postinc0 000FEE                     _PORTBbits 000F81          HD44780_CursorSet@col 000E  
+        HD44780_CursorSet@row 0009           HD44780_CreateChar@i 000C                     _TRISBbits 000F93  
+              ??_HD44780_Data 0008                ??_HD44780_Init 000A                ??_HD44780_Puts 0012  
+               __pidataCOMRAM 09DE       __end_of_HD44780_Cmd4bit 07E2            _HD44780_CreateChar 08E0  
+   HD44780_PutCustom@location 0010       __end_of_HD44780_BlinkOn 0A0E           start_initialization 08A6  
+         ?_HD44780_CreateChar 0009            HD44780_Cmd4bit@cmd 0007    HD44780_CreateChar@location 000B  
+        ??_HD44780_CreateChar 000B              __CFG_LPT1OSC$OFF 000000                   __pbssCOMRAM 001F  
+                    ?_Delayms 0001             __CFG_CCP2MX$PORTC 000000              ?_HD44780_Cmd4bit 0001  
+                 __smallconst 0600              ?_HD44780_BlinkOn 0001          __end_of_HD44780_Data 09A0  
+        __end_of_HD44780_Init 06CC          __end_of_HD44780_Puts 075A     __size_of_HD44780_InitPins 001A  
+   __size_of_HD44780_CursorOn 000C                      Delayms@i 0004                  ?_HD44780_Cmd 0001  
+            __CFG_WDTPS$32768 000000        __size_of_HD44780_Delay 0026        __size_of_HD44780_Clear 0014  
+                   copy_data0 08C6  HD44780_CursorSet@row_offsets 000A             _HD44780_DisplayOn 09EA  
+            __size_of_Delayms 0032            ?_HD44780_DisplayOn 0001                      __Hrparam 0000  
+                    __Lrparam 0000                  __Lsmallconst 0600             _HD44780_CursorSet 0864  
+         ??_HD44780_DisplayOn 0009            ?_HD44780_CursorSet 0009           ??_HD44780_CursorSet 000A  
+                    __ptext10 098A                      __ptext11 0A02                      __ptext12 09A0  
+                    __ptext13 075A                      __ptext14 094A                      __ptext15 0918  
+   __end_of_HD44780_DisplayOn 09F6             _HD44780_PutCustom 09B6            ?_HD44780_PutCustom 000F  
+               __size_of_main 0082                 _HD44780_Delay 094A                 _HD44780_Clear 09CA  
+   __end_of_HD44780_CursorSet 08A6           ??_HD44780_PutCustom 0011         __size_of_HD44780_Data 0016  
+       __size_of_HD44780_Init 00A4         __size_of_HD44780_Puts 008E              _HD44780_InitPins 0970  
+   __end_of_HD44780_PutCustom 09CA              _HD44780_CursorOn 09F6              HD44780_Data@data 0008  
+              ?_HD44780_Delay 0001                ?_HD44780_Clear 0001        HD44780_CursorSet@F4227 0013  
+                _HD44780_Data 098A                  _HD44780_Init 0628                  _HD44780_Opts 001F  
+                _HD44780_Puts 06CC   __size_of_HD44780_CreateChar 0038          __size_of_HD44780_Cmd 0016  
+            HD44780_Init@cols 000A              HD44780_Init@rows 0009               HD44780_Delay@us 0001  
+      HD44780_CreateChar@data 0009    __size_of_HD44780_DisplayOn 000C                HD44780_Cmd@cmd 0008  
+              HD44780_Delay@i 0004    __size_of_HD44780_CursorSet 0042  

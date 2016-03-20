@@ -17,7 +17,8 @@
  * ----------------------------------------------------------------------
  */
 
-#include "keypad.h"
+#include <xc.h>
+#include "pic18f4520_keypad.h"
 
 void KEYPAD_Init(void) {
     

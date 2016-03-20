@@ -1,0 +1,732 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.34 build -361300703 
+                                                                                               Sun Mar 20 19:14:55 2016
+
+Microchip Technology Omniscient Code Generator (Lite mode) build 201502162209
+     1                           	processor	18F4520
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1
+     8                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1
+     9                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+    10                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    13                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    14                           	psect	intcode_body,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    16                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    17                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    18  0000                     
+    19                           	psect	idataCOMRAM
+    20  000138                     __pidataCOMRAM:
+    21                           	opt stack 0
+    22                           
+    23                           ;initializer for _TMR0_value
+    24  000138  FE0C               	dw	65036
+    25  0000                     _INTCONbits	set	4082
+    26  0000                     _LATCbits	set	3979
+    27  0000                     _T0CON	set	4053
+    28  0000                     _T0CONbits	set	4053
+    29  0000                     _TMR0H	set	4055
+    30  0000                     _TMR0L	set	4054
+    31  0000                     _TRISCbits	set	3988
+    32                           
+    33                           ; #config settings
+    34  0000                     
+    35                           	psect	cinit
+    36  0000B4                     __pcinit:
+    37                           	opt stack 0
+    38  0000B4                     start_initialization:
+    39                           	opt stack 0
+    40  0000B4                     __initialization:
+    41                           	opt stack 0
+    42                           
+    43                           ; Clear objects allocated to COMRAM (2 bytes)
+    44  0000B4  6A18               	clrf	(__pbssCOMRAM+1)& (0+255),c
+    45  0000B6  6A17               	clrf	__pbssCOMRAM& (0+255),c
+    46                           
+    47                           ; Initialize objects allocated to COMRAM (2 bytes)
+    48                           ; load TBLPTR registers with __pidataCOMRAM
+    49  0000B8  0E38               	movlw	low __pidataCOMRAM
+    50  0000BA  6EF6               	movwf	tblptrl,c
+    51  0000BC  0E01               	movlw	high __pidataCOMRAM
+    52  0000BE  6EF7               	movwf	tblptrh,c
+    53  0000C0  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+    54  0000C2  6EF8               	movwf	tblptru,c
+    55  0000C4  0009               	tblrd		*+	;fetch initializer
+    56  0000C6  CFF5 F019          	movff	tablat,__pdataCOMRAM
+    57  0000CA  0009               	tblrd		*+	;fetch initializer
+    58  0000CC  CFF5 F01A          	movff	tablat,__pdataCOMRAM+1
+    59  0000D0                     end_of_initialization:
+    60                           	opt stack 0
+    61  0000D0                     __end_of__initialization:
+    62                           	opt stack 0
+    63  0000D0  0100               	movlb	0
+    64  0000D2  EF7B  F000         	goto	_main	;jump to C main() function
+    65                           tblptru	equ	0xFF8
+    66                           tblptrh	equ	0xFF7
+    67                           tblptrl	equ	0xFF6
+    68                           tablat	equ	0xFF5
+    69                           
+    70                           	psect	bssCOMRAM
+    71  000017                     __pbssCOMRAM:
+    72                           	opt stack 0
+    73  000017                     _millis:
+    74                           	opt stack 0
+    75  000017                     	ds	2
+    76                           tblptru	equ	0xFF8
+    77                           tblptrh	equ	0xFF7
+    78                           tblptrl	equ	0xFF6
+    79                           tablat	equ	0xFF5
+    80                           
+    81                           	psect	dataCOMRAM
+    82  000019                     __pdataCOMRAM:
+    83                           	opt stack 0
+    84  000019                     _TMR0_value:
+    85                           	opt stack 0
+    86  000019                     	ds	2
+    87                           tblptru	equ	0xFF8
+    88                           tblptrh	equ	0xFF7
+    89                           tblptrl	equ	0xFF6
+    90                           tablat	equ	0xFF5
+    91                           
+    92                           	psect	cstackCOMRAM
+    93  000001                     __pcstackCOMRAM:
+    94                           	opt stack 0
+    95  000001                     i2WriteTimer0@timer0:
+    96                           	opt stack 0
+    97                           
+    98                           ; 2 bytes @ 0x0
+    99  000001                     	ds	2
+   100  000003                     i2WriteTimer0@timer:
+   101                           	opt stack 0
+   102                           
+   103                           ; 2 bytes @ 0x2
+   104  000003                     	ds	2
+   105  000005                     ??_Interrupt:
+   106                           
+   107                           ; 0 bytes @ 0x4
+   108  000005                     	ds	14
+   109  000013                     OpenTimer0@config:
+   110                           	opt stack 0
+   111  000013                     WriteTimer0@timer0:
+   112                           	opt stack 0
+   113                           
+   114                           ; 2 bytes @ 0x12
+   115  000013                     	ds	2
+   116  000015                     WriteTimer0@timer:
+   117                           	opt stack 0
+   118                           
+   119                           ; 2 bytes @ 0x14
+   120  000015                     	ds	2
+   121  000017                     tblptru	equ	0xFF8
+   122                           tblptrh	equ	0xFF7
+   123                           tblptrl	equ	0xFF6
+   124                           tablat	equ	0xFF5
+   125                           
+   126                           ; 0 bytes @ 0x16
+   127 ;;
+   128 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   129 ;;
+   130 ;; *************** function _main *****************
+   131 ;; Defined at:
+   132 ;;		line 38 in file "main.c"
+   133 ;; Parameters:    Size  Location     Type
+   134 ;;		None
+   135 ;; Auto vars:     Size  Location     Type
+   136 ;;		None
+   137 ;; Return value:  Size  Location     Type
+   138 ;;		None               void
+   139 ;; Registers used:
+   140 ;;		wreg, status,2, status,0, cstack
+   141 ;; Tracked objects:
+   142 ;;		On entry : 0/0
+   143 ;;		On exit  : 0/0
+   144 ;;		Unchanged: 0/0
+   145 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   146 ;;      Params:         0       0       0       0       0       0       0
+   147 ;;      Locals:         0       0       0       0       0       0       0
+   148 ;;      Temps:          0       0       0       0       0       0       0
+   149 ;;      Totals:         0       0       0       0       0       0       0
+   150 ;;Total ram usage:        0 bytes
+   151 ;; Hardware stack levels required when called:    3
+   152 ;; This function calls:
+   153 ;;		_OpenTimer0
+   154 ;;		_WriteTimer0
+   155 ;; This function is called by:
+   156 ;;		Startup code after reset
+   157 ;; This function uses a non-reentrant model
+   158 ;;
+   159                           
+   160                           	psect	text0
+   161  0000F6                     __ptext0:
+   162                           	opt stack 0
+   163  0000F6                     _main:
+   164                           	opt stack 28
+   165                           
+   166                           ;main.c: 40: TRISCbits.RC1 = 0;
+   167                           
+   168                           ;incstack = 0
+   169  0000F6  9294               	bcf	3988,1,c	;volatile
+   170                           
+   171                           ;main.c: 41: LATCbits.LATC1 = 0;
+   172  0000F8  928B               	bcf	3979,1,c	;volatile
+   173                           
+   174                           ;main.c: 43: OpenTimer0(0b11111111 &
+   175                           ;main.c: 44: 0b10111111 &
+   176                           ;main.c: 45: 0b11011111 &
+   177                           ;main.c: 46: 0b11110011);
+   178  0000FA  0E93               	movlw	147
+   179  0000FC  EC6B  F000         	call	_OpenTimer0
+   180                           
+   181                           ;main.c: 48: WriteTimer0(TMR0_value);
+   182  000100  C019  F013         	movff	_TMR0_value,WriteTimer0@timer0
+   183  000104  C01A  F014         	movff	_TMR0_value+1,WriteTimer0@timer0+1
+   184  000108  EC8A  F000         	call	_WriteTimer0	;wreg free
+   185                           
+   186                           ;main.c: 50: INTCONbits.GIE = 1;
+   187  00010C  8EF2               	bsf	intcon,7,c	;volatile
+   188  00010E  D7FF               	goto	l32
+   189  000110  EF0C  F000         	goto	start
+   190  000114                     __end_of_main:
+   191                           	opt stack 0
+   192                           tblptru	equ	0xFF8
+   193                           tblptrh	equ	0xFF7
+   194                           tblptrl	equ	0xFF6
+   195                           tablat	equ	0xFF5
+   196                           intcon	equ	0xFF2
+   197                           
+   198 ;; *************** function _WriteTimer0 *****************
+   199 ;; Defined at:
+   200 ;;		line 16 in file "C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\Timers\t0write.c"
+   201 ;; Parameters:    Size  Location     Type
+   202 ;;  timer0          2   18[COMRAM] unsigned int 
+   203 ;; Auto vars:     Size  Location     Type
+   204 ;;  timer           2   20[COMRAM] struct Timers
+   205 ;; Return value:  Size  Location     Type
+   206 ;;		None               void
+   207 ;; Registers used:
+   208 ;;		None
+   209 ;; Tracked objects:
+   210 ;;		On entry : 0/0
+   211 ;;		On exit  : 0/0
+   212 ;;		Unchanged: 0/0
+   213 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   214 ;;      Params:         2       0       0       0       0       0       0
+   215 ;;      Locals:         2       0       0       0       0       0       0
+   216 ;;      Temps:          0       0       0       0       0       0       0
+   217 ;;      Totals:         4       0       0       0       0       0       0
+   218 ;;Total ram usage:        4 bytes
+   219 ;; Hardware stack levels used:    1
+   220 ;; Hardware stack levels required when called:    2
+   221 ;; This function calls:
+   222 ;;		Nothing
+   223 ;; This function is called by:
+   224 ;;		_main
+   225 ;; This function uses a non-reentrant model
+   226 ;;
+   227                           
+   228                           	psect	text1
+   229  000114                     __ptext1:
+   230                           	opt stack 0
+   231  000114                     _WriteTimer0:
+   232                           	opt stack 28
+   233                           
+   234                           ;incstack = 0
+   235  000114  C013  F015         	movff	WriteTimer0@timer0,WriteTimer0@timer
+   236  000118  C014  F016         	movff	WriteTimer0@timer0+1,WriteTimer0@timer+1
+   237  00011C  C016  FFD7         	movff	WriteTimer0@timer+1,4055	;volatile
+   238  000120  C015  FFD6         	movff	WriteTimer0@timer,4054	;volatile
+   239  000124  0012               	return		;funcret
+   240  000126                     __end_of_WriteTimer0:
+   241                           	opt stack 0
+   242                           tblptru	equ	0xFF8
+   243                           tblptrh	equ	0xFF7
+   244                           tblptrl	equ	0xFF6
+   245                           tablat	equ	0xFF5
+   246                           intcon	equ	0xFF2
+   247                           
+   248 ;; *************** function _OpenTimer0 *****************
+   249 ;; Defined at:
+   250 ;;		line 18 in file "C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\Timers\t0open.c"
+   251 ;; Parameters:    Size  Location     Type
+   252 ;;  config          1    wreg     unsigned char 
+   253 ;; Auto vars:     Size  Location     Type
+   254 ;;  config          1   18[COMRAM] unsigned char 
+   255 ;; Return value:  Size  Location     Type
+   256 ;;		None               void
+   257 ;; Registers used:
+   258 ;;		wreg, status,2, status,0
+   259 ;; Tracked objects:
+   260 ;;		On entry : 0/0
+   261 ;;		On exit  : 0/0
+   262 ;;		Unchanged: 0/0
+   263 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   264 ;;      Params:         0       0       0       0       0       0       0
+   265 ;;      Locals:         1       0       0       0       0       0       0
+   266 ;;      Temps:          0       0       0       0       0       0       0
+   267 ;;      Totals:         1       0       0       0       0       0       0
+   268 ;;Total ram usage:        1 bytes
+   269 ;; Hardware stack levels used:    1
+   270 ;; Hardware stack levels required when called:    2
+   271 ;; This function calls:
+   272 ;;		Nothing
+   273 ;; This function is called by:
+   274 ;;		_main
+   275 ;; This function uses a non-reentrant model
+   276 ;;
+   277                           
+   278                           	psect	text2
+   279  0000D6                     __ptext2:
+   280                           	opt stack 0
+   281  0000D6                     _OpenTimer0:
+   282                           	opt stack 28
+   283                           
+   284                           ;incstack = 0
+   285                           ;OpenTimer0@config stored from wreg
+   286  0000D6  6E13               	movwf	OpenTimer0@config,c
+   287  0000D8  5013               	movf	OpenTimer0@config,w,c
+   288  0000DA  0B7F               	andlw	127
+   289  0000DC  6ED5               	movwf	4053,c	;volatile
+   290  0000DE  0E00               	movlw	0
+   291  0000E0  6ED7               	movwf	4055,c	;volatile
+   292  0000E2  0E00               	movlw	0
+   293  0000E4  6ED6               	movwf	4054,c	;volatile
+   294  0000E6  94F2               	bcf	intcon,2,c	;volatile
+   295  0000E8  AE13               	btfss	OpenTimer0@config,7,c
+   296  0000EA  D002               	goto	l52
+   297  0000EC  8AF2               	bsf	intcon,5,c	;volatile
+   298  0000EE  D001               	goto	l53
+   299  0000F0                     l52:
+   300  0000F0  9AF2               	bcf	intcon,5,c	;volatile
+   301  0000F2                     l53:
+   302  0000F2  8ED5               	bsf	4053,7,c	;volatile
+   303  0000F4  0012               	return		;funcret
+   304  0000F6                     __end_of_OpenTimer0:
+   305                           	opt stack 0
+   306                           tblptru	equ	0xFF8
+   307                           tblptrh	equ	0xFF7
+   308                           tblptrl	equ	0xFF6
+   309                           tablat	equ	0xFF5
+   310                           intcon	equ	0xFF2
+   311                           
+   312 ;; *************** function _Interrupt *****************
+   313 ;; Defined at:
+   314 ;;		line 54 in file "main.c"
+   315 ;; Parameters:    Size  Location     Type
+   316 ;;		None
+   317 ;; Auto vars:     Size  Location     Type
+   318 ;;		None
+   319 ;; Return value:  Size  Location     Type
+   320 ;;		None               void
+   321 ;; Registers used:
+   322 ;;		wreg, status,2, status,0, cstack
+   323 ;; Tracked objects:
+   324 ;;		On entry : 0/0
+   325 ;;		On exit  : 0/0
+   326 ;;		Unchanged: 0/0
+   327 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   328 ;;      Params:         0       0       0       0       0       0       0
+   329 ;;      Locals:         0       0       0       0       0       0       0
+   330 ;;      Temps:         14       0       0       0       0       0       0
+   331 ;;      Totals:        14       0       0       0       0       0       0
+   332 ;;Total ram usage:       14 bytes
+   333 ;; Hardware stack levels used:    1
+   334 ;; Hardware stack levels required when called:    1
+   335 ;; This function calls:
+   336 ;;		i2_WriteTimer0
+   337 ;; This function is called by:
+   338 ;;		Interrupt level 2
+   339 ;; This function uses a non-reentrant model
+   340 ;;
+   341                           
+   342                           	psect	intcode
+   343  000008                     __pintcode:
+   344                           	opt stack 0
+   345  000008                     _Interrupt:
+   346                           	opt stack 28
+   347                           
+   348                           ;incstack = 0
+   349  000008  CFFA F005          	movff	pclath,??_Interrupt
+   350  00000C  CFFB F006          	movff	pclatu,??_Interrupt+1
+   351  000010  CFE9 F007          	movff	fsr0l,??_Interrupt+2
+   352  000014  ED0E  F000         	call	int_func,f	;refresh shadow registers
+   353                           pclatu	equ	0xFFB
+   354                           pclath	equ	0xFFA
+   355                           tblptru	equ	0xFF8
+   356                           tblptrh	equ	0xFF7
+   357                           tblptrl	equ	0xFF6
+   358                           tablat	equ	0xFF5
+   359                           intcon	equ	0xFF2
+   360                           fsr0l	equ	0xFE9
+   361                           
+   362                           	psect	intcode_body
+   363  00001C                     __pintcode_body:
+   364                           	opt stack 28
+   365  00001C                     int_func:
+   366                           	opt stack 28
+   367  00001C  0006               	pop		; remove dummy address from shadow register refresh
+   368  00001E  CFEA F008          	movff	fsr0h,??_Interrupt+3
+   369  000022  CFE1 F009          	movff	fsr1l,??_Interrupt+4
+   370  000026  CFE2 F00A          	movff	fsr1h,??_Interrupt+5
+   371  00002A  CFD9 F00B          	movff	fsr2l,??_Interrupt+6
+   372  00002E  CFDA F00C          	movff	fsr2h,??_Interrupt+7
+   373  000032  CFF3 F00D          	movff	prodl,??_Interrupt+8
+   374  000036  CFF4 F00E          	movff	prodh,??_Interrupt+9
+   375  00003A  CFF6 F00F          	movff	tblptrl,??_Interrupt+10
+   376  00003E  CFF7 F010          	movff	tblptrh,??_Interrupt+11
+   377  000042  CFF8 F011          	movff	tblptru,??_Interrupt+12
+   378  000046  CFF5 F012          	movff	tablat,??_Interrupt+13
+   379                           
+   380                           ;main.c: 56: if(INTCONbits.TMR0IF==1) {
+   381  00004A  A4F2               	btfss	intcon,2,c	;volatile
+   382  00004C  D016               	goto	i2l39
+   383                           
+   384                           ;main.c: 57: INTCONbits.TMR0IF = 0;
+   385  00004E  94F2               	bcf	intcon,2,c	;volatile
+   386                           
+   387                           ;main.c: 58: WriteTimer0(TMR0_value);
+   388  000050  C019  F001         	movff	_TMR0_value,i2WriteTimer0@timer0
+   389  000054  C01A  F002         	movff	_TMR0_value+1,i2WriteTimer0@timer0+1
+   390  000058  EC93  F000         	call	i2_WriteTimer0	;wreg free
+   391                           
+   392                           ;main.c: 59: if(++millis == 1000) {
+   393  00005C  4A17               	infsnz	_millis,f,c
+   394  00005E  2A18               	incf	_millis+1,f,c
+   395  000060  0EE8               	movlw	232
+   396  000062  1817               	xorwf	_millis,w,c
+   397  000064  E10A               	bnz	i2l39
+   398  000066  0E03               	movlw	3
+   399  000068  1818               	xorwf	_millis+1,w,c
+   400  00006A  A4D8               	btfss	status,2,c
+   401  00006C  D006               	goto	i2l39
+   402                           
+   403                           ;main.c: 60: LATCbits.LATC1 =~ LATCbits.LATC1;
+   404  00006E  728B               	btg	3979,1,c	;volatile
+   405                           
+   406                           ;main.c: 61: millis = 0;
+   407  000070  0E00               	movlw	0
+   408  000072  6E18               	movwf	_millis+1,c
+   409  000074  0E00               	movlw	0
+   410  000076  6E17               	movwf	_millis,c
+   411  000078  D000               	goto	i2l39
+   412  00007A                     i2l39:
+   413  00007A  C012  FFF5         	movff	??_Interrupt+13,tablat
+   414  00007E  C011  FFF8         	movff	??_Interrupt+12,tblptru
+   415  000082  C010  FFF7         	movff	??_Interrupt+11,tblptrh
+   416  000086  C00F  FFF6         	movff	??_Interrupt+10,tblptrl
+   417  00008A  C00E  FFF4         	movff	??_Interrupt+9,prodh
+   418  00008E  C00D  FFF3         	movff	??_Interrupt+8,prodl
+   419  000092  C00C  FFDA         	movff	??_Interrupt+7,fsr2h
+   420  000096  C00B  FFD9         	movff	??_Interrupt+6,fsr2l
+   421  00009A  C00A  FFE2         	movff	??_Interrupt+5,fsr1h
+   422  00009E  C009  FFE1         	movff	??_Interrupt+4,fsr1l
+   423  0000A2  C008  FFEA         	movff	??_Interrupt+3,fsr0h
+   424  0000A6  C007  FFE9         	movff	??_Interrupt+2,fsr0l
+   425  0000AA  C006  FFFB         	movff	??_Interrupt+1,pclatu
+   426  0000AE  C005  FFFA         	movff	??_Interrupt,pclath
+   427  0000B2  0011               	retfie		f
+   428  0000B4                     __end_of_Interrupt:
+   429                           	opt stack 0
+   430                           pclatu	equ	0xFFB
+   431                           pclath	equ	0xFFA
+   432                           tblptru	equ	0xFF8
+   433                           tblptrh	equ	0xFF7
+   434                           tblptrl	equ	0xFF6
+   435                           tablat	equ	0xFF5
+   436                           prodh	equ	0xFF4
+   437                           prodl	equ	0xFF3
+   438                           intcon	equ	0xFF2
+   439                           fsr0h	equ	0xFEA
+   440                           fsr0l	equ	0xFE9
+   441                           fsr1h	equ	0xFE2
+   442                           fsr1l	equ	0xFE1
+   443                           fsr2h	equ	0xFDA
+   444                           fsr2l	equ	0xFD9
+   445                           status	equ	0xFD8
+   446                           
+   447 ;; *************** function i2_WriteTimer0 *****************
+   448 ;; Defined at:
+   449 ;;		line 16 in file "C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\Timers\t0write.c"
+   450 ;; Parameters:    Size  Location     Type
+   451 ;;  timer0          2    0[COMRAM] unsigned int 
+   452 ;; Auto vars:     Size  Location     Type
+   453 ;;  WriteTimer0     2    2[COMRAM] struct Timers
+   454 ;; Return value:  Size  Location     Type
+   455 ;;		None               void
+   456 ;; Registers used:
+   457 ;;		None
+   458 ;; Tracked objects:
+   459 ;;		On entry : 0/0
+   460 ;;		On exit  : 0/0
+   461 ;;		Unchanged: 0/0
+   462 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   463 ;;      Params:         2       0       0       0       0       0       0
+   464 ;;      Locals:         2       0       0       0       0       0       0
+   465 ;;      Temps:          0       0       0       0       0       0       0
+   466 ;;      Totals:         4       0       0       0       0       0       0
+   467 ;;Total ram usage:        4 bytes
+   468 ;; Hardware stack levels used:    1
+   469 ;; This function calls:
+   470 ;;		Nothing
+   471 ;; This function is called by:
+   472 ;;		_Interrupt
+   473 ;; This function uses a non-reentrant model
+   474 ;;
+   475                           
+   476                           	psect	text4
+   477  000126                     __ptext4:
+   478                           	opt stack 0
+   479  000126                     i2_WriteTimer0:
+   480                           	opt stack 28
+   481                           
+   482                           ;incstack = 0
+   483  000126  C001  F003         	movff	i2WriteTimer0@timer0,i2WriteTimer0@timer
+   484  00012A  C002  F004         	movff	i2WriteTimer0@timer0+1,i2WriteTimer0@timer+1
+   485  00012E  C004  FFD7         	movff	i2WriteTimer0@timer+1,4055	;volatile
+   486  000132  C003  FFD6         	movff	i2WriteTimer0@timer,4054	;volatile
+   487  000136  0012               	return		;funcret
+   488  000138                     __end_ofi2_WriteTimer0:
+   489                           	opt stack 0
+   490  0000                     pclatu	equ	0xFFB
+   491                           pclath	equ	0xFFA
+   492                           tblptru	equ	0xFF8
+   493                           tblptrh	equ	0xFF7
+   494                           tblptrl	equ	0xFF6
+   495                           tablat	equ	0xFF5
+   496                           prodh	equ	0xFF4
+   497                           prodl	equ	0xFF3
+   498                           intcon	equ	0xFF2
+   499                           fsr0h	equ	0xFEA
+   500                           fsr0l	equ	0xFE9
+   501                           fsr1h	equ	0xFE2
+   502                           fsr1l	equ	0xFE1
+   503                           fsr2h	equ	0xFDA
+   504                           fsr2l	equ	0xFD9
+   505                           status	equ	0xFD8
+   506                           pclatu	equ	0xFFB
+   507                           pclath	equ	0xFFA
+   508                           tblptru	equ	0xFF8
+   509                           tblptrh	equ	0xFF7
+   510                           tblptrl	equ	0xFF6
+   511                           tablat	equ	0xFF5
+   512                           prodh	equ	0xFF4
+   513                           prodl	equ	0xFF3
+   514                           intcon	equ	0xFF2
+   515                           fsr0h	equ	0xFEA
+   516                           fsr0l	equ	0xFE9
+   517                           fsr1h	equ	0xFE2
+   518                           fsr1l	equ	0xFE1
+   519                           fsr2h	equ	0xFDA
+   520                           fsr2l	equ	0xFD9
+   521                           status	equ	0xFD8
+   522                           
+   523                           	psect	rparam
+   524  0000                     pclatu	equ	0xFFB
+   525                           pclath	equ	0xFFA
+   526                           tblptru	equ	0xFF8
+   527                           tblptrh	equ	0xFF7
+   528                           tblptrl	equ	0xFF6
+   529                           tablat	equ	0xFF5
+   530                           prodh	equ	0xFF4
+   531                           prodl	equ	0xFF3
+   532                           intcon	equ	0xFF2
+   533                           fsr0h	equ	0xFEA
+   534                           fsr0l	equ	0xFE9
+   535                           fsr1h	equ	0xFE2
+   536                           fsr1l	equ	0xFE1
+   537                           fsr2h	equ	0xFDA
+   538                           fsr2l	equ	0xFD9
+   539                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        2
+    BSS         2
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM          127     22      26
+    BANK0           128      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    _main->_WriteTimer0
+
+Critical Paths under _Interrupt in COMRAM
+
+    _Interrupt->i2_WriteTimer0
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _Interrupt in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _Interrupt in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _Interrupt in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _Interrupt in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _Interrupt in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _Interrupt in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0     201
+                         _OpenTimer0
+                        _WriteTimer0
+ ---------------------------------------------------------------------------------
+ (1) _WriteTimer0                                          4     2      2     171
+                                             18 COMRAM     4     2      2
+ ---------------------------------------------------------------------------------
+ (1) _OpenTimer0                                           1     1      0      30
+                                             18 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (2) _Interrupt                                           14    14      0      93
+                                              4 COMRAM    14    14      0
+                      i2_WriteTimer0
+ ---------------------------------------------------------------------------------
+ (3) i2_WriteTimer0                                        4     2      2      93
+                                              0 COMRAM     4     2      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _OpenTimer0
+   _WriteTimer0
+
+ _Interrupt (ROOT)
+   i2_WriteTimer0
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             5FF      0       0      17        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK5           100      0       0      16        0.0%
+BANK5              100      0       0      14        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            80      0       0       4        0.0%
+BANK0               80      0       0       5        0.0%
+BITCOMRAM           7F      0       0       0        0.0%
+COMRAM              7F     16      1A       1       20.5%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      1A      15        0.0%
+DATA                 0      0      1A       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.34 build -361300703 
+Symbol Table                                                                                   Sun Mar 20 19:14:55 2016
+
+                     l32 010E                       l52 00F0                       l53 00F2  
+            __CFG_BORV$2 000000             __CFG_CP0$OFF 000000             __CFG_CP1$OFF 000000  
+           __CFG_CP2$OFF 000000             __CFG_CP3$OFF 000000             __CFG_CPB$OFF 000000  
+           __CFG_CPD$OFF 000000     __size_of_WriteTimer0 0012             __CFG_LVP$OFF 000000  
+           __CFG_WDT$OFF 000000                     i2l39 007A                     _main 00F6  
+                   fsr0h 000FEA                     fsr1h 000FE2                     fsr0l 000FE9  
+                   fsr2h 000FDA                     fsr1l 000FE1                     fsr2l 000FD9  
+ __size_ofi2_WriteTimer0 0012                     pclat 000FFA            __CFG_BOREN$ON 000000  
+                   prodh 000FF4                     prodl 000FF3                     start 0018  
+          __CFG_IESO$OFF 000000            __CFG_MCLRE$ON 000000             ___param_bank 000010  
+                  ?_main 0001                    _T0CON 000FD5                    _TMR0H 000FD7  
+                  _TMR0L 000FD6            __CFG_PWRT$OFF 000000            __CFG_WRT0$OFF 000000  
+          __CFG_WRT1$OFF 000000            __CFG_WRT2$OFF 000000            __CFG_WRT3$OFF 000000  
+         __CFG_EBTR0$OFF 000000           __CFG_FCMEN$OFF 000000           __CFG_EBTR1$OFF 000000  
+         __CFG_EBTR2$OFF 000000           __CFG_EBTR3$OFF 000000            __CFG_WRTB$OFF 000000  
+          __CFG_WRTC$OFF 000000            __CFG_WRTD$OFF 000000           __CFG_EBTRB$OFF 000000  
+                  tablat 000FF5                    status 000FD8          __initialization 00B4  
+           __end_of_main 0114           __CFG_OSC$HSPLL 000000                   ??_main 0017  
+          i2_WriteTimer0 0126            __activetblptr 000000               _OpenTimer0 00D6  
+         __CFG_XINST$OFF 000000       __size_of_Interrupt 00AC           __CFG_STVREN$ON 000000  
+       OpenTimer0@config 0013                   _millis 0017           ?i2_WriteTimer0 0001  
+           __pdataCOMRAM 0019                   tblptrh 000FF7                   tblptrl 000FF6  
+                 tblptru 000FF8               __accesstop 0080  __end_of__initialization 00D0  
+        __CFG_PBADEN$OFF 000000            ___rparam_used 000001           __pcstackCOMRAM 0001  
+      __end_of_Interrupt 00B4              ?_OpenTimer0 0001          ??i2_WriteTimer0 0003  
+       WriteTimer0@timer 0015            ??_WriteTimer0 0015      i2WriteTimer0@timer0 0001  
+                __Hparam 0000                  __Lparam 0000                  __pcinit 00B4  
+                __ramtop 0600      __size_of_OpenTimer0 0020                  __ptext0 00F6  
+                __ptext1 0114                  __ptext2 00D6                  __ptext4 0126  
+              _T0CONbits 000FD5      __end_of_WriteTimer0 0126           __pintcode_body 001C  
+   end_of_initialization 00D0                  int_func 001C                _TRISCbits 000F94  
+          __pidataCOMRAM 0138              _WriteTimer0 0114      start_initialization 00B4  
+           ??_OpenTimer0 0013                _Interrupt 0008         __CFG_LPT1OSC$OFF 000000  
+     __end_of_OpenTimer0 00F6              __pbssCOMRAM 0017               ?_Interrupt 0001  
+      __CFG_CCP2MX$PORTC 000000                __pintcode 0008    __end_ofi2_WriteTimer0 0138  
+      WriteTimer0@timer0 0013       i2WriteTimer0@timer 0003                 _LATCbits 000F8B  
+       __CFG_WDTPS$32768 000000              ??_Interrupt 0005                 __Hrparam 0000  
+               __Lrparam 0000             ?_WriteTimer0 0013            __size_of_main 001E  
+             _INTCONbits 000FF2                 intlevel2 0000               _TMR0_value 0019  

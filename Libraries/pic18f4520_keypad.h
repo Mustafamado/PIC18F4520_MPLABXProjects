@@ -46,6 +46,7 @@ extern "C" {
  * @brief    Library includes
  * @{
  */
+
 #include "pic18f4520_config.h"
 
 /**

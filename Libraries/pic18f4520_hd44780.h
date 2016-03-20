@@ -69,8 +69,7 @@ K     GND               Ground for back light
 #include <xc.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "config.h"
-//#include "delay.h"
+#include "pic18f4520_config.h"
 
 /**
  * @defgroup HD44780_Macros
