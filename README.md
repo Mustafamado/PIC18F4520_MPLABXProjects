@@ -11,7 +11,7 @@ http://www.microchip.com/mplab/mplab-x-ide
 2- XC8 Compiler v1.34 needs to installed. (C compiler for 8-bit PIC microcontrollers)
 http://www.microchip.com/mplab/compilers
   
-The reason of using XC8 Compiler v1.34 instead of latest v1.36 is peripheral libraries (plibs) are not included to v1.36. You need to install "PIC18F Legacy Peripheral Libraries v2.0 - Windows" to use plibs. But microchip could not do it right and it causes errors. Safes way to use my library is using XC8 Compiler v1.34 until microchip handles errors.
+The reason of using XC8 Compiler v1.34 instead of latest v1.36 is peripheral libraries (plibs) are not included to v1.36. You need to install "PIC18F Legacy Peripheral Libraries v2.0 - Windows" to use plibs. But microchip could not do it right and it causes errors. Safest way to use my projects is using XC8 Compiler v1.34 until microchip handles errors.
   
 3- Folder hierarchy is important to use my libraries. You shouldn't change the folder hierarchy. For example, Libraries and PIC18F4520-XC8-LED.X folders should have equal hierarchy which means that they should be in the same directory.
 
