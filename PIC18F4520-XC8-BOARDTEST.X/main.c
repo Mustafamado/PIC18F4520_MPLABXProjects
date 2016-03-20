@@ -15,7 +15,6 @@
 #include <stdlib.h>
 /* Include plibs here */
 #include <plib/adc.h>
-#include <plib/pconfig.h>
 /* Include my libraries here */
 #include "pic18f4520_config.h"
 #include "pic18f4520_delay.h"
@@ -47,8 +46,9 @@ unsigned int sseg_counter = 0;
 int int_key = 0xFF;
 char char_key;
 int adcin;
-double dcf = 0;
-double lamda = 0.05;
+double dcf = 0; /* Average filter */
+double dcf_old = 0; /* For better LCD performance */
+double lamda = 0.05; /* Average of last 20 ADC read */
 
 int adc_flag = 0;
 int keypad_flag = 0;
@@ -85,13 +85,13 @@ int main(void) {
     SSEG_Init();
     KEYPAD_Init();
     
-    OpenADC(ADC_FOSC_2 &      /* fosc = frequency of oscillator / 2 */
-            ADC_RIGHT_JUST &  /* Result in Least Significant bits */
-            ADC_0_TAD,       /* A/D Acquisition Time is 12 TAD */
-            ADC_CH0 &         /* Channel 0 */
-            ADC_REF_VDD_VSS & /* ADC voltage source VREF+ = VDD and VREF- = VSS */
-            ADC_INT_OFF,      /* Interrupts disabled */
-            ADC_1ANA);        /* analog: AN0 and remaining channels are digital */
+    OpenADC(ADC_FOSC_4 &
+            ADC_RIGHT_JUST &
+            ADC_0_TAD,
+            ADC_CH0 &
+            ADC_REF_VDD_VSS &
+            ADC_INT_OFF,
+            ADC_1ANA);
     Delay(50);
     
     /* Loop forever */
@@ -228,10 +228,12 @@ int main(void) {
                 ConvertADC();
                 while( BusyADC() );
                 adcin = 1023 - ReadADC();
+                dcf_old = dcf;
                 dcf = (1-lamda)*dcf + lamda*adcin;
-                HD44780_CursorSet(0,0);
-                printf("5.ADC TEST: %4d", (int)dcf);
-                Delayms(1);
+                if(dcf != dcf_old) {
+                    HD44780_CursorSet(0,0);
+                    printf("5.ADC TEST: %4d", (int)dcf);
+                }
             }
         }
         else state = STATE_LCD;        
