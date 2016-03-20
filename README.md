@@ -20,8 +20,12 @@ The reason of using XC8 Compiler v1.34 instead of latest v1.36 is peripheral lib
 Firstly, your project folder should be in same directory with Libraries folder.
   
 Secondly, right click to your project name in project window of MPLAB X IDE program. Then select Properties > Categories > Conf:
-[default] > XC8 global otions > XC8 compiler > Include directories. Insert "..\Libraries" to Include directories.
+[default] > XC8 global otions > XC8 compiler > Include directories. Insert "..\Libraries" to Include directories. Then, press OK.
 
 Now, you can include any of my library in your code, by calling it like #include "pic18f4520_config.h".
 
 5- In order to use plib libraries I recommend to use XC8 Compiler v1.34 instead of v1.36.
+
+If you have installed multiple XC8 Compiler versions, you can select v1.34, as follows:
+Right click to your project name in project window of MPLAB X IDE program. Then select Properties > Categories > Conf:
+[default]. Select XC8 (v1.34) from Compiler Toolchain section. Then, press OK.
