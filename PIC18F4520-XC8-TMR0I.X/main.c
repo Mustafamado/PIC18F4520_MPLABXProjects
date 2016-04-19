@@ -40,7 +40,7 @@ void main(void) {
                
     WriteTimer0(TMR0_value);
 
-    INTCONbits.GIE = 1;
+    INTCONbits.GIE = 1; // Global Interrupt Enable
     
     while(1) { 
         if(flag == 1) {
