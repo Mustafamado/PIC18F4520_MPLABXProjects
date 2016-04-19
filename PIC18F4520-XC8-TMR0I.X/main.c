@@ -25,11 +25,11 @@
  */
 
 int TMR0_value = 3036; // Required value for 1 second Timer0 Interrupt
-int flag = 0;
+int flag = 0; // LED toogle control flag
 
 void main(void) {
     
-    TRISCbits.RC1 = 0;
+    TRISCbits.RC1 = 0; 
     LATCbits.LATC1 = 0;
     
     // Configure Timer0
@@ -58,55 +58,3 @@ void interrupt ISR(void) {
         flag = 1; 
     }
 }
-
-/* -----------------------------------------------------------------------------
- *  RCON REGISTER
- * -----------------------------------------------------------------------------
- * IPEN: Interrupt Priority Enable bit, 
- * 1 = Enable priority levels on interrupts, 
- * 0 = Disable priority levels on interrupts (PIC16XXX Compatibility mode)
- */
-
-/* -----------------------------------------------------------------------------
- * INTCON REGISTER
- * -----------------------------------------------------------------------------
- * GIE/GIEH: Global Interrupt Enable bit
- *      When IPEN = 0:
- *          1 = Enables all unmasked interrupts
- *          0 = Disables all interrupts
- *      When IPEN = 1:
- *          1 = Enables all high priority interrupts
- *          0 = Disables all interrupts
-
- * PEIE/GIEL: Peripheral Interrupt Enable bit
- *      When IPEN = 0:
- *          1 = Enables all unmasked peripheral interrupts
- *          0 = Disables all peripheral interrupts
- *      When IPEN = 1:
- *          1 = Enables all low priority peripheral interrupts
- *          0 = Disables all low priority peripheral interrupts
-
- * TMR0IF: TMR0 Overflow Interrupt Flag bit
- *      1 = TMR0 register has overflowed (must be cleared in software)
- *      0 = TMR0 register did not overflow
-
- * TMR0IE: TMR0 Overflow Interrupt Enable bit
- *      1 = Enables the TMR0 overflow interrupt
- *      0 = Disables the TMR0 overflow interrupt
- */
-
-/* ----------------------------------------------------------------------------- 
- * INTCON2 REGISTER
- * -----------------------------------------------------------------------------
- * TMR0IP: TMR0 Overflow Interrupt Priority bit
- *      1 = High priority
- *      0 = Low priority
- */
-
-/* -----------------------------------------------------------------------------
- * T0CON: TIMER0 CONTROL REGISTER
- * -----------------------------------------------------------------------------
- * TMR0ON: Timer0 On/Off Control bit
- *      1 = Enables Timer0
- *      0 = Stops Timer0
- */
