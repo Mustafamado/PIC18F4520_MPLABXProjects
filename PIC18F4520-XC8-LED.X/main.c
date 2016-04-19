@@ -17,22 +17,13 @@
 
 int main(void) {
     
-    /* Initializes RC1 pin as output (LED1) */
-    TRISCbits.RC1 = 0;
+    TRISCbits.RC1 = 0; // Initializes RC1 pin as output (LED1)
     
     /* Loop forever */
     while(1) {
-        
-        /* Sets RC1 pin (LED1) */
-        LATCbits.LATC1 = 1;
-        
-        /* 1000ms delay */
-        Delayms(1000);
-
-        /* Resets RC1 pin (LED1) */
-        LATCbits.LATC1 = 0;
-        
-        /* 1000ms delay */
-        Delayms(1000);
+        LATCbits.LATC1 = 1; // Sets RC1 pin (LED1)
+        Delayms(1000); // 1sec delay
+        LATCbits.LATC1 = 0; // Resets RC1 pin (LED1)
+        Delayms(1000); // 1sec delay
     }
 }
