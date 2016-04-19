@@ -16,7 +16,6 @@
 #include "pic18f4520_delay.h"
 
 void main() {
-    
     TRISBbits.RB0 = 1; // Set RB0 as input
     TRISBbits.RB1 = 1; // Set RB1 as input
     TRISCbits.RC1 = 0; // Set RC1 as output
@@ -42,14 +41,13 @@ void main() {
 }
 
 void interrupt ISR(void) {
-    
     // Checks Receive Interrupt 0 Flag bit
     if(INTCONbits.INT0F == 1) {
         INTCONbits.INT0F = 0;  // Clear Interrupt 0 Flag       
         LATCbits.LATC1 = ~ LATCbits.LATC1; // Toogle RC1
     }
     // Checks Receive Interrupt 1 Flag bit
-    else if(INTCON3bits.INT1F == 1) {
+    if(INTCON3bits.INT1F == 1) {
         INTCON3bits.INT1F = 0;  // Clear Interrupt 1 Flag
         LATCbits.LATC2 = ~ LATCbits.LATC2; // Toogle RC2
     }
