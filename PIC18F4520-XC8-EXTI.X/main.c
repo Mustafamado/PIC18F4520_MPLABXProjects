@@ -22,15 +22,15 @@ void main() {
     TRISCbits.RC1 = 0; // Set RC1 as output
     TRISCbits.RC2 = 0; // Set RC2 as output
 
-    LATCbits.LATC1 = 0;
-    LATCbits.LATC2 = 0;
+    LATCbits.LATC1 = 0; // Reset RC1
+    LATCbits.LATC2 = 0; // Reset RC2
 
     INTCONbits.INT0E = 1; // Enable Interrupt 0 (RB0 as interrupt)
-    INTCON2bits.INTEDG0 = 1; // Cause Interrupt 0 at rising edge
+    INTCON2bits.INTEDG0 = 1; // Interrupt 0 occurs at rising edge
     INTCONbits.INT0F = 0; // Clear Interrupt 0 flag
 
     INTCON3bits.INT1E = 1; // Enable Interrupt 1 (RB1 as interrupt)
-    INTCON2bits.INTEDG1 = 1; // Cause Interrupt 1 at rising edge
+    INTCON2bits.INTEDG1 = 1; // Interrupt 1 occurs at rising edge
     INTCON3bits.INT1F = 0; // Clear Interrupt 0 flag
 
     INTCONbits.GIE = 1; // Global Interrupt Enable
