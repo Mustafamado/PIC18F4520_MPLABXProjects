@@ -24,33 +24,38 @@
  * TMR0_value = 3036
  */
 
-int TMR0_value = 3036; /* Required value for 1 second Timer0 Interrupt */
+int TMR0_value = 3036; // Required value for 1 second Timer0 Interrupt
+int flag = 0;
 
 void main(void) {
     
     TRISCbits.RC1 = 0;
     LATCbits.LATC1 = 0;
-    /* Configure Timer0 */
-    OpenTimer0(TIMER_INT_ON &  /* Enable TIMER Interrupt */
-               T0_16BIT &      /* Timer0 is configured as an 16-bit timer/counter */
-               T0_SOURCE_INT & /* Internal instruction cycle clock (CLKO) acts as source of clock */
-               T0_PS_1_128);   /* 1:128 Prescale value */
+    
+    // Configure Timer0
+    OpenTimer0(TIMER_INT_ON &  // Enable TIMER Interrupt
+               T0_16BIT &      // Timer0 is configured as an 16-bit timer/counter
+               T0_SOURCE_INT & // Internal instruction cycle clock (CLKO) acts as source of clock
+               T0_PS_1_128);   // 1:128 Prescale value
                
     WriteTimer0(TMR0_value);
 
     INTCONbits.GIE = 1;
     
     while(1) { 
-        
+        if(flag == 1) {
+            LATCbits.LATC1 = ~LATCbits.LATC1;
+            flag = 0;
+        }
     }
 }
 
-void interrupt Interrupt(void) {
-    /* If Timer flag is set & Interrupt is enabled */
+void interrupt ISR(void) {
+    // Check if interrupt occured
     if(INTCONbits.TMR0IF==1) {
-        INTCONbits.TMR0IF = 0;   /* Clear the interrupt flag */
-        WriteTimer0(TMR0_value); /* Update TMR0 value */
-        LATCbits.LATC1 = ~LATCbits.LATC1; 
+        INTCONbits.TMR0IF = 0; // Clear the interrupt flag
+        WriteTimer0(TMR0_value); // Update TMR0 value
+        flag = 1; 
     }
 }
 
