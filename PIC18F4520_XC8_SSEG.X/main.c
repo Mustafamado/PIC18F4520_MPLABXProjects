@@ -8,7 +8,6 @@
  * @compiler XC8
  * @license  GNU GPL v3
  */
-
 /* Include core modules */
 #include <xc.h>
 /* Include my libraries here */
@@ -25,13 +24,13 @@ int main(void) {
     while(1) {
         // if B0 is 0 (KEY1 is pressed)
         if (PORTBbits.RB0 == 0) { 
-            while(PORT_KEY1 == 0) Delayms(50);
+            while(PORTBbits.RB0 == 0) Delayms(50);
             counter--;
             SSEG_Print(1,counter%16); // between 0 and F
         }
         // if B1 is 0 (KEY2 is pressed)
         if (PORTBbits.RB1 == 0) { 
-            while(PORT_KEY2 == 0) Delayms(50);
+            while(PORTBbits.RB1 == 0) Delayms(50);
             counter++;
             SSEG_Print(1,counter%16); // between 0 and F
         }
