@@ -53,7 +53,8 @@ void SSEG_Init(void) {
 void SSEG_Print(int sseg, int n) {
     
     LAT_SSEG_CC1 = (sseg == 1) ? 1 : 0;
-    LAT_SSEG_CC2 = (sseg == 2) ? 1 : 0;    
+    LAT_SSEG_CC2 = (sseg == 2) ? 1 : 0;
+    if(sseg == 3) { LAT_SSEG_CC1 = 1; LAT_SSEG_CC2 = 1; }
     LAT_SSEG_A = ((sseg_codes[n] & (0x01 << 0)) >> 0);
     LAT_SSEG_B = ((sseg_codes[n] & (0x01 << 1)) >> 1);
     LAT_SSEG_C = ((sseg_codes[n] & (0x01 << 2)) >> 2);
