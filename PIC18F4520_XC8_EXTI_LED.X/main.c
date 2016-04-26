@@ -32,7 +32,7 @@ void main() {
     INTCON2bits.INTEDG1 = 1; // Interrupt 1 occurs at rising edge
     INTCON3bits.INT1F = 0; // Clear Interrupt 0 flag
 
-    INTCONbits.GIE = 1; // Global Interrupt Enable
+    INTCONbits.GIE = 1; // Enables all unmasked interrupts
     
     /* Loop forever */
     while(1) {

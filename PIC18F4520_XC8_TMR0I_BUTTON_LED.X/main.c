@@ -15,7 +15,9 @@
 #include "pic18f4520_config.h"
 #include "pic18f4520_delay.h"
 
-/* fcmd = fosc/4 = 32MHz/4 = 8Mhz
+/* Timer0 interrupt value calculation
+ * 
+ * fcmd = fosc/4 = 32MHz/4 = 8Mhz
  * Tcmd = 1/fcmd = 1/8MHz = 1/(8*10^6) s = 0.125 us = 0.125*10^-6 s
  * TMR0_value = 2^TMR0bit - (DesiredInterruptTime/(Tcmd*Prescaler))
  * Prescaler = 128
@@ -39,9 +41,9 @@ void main(void) {
                T0_SOURCE_INT & // Internal instruction cycle clock (CLKO) acts as source of clock
                T0_PS_1_128);   // 1:128 Prescale value
                
-    WriteTimer0(TMR0_value); // Write Timer0 value to Timer0 to count
+    WriteTimer0(TMR0_value); // Write TMR0 value to Timer0 to count
 
-    INTCONbits.GIE = 1; // Global Interrupt Enable
+    INTCONbits.GIE = 1; // Enables all unmasked interrupts
     
     while(1) { 
         if(flag == 1) {

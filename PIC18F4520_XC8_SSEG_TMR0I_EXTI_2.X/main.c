@@ -16,7 +16,9 @@
 #include "pic18f4520_delay.h"
 #include "pic18f4520_sseg.h"
 
-/* fcmd = fosc/4 = 32MHz/4 = 8Mhz
+/* Timer0 interrupt value calculation
+ * 
+ * fcmd = fosc/4 = 32MHz/4 = 8Mhz
  * Tcmd = 1/fcmd = 1/8MHz = 1/(8*10^6) s = 0.125 us = 0.125*10^-6 s
  * TMR0_value = 2^TMR0bit - (DesiredInterruptTime/(Tcmd*Prescaler))
  * Prescaler = 16
@@ -51,7 +53,7 @@ void main(void) {
     INTCON2bits.INTEDG1 = 1; // Interrupt 1 occurs at rising edge
     INTCON3bits.INT1F = 0; // Clear Interrupt 0 flag
 
-    INTCONbits.GIE = 1; // Global Interrupt Enable
+    INTCONbits.GIE = 1; // Enables all unmasked interrupts
     
     while(1) {
         Delayms(250);
