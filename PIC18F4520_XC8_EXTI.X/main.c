@@ -1,11 +1,11 @@
 /**
- * MPLABX IDE project example for External Interrupt
+ * MPLABX IDE project example for External Interrupt (EXTI)
  * 
  * @author   Burak Enez
  * @email    burakenez@gmail.com
  * @website  http://burakenez.org
  * @ide      MPLAB X IDE
- * @compiler XC8
+ * @compiler XC8 v1.34
  * @license  GNU GPL v3
  */
 
@@ -41,13 +41,13 @@ void main() {
 }
 
 void interrupt ISR(void) {
-    // Checks Receive Interrupt 0 Flag bit
-    if(INTCONbits.INT0F == 1) {
+
+    if(INTCONbits.INT0F == 1) { // if External Interrupt 0 is occurred (KEY1)
         INTCONbits.INT0F = 0;  // Clear Interrupt 0 Flag       
         LATCbits.LATC1 = ~ LATCbits.LATC1; // Toogle RC1
     }
-    // Checks Receive Interrupt 1 Flag bit
-    if(INTCON3bits.INT1F == 1) {
+
+    if(INTCON3bits.INT1F == 1) { // if External Interrupt 1 is occurred (KEY2)
         INTCON3bits.INT1F = 0;  // Clear Interrupt 1 Flag
         LATCbits.LATC2 = ~ LATCbits.LATC2; // Toogle RC2
     }

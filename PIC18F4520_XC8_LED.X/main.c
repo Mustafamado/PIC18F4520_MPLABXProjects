@@ -5,7 +5,7 @@
  * @email    burakenez@gmail.com
  * @website  http://burakenez.org
  * @ide      MPLAB X IDE
- * @compiler XC8
+ * @compiler XC8 v1.34
  * @license  GNU GPL v3
  */
 
