@@ -200,7 +200,7 @@ int main(void) {
 
             while(keypad_flag == 0) {
                 int_key = KEYPAD_Read();
-                char_key = (char)KEYPAD_KeytoASCII(int_key); 
+                char_key = (char)KEYPAD_KeyToChar(int_key); 
                 HD44780_CursorSet(0,0);
                 if(int_key != 0xFF)
                     printf("4.KEYPAD TEST: %c", char_key);

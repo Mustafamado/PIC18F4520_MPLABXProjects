@@ -18,12 +18,6 @@
 #include "pic18f4520_config.h"
 #include "pic18f4520_delay.h"
 
-/* 500 Hz PWM (Pulse-Width Modulation)
- * For more information about the fuctions in pwm.h go this website:
- * http://www.jgorasia.com/Files/UBWdemos/Documentation/periph-lib/PWM.htm
- * http://singularengineer.com/programming-pic-18-using-xc8-mplab-x-pwm-using-pwm-h/
- */
-
 /* P.S. : Don't confuse about duty_cycle in this code. It is different. */
 
 /* PWM period = [(PR2) + 1] x 4 x TOSC x (TMR2 prescale value)
@@ -40,21 +34,21 @@ int duty_cycle = 0;
 
 void main(void) {
     
-    TRISCbits.RC2 = 0; /* PWM1 pin set as output */
+    TRISCbits.RC2 = 0; // PWM1 pin set as output
 
-    OpenTimer2(T2_PS_1_16); /* Timer2 Prescale 1:16 */
+    OpenTimer2(T2_PS_1_16); // Timer2 Prescale 1:16
 
-    OpenPWM1(period); /* Open pwm at 500 Hz */
+    OpenPWM1(period); // Open pwm at 500 Hz
     
-    /* Loop forever */
+    // Loop forever
     while(1) {
         if(flag == 1) {
-            SetDCPWM1(duty_cycle); /* Change duty cycle */
+            SetDCPWM1(duty_cycle); // Change duty cycle
             duty_cycle++;
             if(duty_cycle == 1024) flag = 0;
         }
         else {
-            SetDCPWM1(duty_cycle); /* Change duty cycle */
+            SetDCPWM1(duty_cycle); // Change duty cycle
             duty_cycle--;
             if(duty_cycle == 0) flag = 1;
         }

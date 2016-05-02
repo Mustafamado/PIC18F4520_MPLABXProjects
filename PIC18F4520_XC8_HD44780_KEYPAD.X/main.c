@@ -1,5 +1,5 @@
 /**
- * MPLABX IDE project example for Keypad
+ * MPLABX IDE project example for HD44780 LCD KEYPAD
  * 
  * @author   Burak Enez
  * @email    burakenez@gmail.com
@@ -30,40 +30,38 @@ void main() {
     int int_key = 0xFF;
     char char_key;
     
-    /* Initialize LCD 16 cols x 2 rows */
+    // Initialize LCD 16 cols x 2 rows
     HD44780_Init(16, 2);
     
-    /* Initialize Keypad */
+    // Initialize Keypad
     KEYPAD_Init();
 
     while(1) {
-/********************* Method 1 *********************/
-        int_key = KEYPAD_Read(); /* Get the pressed key as integer */
-        /* Convert integer to char. (char) type casting is needed */
-        char_key = (char)KEYPAD_KeytoASCII(int_key); 
-        /* Check if any key is pressed */
-        if (int_key != 0xFF) {
-            HD44780_Clear(); /* Clear the LCD display */
-            HD44780_CursorSet(0,0); /* Move to the beginning of the first line */
-            printf("Key Value is:"); /* Print to the first line */
-            HD44780_CursorSet(0,1); /* Move to the beginning of the second line */
-            printf("%c", char_key); /* Print the char. value of pressed key to the second line */
-            Delayms(100);
-        }
-/*************** End of the Method 1 ****************/
+/********************* Method 1 KEYPAD_Read ***********************************/
+//        int_key = KEYPAD_Read(); // Get the pressed key as integer
+//        // Convert integer to char. (char) type casting is needed
+//        char_key = (char)KEYPAD_KeyToChar(int_key); 
+//        // Check if any key is pressed
+//        if (int_key != 0xFF) {
+//            HD44780_Clear(); // Clear the LCD display
+//            HD44780_CursorSet(0,0); // Move to the beginning of the first line
+//            printf("Key Value is:"); // Print to the first line
+//            HD44780_CursorSet(0,1); // Move to the beginning of the second line
+//            printf("%c", char_key); // Print the char. value of pressed key to the second line
+//            Delayms(100);
+//        }
+/********************* End of the Method 1 ************************************/
 
-///********************* Method 2 *********************/        
-//        /* Wait until any key is relased and Get the pressed key as integer */
-//        int_key = KEYPAD_WaitUntilRelease();
-//        /* Convert integer to char. (char) type casting is needed */
-//        char_key = (char)KEYPAD_KeytoASCII(int_key); 
-//        /* Clear LCD */
-//        HD44780_Clear();
-//        HD44780_CursorSet(0,0); /* Move to the beginning of the first line */
-//        printf("Key Value is:"); /* Print to the first line */
-//        HD44780_CursorSet(0,1); /* Move to the beginning of the second line */
-//        printf("%c", char_key); /* Print the char. value of pressed key to the second line */
-//        Delayms(100);
-///*************** End of the Method 2 ****************/
+/********************* Method 2 KEYPAD_ReadWaitUntilRelease *******************/        
+        // Wait until any key is relased and Get the pressed key as integer
+        int_key = KEYPAD_ReadWaitUntilRelease();
+        // Convert integer to char. (char) type casting is needed
+        char_key = (char)KEYPAD_KeyToChar(int_key);
+        // Clear LCD
+        HD44780_Clear();
+        HD44780_CursorSet(0,0); // Move to the beginning of the first line
+        printf("Key Value is:\n%c", char_key); // Print to the first line
+        Delayms(100);
+/********************* End of the Method 2 ************************************/
     }
 }

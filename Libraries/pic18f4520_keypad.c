@@ -74,30 +74,31 @@ int KEYPAD_Read(void) {
     return 0xFF; /* Not pressed condition */
 }
 
-char KEYPAD_KeytoASCII (int KeyNumber) {
+char KEYPAD_KeyToChar (int key_number) {
     
     /* If number is from 0 to 9, convert to ASCII character by adding 0x30 */
-    if (KeyNumber < 10) return KeyNumber + 0x30;
+    if (key_number < 10) return key_number + 0x30;
     /* If number is greater than 9, it is alphabet and symbol */
-    if (KeyNumber == 10) return 'A'; /* Convert to ASCII A */
-    if (KeyNumber == 11) return 'B'; /* Convert to ASCII B */
-    if (KeyNumber == 12) return 'C'; /* Convert to ASCII C */
-    if (KeyNumber == 13) return 'D'; /* Convert to ASCII D */
-    if (KeyNumber == 14) return '*'; /* Convert to ASCII * */
-    if (KeyNumber == 15) return '#'; /* Convert to ASCII # */
+    if (key_number == 10) return 'A'; /* Convert to ASCII A */
+    if (key_number == 11) return 'B'; /* Convert to ASCII B */
+    if (key_number == 12) return 'C'; /* Convert to ASCII C */
+    if (key_number == 13) return 'D'; /* Convert to ASCII D */
+    if (key_number == 14) return '*'; /* Convert to ASCII * */
+    if (key_number == 15) return '#'; /* Convert to ASCII # */
     return 0; /* No key pressed, Return null */
 }
 
-int KEYPAD_WaitUntilRelease(void) {
+int KEYPAD_ReadWaitUntilRelease(void) {
     
     /* The pressed key. */
-    int PressedKey = 0xFF;
+    int pressed_key = 0xFF;
     /* Wait until the key is pressed. */
     do {
-        PressedKey = KEYPAD_Read();
+        pressed_key = KEYPAD_Read();
     }
-    while (PressedKey == 0xFF);
+    while (pressed_key == 0xFF);
     /* Wait until the key is released. */
     while (KEYPAD_Read() != 0xFF);
-    return PressedKey;
+    return pressed_key;
 }
+

@@ -110,13 +110,13 @@ int KEYPAD_Read(void);
  * @param	
  * @retval 
  */
-char KEYPAD_KeytoASCII (int key_number);
+char KEYPAD_KeyToChar (int key_number);
 
 /**
  * @brief   
  * @retval 
  */
-int KEYPAD_WaitUntilRelease(void);
+int KEYPAD_ReadWaitUntilRelease(void);
 
 /**
  * @}

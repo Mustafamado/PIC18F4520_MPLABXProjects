@@ -93,6 +93,7 @@ void putch(char c) {
 		}
 		if (c == '\n') {
 			HD44780_Opts.currentY++;
+            HD44780_Opts.currentX = 0;
 			HD44780_CursorSet(HD44780_Opts.currentX, HD44780_Opts.currentY);
 		} else if (c == '\r') {
 			HD44780_CursorSet(0, HD44780_Opts.currentY);
