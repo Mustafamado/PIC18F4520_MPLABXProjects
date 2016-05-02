@@ -3,6 +3,8 @@ This repository contains several MPLABX Projects and some libraries to understan
 
 Aim of sharing these projects is reaching to and developing the projects easier by my students and people who may be interested. 
 
+![alt tag](https://raw.githubusercontent.com/burakenez/PIC18F4520_MPLABXProjects/master/Documents/PIC18F4520_Development_Board.png)
+
 To be able to run my projects:
 
 1- Latest MPLAB X IDE program needs to be installed. (MPASM compiler is included to this installation.)
